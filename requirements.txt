@@ -1,0 +1,5 @@
+myst-nb
+sphinx_copybutton
+sphinx_remove_toctrees
+sphinx_book_theme
+numpy>=1.20.1

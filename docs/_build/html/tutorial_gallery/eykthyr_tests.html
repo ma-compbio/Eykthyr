@@ -1,0 +1,3303 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>slidetags &#8212; Eykthyr 0.0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=e645c8fa"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tutorial_gallery/eykthyr_tests';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Eykthyr 0.0.1 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../usage.html">Usage</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html">Quickstart</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../api.html">API</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/eykthyr.embedding.Embedding.html">eykthyr.embedding.Embedding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/eykthyr.plotting.paga_spatial_simulation.html">eykthyr.plotting.paga_spatial_simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/eykthyr.plotting.prep_paga.html">eykthyr.plotting.prep_paga</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/alam-shahul/popari" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/tutorial_gallery/eykthyr_tests.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>slidetags</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">slidetags</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting">Plotting</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-atac-rna">spatial ATAC-RNA</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">eykthyr.eykthyr.eykthyr</span> <span class="kn">import</span> <span class="n">Eykthyr</span><span class="p">,</span> <span class="n">load_anndata</span>
+<span class="kn">import</span> <span class="nn">scanpy</span> <span class="k">as</span> <span class="nn">sc</span>
+<span class="kn">from</span> <span class="nn">eykthyr.eykthyr</span> <span class="kn">import</span> <span class="n">pl</span>
+<span class="o">%</span><span class="k">load_ext</span> autoreload
+<span class="o">%</span><span class="k">autoreload</span> 2
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>which: no R in (/work/magroup/skrieger/newconda/bin:/work/magroup/skrieger/newconda/condabin:/home/skrieger/.cargo/bin:/opt/openmpi/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/ganglia/bin:/opt/ganglia/sbin:/opt/pdsh/bin:/opt/rocks/bin:/opt/rocks/sbin:/home/skrieger/.local/bin:/home/skrieger/bin)
+</pre></div>
+</div>
+</div>
+</div>
+<section id="slidetags">
+<h1>slidetags<a class="headerlink" href="#slidetags" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e</span> <span class="o">=</span> <span class="n">Eykthyr</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">adrna</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;processed_data/slidetags_multiome_rna_subset.h5ad&#39;</span><span class="p">)</span>
+<span class="n">adrna</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AnnData object with n_obs × n_vars = 2535 × 36601
+    obs: &#39;cell_type&#39;
+    var: &#39;gene_ids&#39;, &#39;feature_types&#39;
+    obsm: &#39;spatial&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e</span><span class="o">.</span><span class="n">set_RNA</span><span class="p">(</span><span class="n">adrna</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e</span><span class="o">.</span><span class="n">preprocess_rna</span><span class="p">(</span><span class="n">make_plots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cluster_annotation</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;cell_type&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e</span><span class="o">.</span><span class="n">compute_metagenes</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">RuntimeError</span><span class="g g-Whitespace">                              </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">e</span><span class="o">.</span><span class="n">compute_metagenes</span><span class="p">()</span>
+
+<span class="nn">File /work/magroup/skrieger/DEcausation/eykthyr/eykthyr/eykthyr.py:100,</span> in <span class="ni">Eykthyr.compute_metagenes</span><span class="nt">(self, K, lambda_Sigma_x_inv, torch_context, initial_iterations, spatial_iterations)</span>
+<span class="g g-Whitespace">     </span><span class="mi">97</span> <span class="bp">self</span><span class="o">.</span><span class="n">RNA</span><span class="o">.</span><span class="n">obsp</span><span class="p">[</span><span class="s1">&#39;adjacency_matrix&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">popari_d</span><span class="o">.</span><span class="n">obsp</span><span class="p">[</span><span class="s1">&#39;adjacency_matrix&#39;</span><span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">98</span> <span class="bp">self</span><span class="o">.</span><span class="n">RNA</span><span class="o">.</span><span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">RNA</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">todense</span><span class="p">()</span>
+<span class="ne">--&gt; </span><span class="mi">100</span> <span class="bp">self</span><span class="o">.</span><span class="n">popari</span> <span class="o">=</span> <span class="n">Popari</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">101</span>     <span class="n">K</span><span class="o">=</span><span class="n">K</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">102</span>     <span class="n">replicate_names</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">datasetname</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">103</span>     <span class="n">datasets</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">RNA</span><span class="p">],</span>
+<span class="g g-Whitespace">    </span><span class="mi">104</span>     <span class="n">lambda_Sigma_x_inv</span><span class="o">=</span><span class="n">lambda_Sigma_x_inv</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">105</span>     <span class="n">torch_context</span><span class="o">=</span><span class="n">torch_context</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">106</span>     <span class="n">initial_context</span><span class="o">=</span><span class="n">torch_context</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">107</span>     <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">108</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">110</span> <span class="k">for</span> <span class="n">iteration</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">initial_iterations</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">111</span>     <span class="bp">self</span><span class="o">.</span><span class="n">popari</span><span class="o">.</span><span class="n">estimate_parameters</span><span class="p">(</span><span class="n">update_spatial_affinities</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nn">File /work/magroup/skrieger/newconda/envs/tangram3/lib/python3.8/site-packages/popari/model.py:206,</span> in <span class="ni">Popari.__init__</span><span class="nt">(self, K, replicate_names, datasets, dataset_path, reloaded_hierarchy, lambda_Sigma_x_inv, pretrained, initialization_method, hierarchical_levels, metagene_groups, spatial_affinity_groups, betas, prior_x_modes, M_constraint, sigma_yx_inv_mode, torch_context, initial_context, metagene_mode, spatial_affinity_mode, lambda_M, lambda_Sigma_bar, spatial_affinity_lr, spatial_affinity_tol, spatial_affinity_constraint, spatial_affinity_centering, spatial_affinity_scaling, spatial_affinity_regularization_power, embedding_mini_iterations, embedding_acceleration_trick, embedding_step_size_multiplier, binning_downsample_rate, superresolution_lr, use_inplace_ops, random_state, verbose)</span>
+<span class="g g-Whitespace">    </span><span class="mi">184</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameter_optimizer_hyperparameters</span> <span class="o">=</span> <span class="p">{</span>
+<span class="g g-Whitespace">    </span><span class="mi">185</span>     <span class="s2">&quot;lambda_Sigma_x_inv&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">lambda_Sigma_x_inv</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">186</span>     <span class="s2">&quot;lambda_Sigma_bar&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">lambda_Sigma_bar</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">197</span>     <span class="s2">&quot;metagene_mode&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">metagene_mode</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">198</span> <span class="p">}</span>
+<span class="g g-Whitespace">    </span><span class="mi">200</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding_optimizer_hyperparameters</span> <span class="o">=</span> <span class="p">{</span>
+<span class="g g-Whitespace">    </span><span class="mi">201</span>     <span class="s2">&quot;embedding_step_size_multiplier&quot;</span><span class="p">:</span> <span class="n">embedding_step_size_multiplier</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">202</span>     <span class="s2">&quot;embedding_mini_iterations&quot;</span><span class="p">:</span> <span class="n">embedding_mini_iterations</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">203</span>     <span class="s2">&quot;embedding_acceleration_trick&quot;</span><span class="p">:</span> <span class="n">embedding_acceleration_trick</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">204</span> <span class="p">}</span>
+<span class="ne">--&gt; </span><span class="mi">206</span> <span class="bp">self</span><span class="o">.</span><span class="n">_initialize</span><span class="p">(</span><span class="n">betas</span><span class="o">=</span><span class="n">betas</span><span class="p">,</span> <span class="n">prior_x_modes</span><span class="o">=</span><span class="n">prior_x_modes</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">initialization_method</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="n">pretrained</span><span class="p">)</span>
+
+<span class="nn">File /work/magroup/skrieger/newconda/envs/tangram3/lib/python3.8/site-packages/popari/model.py:258,</span> in <span class="ni">Popari._initialize</span><span class="nt">(self, pretrained, betas, prior_x_modes, method)</span>
+<span class="g g-Whitespace">    </span><span class="mi">231</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Initialize metagenes and hidden states.</span>
+<span class="g g-Whitespace">    </span><span class="mi">232</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">233</span><span class="sd"> Args:</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">236</span><span class="sd">     method: algorithm to use for initializing metagenes and embeddings. Default: SVD</span>
+<span class="g g-Whitespace">    </span><span class="mi">237</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">239</span> <span class="n">hierarchical_view_kwargs</span> <span class="o">=</span> <span class="p">{</span>
+<span class="g g-Whitespace">    </span><span class="mi">240</span>         <span class="s2">&quot;random_state&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">random_state</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">241</span>         <span class="s2">&quot;K&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">K</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">254</span>         <span class="s2">&quot;embedding_optimizer_hyperparameters&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding_optimizer_hyperparameters</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">255</span> <span class="p">}</span>
+<span class="ne">--&gt; </span><span class="mi">258</span> <span class="bp">self</span><span class="o">.</span><span class="n">base_view</span> <span class="o">=</span> <span class="n">HierarchicalView</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">datasets</span><span class="p">,</span> <span class="n">superresolution_lr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">superresolution_lr</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">259</span>         <span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="o">**</span><span class="n">hierarchical_view_kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">261</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pretrained</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">262</span>     <span class="bp">self</span><span class="o">.</span><span class="n">hierarchy</span> <span class="o">=</span> <span class="n">reconstruct_hierarchy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reloaded_hierarchy</span><span class="p">,</span> 
+<span class="g g-Whitespace">    </span><span class="mi">263</span>             <span class="n">superresolution_lr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">superresolution_lr</span><span class="p">,</span> <span class="o">**</span><span class="n">hierarchical_view_kwargs</span><span class="p">)</span>
+
+<span class="nn">File /work/magroup/skrieger/newconda/envs/tangram3/lib/python3.8/site-packages/popari/_hierarchical_view.py:95,</span> in <span class="ni">HierarchicalView.__init__</span><span class="nt">(self, datasets, betas, prior_x_modes, method, random_state, K, context, initial_context, use_inplace_ops, pretrained, verbose, metagene_groups, spatial_affinity_groups, parameter_optimizer_hyperparameters, embedding_optimizer_hyperparameters, binned_Ys, superresolution_lr, level, hierarchical_levels)</span>
+<span class="g g-Whitespace">     </span><span class="mi">93</span> <span class="bp">self</span><span class="o">.</span><span class="n">Ys</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="g g-Whitespace">     </span><span class="mi">94</span> <span class="k">for</span> <span class="n">dataset</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">datasets</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">95</span>     <span class="n">Y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">96</span>     <span class="n">Y</span> <span class="o">*=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">K</span> <span class="o">*</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">Y</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">97</span>     <span class="bp">self</span><span class="o">.</span><span class="n">Ys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+
+<span class="nn">File /work/magroup/skrieger/newconda/envs/tangram3/lib/python3.8/site-packages/torch/cuda/__init__.py:214,</span> in <span class="ni">_lazy_init</span><span class="nt">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">210</span>     <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">211</span>         <span class="s2">&quot;libcudart functions unavailable. It looks like you have a broken build?&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">212</span> <span class="c1"># This function throws if there&#39;s a driver initialization error, no GPUs</span>
+<span class="g g-Whitespace">    </span><span class="mi">213</span> <span class="c1"># are found or any other error occurs</span>
+<span class="ne">--&gt; </span><span class="mi">214</span> <span class="n">torch</span><span class="o">.</span><span class="n">_C</span><span class="o">.</span><span class="n">_cuda_init</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">215</span> <span class="c1"># Some of the queued calls may reentrantly call _lazy_init();</span>
+<span class="g g-Whitespace">    </span><span class="mi">216</span> <span class="c1"># we need to just return without initializing in that case.</span>
+<span class="g g-Whitespace">    </span><span class="mi">217</span> <span class="c1"># However, we must not let any *other* threads in!</span>
+<span class="g g-Whitespace">    </span><span class="mi">218</span> <span class="n">_tls</span><span class="o">.</span><span class="n">is_initializing</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="ne">RuntimeError</span>: Found no NVIDIA driver on your system. Please check that you have an NVIDIA GPU and installed a driver from http://www.nvidia.com/Download/index.aspx
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e</span><span class="o">.</span><span class="n">analyze_metagenes</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e</span><span class="o">.</span><span class="n">compute_TF_activity</span><span class="p">(</span><span class="n">peak_tsv</span><span class="o">=</span><span class="s1">&#39;data/slidetags_multiome/slidetags_multiome_peaks.tsv&#39;</span><span class="p">,</span>
+                      <span class="n">archr_dataset_name</span><span class="o">=</span><span class="s1">&#39;slidetags_multiome&#39;</span><span class="p">,</span>
+                      <span class="n">motif_tsv</span><span class="o">=</span><span class="s1">&#39;data/slidetags_multiome/slidetags_multiome_motifs.tsv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>19
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e</span><span class="o">.</span><span class="n">num_metagenes</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">e</span><span class="o">.</span><span class="n">compute_TF_metagene_weights</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e</span><span class="o">.</span><span class="n">perturbed_X</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">e</span><span class="o">.</span><span class="n">save_anndata</span><span class="p">(</span><span class="s1">&#39;eykthyrtest.h5ad&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2024/07/08 11:02:39]	 Writing results to eykthyrtest/popari.h5ad
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e2</span> <span class="o">=</span> <span class="n">load_anndata</span><span class="p">(</span><span class="s1">&#39;eykthyrtest.h5ad&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2024/07/08 11:04:34]	 Initializing MetageneState
+[2024/07/08 11:04:34]	 Initializing SpatialAffinityState
+[2024/07/08 11:04:34]	 Initializing EmbeddingOptimizer
+[2024/07/08 11:04:34]	 Initializing EmbeddingState
+[2024/07/08 11:04:34]	 Reloading level 0
+[2024/07/08 11:04:34]	 Initializing MetageneState
+[2024/07/08 11:04:34]	 Initializing SpatialAffinityState
+[2024/07/08 11:04:34]	 Initializing EmbeddingOptimizer
+[2024/07/08 11:04:34]	 Initializing EmbeddingState
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e</span><span class="o">.</span><span class="n">run_all_perturbations</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e</span><span class="o">.</span><span class="n">perturbed_X</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">AnnData</span><span class="p">(</span><span class="n">X</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">popari</span><span class="o">.</span><span class="n">datasets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">obsm</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span> <span class="n">obs</span><span class="o">=</span><span class="n">e</span><span class="o">.</span><span class="n">popari</span><span class="o">.</span><span class="n">datasets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">obs</span><span class="p">,</span> <span class="n">obsm</span><span class="o">=</span><span class="n">e</span><span class="o">.</span><span class="n">popari</span><span class="o">.</span><span class="n">datasets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">obsm</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e</span><span class="o">.</span><span class="n">save_anndata</span><span class="p">(</span><span class="s1">&#39;eykthyrtest.h5ad&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2024/07/08 15:50:32]	 Writing results to eykthyrtest/popari.h5ad
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plotting">
+<h1>Plotting<a class="headerlink" href="#plotting" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e</span> <span class="o">=</span> <span class="n">load_anndata</span><span class="p">(</span><span class="s1">&#39;eykthyrtest.h5ad&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/work/magroup/skrieger/newconda/envs/tangram3/lib/python3.8/site-packages/popari/util.py:500: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at  ../torch/csrc/utils/tensor_new.cpp:201.)
+  i = torch.LongTensor(indices)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2024/08/07 09:54:48]	 Initializing MetageneState
+[2024/08/07 09:54:48]	 Initializing SpatialAffinityState
+[2024/08/07 09:54:48]	 Initializing EmbeddingOptimizer
+[2024/08/07 09:54:48]	 Initializing EmbeddingState
+[2024/08/07 09:54:49]	 Reloading level 0
+[2024/08/07 09:54:49]	 Initializing MetageneState
+[2024/08/07 09:54:49]	 Initializing SpatialAffinityState
+[2024/08/07 09:54:49]	 Initializing EmbeddingOptimizer
+[2024/08/07 09:54:49]	 Initializing EmbeddingState
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pl</span><span class="o">.</span><span class="n">prep_paga</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="s1">&#39;original_leiden&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">draw_graph</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">perturbed_X</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;original_leiden&#39;</span><span class="p">,</span> <span class="n">legend_loc</span><span class="o">=</span><span class="s1">&#39;on data&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/e8b778f7e4bad42c10f8d1f37c04468e0c289aa175e9e9a0cc08c6eb077447a7.png" src="../_images/e8b778f7e4bad42c10f8d1f37c04468e0c289aa175e9e9a0cc08c6eb077447a7.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e</span><span class="o">.</span><span class="n">perturbed_X</span><span class="o">.</span><span class="n">obsm</span><span class="p">[</span><span class="s1">&#39;spatial_scaled&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">perturbed_X</span><span class="o">.</span><span class="n">obsm</span><span class="p">[</span><span class="s1">&#39;spatial&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">e</span><span class="o">.</span><span class="n">perturbed_X</span><span class="o">.</span><span class="n">obsm</span><span class="p">[</span><span class="s1">&#39;spatial&#39;</span><span class="p">]</span><span class="o">.</span>
+                                        <span class="nb">min</span><span class="p">())</span> <span class="o">/</span> <span class="n">e</span><span class="o">.</span><span class="n">perturbed_X</span><span class="o">.</span><span class="n">obsm</span><span class="p">[</span><span class="s1">&#39;spatial&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e</span><span class="o">.</span><span class="n">perturbed_X</span><span class="o">.</span><span class="n">obsm</span><span class="p">[</span><span class="s1">&#39;spatial&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">perturbed_X</span><span class="o">.</span><span class="n">obsm</span><span class="p">[</span><span class="s1">&#39;spatial_scaled&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pl</span><span class="o">.</span><span class="n">paga_spatial_simulation</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;HOXC6&#39;</span><span class="p">],</span> <span class="s1">&#39;original_leiden&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/866386878e1bf4fb95e77eada67eac5836a086a89e58614d35cd373a0989b092.png" src="../_images/866386878e1bf4fb95e77eada67eac5836a086a89e58614d35cd373a0989b092.png" />
+<img alt="../_images/aa7d245dc8522056bb035dd108d6cc9c7b7db83cd3a631cf14ad7d43be318c5c.png" src="../_images/aa7d245dc8522056bb035dd108d6cc9c7b7db83cd3a631cf14ad7d43be318c5c.png" />
+<img alt="../_images/c41fc476e7a8123457a80c3f7112cd52527417e86d9f0428c093ae7b35f695e4.png" src="../_images/c41fc476e7a8123457a80c3f7112cd52527417e86d9f0428c093ae7b35f695e4.png" />
+</div>
+</div>
+</section>
+<section id="spatial-atac-rna">
+<h1>spatial ATAC-RNA<a class="headerlink" href="#spatial-atac-rna" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e</span> <span class="o">=</span> <span class="n">Eykthyr</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">adrna</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;data/spatialatacrna/mouse_embryo2_rna.h5ad&#39;</span><span class="p">)</span>
+<span class="n">adrna</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AnnData object with n_obs × n_vars = 2187 × 20900
+    obsm: &#39;spatial&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e</span><span class="o">.</span><span class="n">set_RNA</span><span class="p">(</span><span class="n">adrna</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e</span><span class="o">.</span><span class="n">preprocess_rna</span><span class="p">(</span><span class="n">make_plots</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/f1cd5fbd9da62463d3340aa48095610fd50c474cca3ec1d3fa8369d0e6cbb3f9.png" src="../_images/f1cd5fbd9da62463d3340aa48095610fd50c474cca3ec1d3fa8369d0e6cbb3f9.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="n">e</span><span class="o">.</span><span class="n">compute_metagenes</span><span class="p">(</span><span class="n">torch_context</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="s1">&#39;cpu&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:root:[2024/07/09 12:48:48]	Updating model parameters
+INFO:root:[2024/07/09 12:48:50]	Updating latent states
+INFO:root:[2024/07/09 12:48:51]	Updating model parameters
+INFO:root:[2024/07/09 12:49:27]	Updating latent states
+INFO:root:[2024/07/09 12:49:29]	Updating model parameters
+INFO:root:[2024/07/09 12:50:14]	Updating latent states
+INFO:root:[2024/07/09 12:50:16]	Updating model parameters
+INFO:root:[2024/07/09 12:50:43]	Updating latent states
+INFO:root:[2024/07/09 12:50:44]	Updating model parameters
+INFO:root:[2024/07/09 12:51:06]	Updating latent states
+INFO:root:[2024/07/09 12:51:08]	Updating model parameters
+INFO:root:[2024/07/09 12:51:24]	Updating latent states
+INFO:root:[2024/07/09 12:51:26]	Updating model parameters
+INFO:root:[2024/07/09 12:51:40]	Updating latent states
+INFO:root:[2024/07/09 12:51:41]	Updating model parameters
+INFO:root:[2024/07/09 12:51:51]	Updating latent states
+INFO:root:[2024/07/09 12:51:53]	Updating model parameters
+INFO:root:[2024/07/09 12:52:01]	Updating latent states
+INFO:root:[2024/07/09 12:52:02]	Updating model parameters
+INFO:root:[2024/07/09 12:52:11]	Updating latent states
+INFO:root:[2024/07/09 12:52:12]	Updating model parameters
+INFO:root:[2024/07/09 12:53:28]	Updating latent states
+INFO:root:[2024/07/09 12:53:31]	Updating model parameters
+INFO:root:[2024/07/09 12:54:21]	Updating latent states
+INFO:root:[2024/07/09 12:54:24]	Updating model parameters
+INFO:root:[2024/07/09 12:55:42]	Updating latent states
+INFO:root:[2024/07/09 12:55:45]	Updating model parameters
+INFO:root:[2024/07/09 12:57:00]	Updating latent states
+INFO:root:[2024/07/09 12:57:03]	Updating model parameters
+INFO:root:[2024/07/09 12:57:48]	Updating latent states
+INFO:root:[2024/07/09 12:57:51]	Updating model parameters
+INFO:root:[2024/07/09 12:58:38]	Updating latent states
+INFO:root:[2024/07/09 12:58:40]	Updating model parameters
+INFO:root:[2024/07/09 12:59:20]	Updating latent states
+INFO:root:[2024/07/09 12:59:23]	Updating model parameters
+INFO:root:[2024/07/09 13:00:08]	Updating latent states
+INFO:root:[2024/07/09 13:00:10]	Updating model parameters
+INFO:root:[2024/07/09 13:00:45]	Updating latent states
+INFO:root:[2024/07/09 13:00:47]	Updating model parameters
+INFO:root:[2024/07/09 13:01:22]	Updating latent states
+INFO:root:[2024/07/09 13:01:24]	Updating model parameters
+INFO:root:[2024/07/09 13:02:12]	Updating latent states
+INFO:root:[2024/07/09 13:02:14]	Updating model parameters
+INFO:root:[2024/07/09 13:03:13]	Updating latent states
+INFO:root:[2024/07/09 13:03:16]	Updating model parameters
+INFO:root:[2024/07/09 13:03:29]	Updating latent states
+INFO:root:[2024/07/09 13:03:31]	Updating model parameters
+INFO:root:[2024/07/09 13:04:31]	Updating latent states
+INFO:root:[2024/07/09 13:04:33]	Updating model parameters
+INFO:root:[2024/07/09 13:05:24]	Updating latent states
+INFO:root:[2024/07/09 13:05:27]	Updating model parameters
+INFO:root:[2024/07/09 13:06:12]	Updating latent states
+INFO:root:[2024/07/09 13:06:14]	Updating model parameters
+INFO:root:[2024/07/09 13:07:15]	Updating latent states
+INFO:root:[2024/07/09 13:07:17]	Updating model parameters
+INFO:root:[2024/07/09 13:07:55]	Updating latent states
+INFO:root:[2024/07/09 13:07:58]	Updating model parameters
+INFO:root:[2024/07/09 13:08:54]	Updating latent states
+INFO:root:[2024/07/09 13:08:56]	Updating model parameters
+INFO:root:[2024/07/09 13:09:43]	Updating latent states
+INFO:root:[2024/07/09 13:09:45]	Updating model parameters
+INFO:root:[2024/07/09 13:10:44]	Updating latent states
+INFO:root:[2024/07/09 13:10:46]	Updating model parameters
+INFO:root:[2024/07/09 13:11:31]	Updating latent states
+INFO:root:[2024/07/09 13:11:32]	Updating model parameters
+INFO:root:[2024/07/09 13:12:32]	Updating latent states
+INFO:root:[2024/07/09 13:12:34]	Updating model parameters
+INFO:root:[2024/07/09 13:13:34]	Updating latent states
+INFO:root:[2024/07/09 13:13:36]	Updating model parameters
+INFO:root:[2024/07/09 13:14:20]	Updating latent states
+INFO:root:[2024/07/09 13:14:22]	Updating model parameters
+INFO:root:[2024/07/09 13:15:37]	Updating latent states
+INFO:root:[2024/07/09 13:15:39]	Updating model parameters
+INFO:root:[2024/07/09 13:15:55]	Updating latent states
+INFO:root:[2024/07/09 13:15:57]	Updating model parameters
+INFO:root:[2024/07/09 13:16:40]	Updating latent states
+INFO:root:[2024/07/09 13:16:42]	Updating model parameters
+INFO:root:[2024/07/09 13:17:14]	Updating latent states
+INFO:root:[2024/07/09 13:17:16]	Updating model parameters
+INFO:root:[2024/07/09 13:18:17]	Updating latent states
+INFO:root:[2024/07/09 13:18:19]	Updating model parameters
+INFO:root:[2024/07/09 13:19:02]	Updating latent states
+INFO:root:[2024/07/09 13:19:04]	Updating model parameters
+INFO:root:[2024/07/09 13:19:48]	Updating latent states
+INFO:root:[2024/07/09 13:19:50]	Updating model parameters
+INFO:root:[2024/07/09 13:21:07]	Updating latent states
+INFO:root:[2024/07/09 13:21:08]	Updating model parameters
+INFO:root:[2024/07/09 13:21:55]	Updating latent states
+INFO:root:[2024/07/09 13:21:56]	Updating model parameters
+INFO:root:[2024/07/09 13:22:40]	Updating latent states
+INFO:root:[2024/07/09 13:22:42]	Updating model parameters
+INFO:root:[2024/07/09 13:23:16]	Updating latent states
+INFO:root:[2024/07/09 13:23:18]	Updating model parameters
+INFO:root:[2024/07/09 13:24:31]	Updating latent states
+INFO:root:[2024/07/09 13:24:32]	Updating model parameters
+INFO:root:[2024/07/09 13:25:08]	Updating latent states
+INFO:root:[2024/07/09 13:25:09]	Updating model parameters
+INFO:root:[2024/07/09 13:26:18]	Updating latent states
+INFO:root:[2024/07/09 13:26:19]	Updating model parameters
+INFO:root:[2024/07/09 13:26:34]	Updating latent states
+INFO:root:[2024/07/09 13:26:36]	Updating model parameters
+INFO:root:[2024/07/09 13:27:20]	Updating latent states
+INFO:root:[2024/07/09 13:27:22]	Updating model parameters
+INFO:root:[2024/07/09 13:28:05]	Updating latent states
+INFO:root:[2024/07/09 13:28:07]	Updating model parameters
+INFO:root:[2024/07/09 13:28:37]	Updating latent states
+INFO:root:[2024/07/09 13:28:38]	Updating model parameters
+INFO:root:[2024/07/09 13:29:23]	Updating latent states
+INFO:root:[2024/07/09 13:29:25]	Updating model parameters
+INFO:root:[2024/07/09 13:30:31]	Updating latent states
+INFO:root:[2024/07/09 13:30:32]	Updating model parameters
+INFO:root:[2024/07/09 13:31:21]	Updating latent states
+INFO:root:[2024/07/09 13:31:23]	Updating model parameters
+INFO:root:[2024/07/09 13:32:18]	Updating latent states
+INFO:root:[2024/07/09 13:32:20]	Updating model parameters
+INFO:root:[2024/07/09 13:33:18]	Updating latent states
+INFO:root:[2024/07/09 13:33:19]	Updating model parameters
+INFO:root:[2024/07/09 13:34:02]	Updating latent states
+INFO:root:[2024/07/09 13:34:03]	Updating model parameters
+INFO:root:[2024/07/09 13:35:04]	Updating latent states
+INFO:root:[2024/07/09 13:35:05]	Updating model parameters
+INFO:root:[2024/07/09 13:36:00]	Updating latent states
+INFO:root:[2024/07/09 13:36:02]	Updating model parameters
+INFO:root:[2024/07/09 13:36:32]	Updating latent states
+INFO:root:[2024/07/09 13:36:34]	Updating model parameters
+INFO:root:[2024/07/09 13:37:12]	Updating latent states
+INFO:root:[2024/07/09 13:37:14]	Updating model parameters
+INFO:root:[2024/07/09 13:38:48]	Updating latent states
+INFO:root:[2024/07/09 13:38:50]	Updating model parameters
+INFO:root:[2024/07/09 13:39:22]	Updating latent states
+INFO:root:[2024/07/09 13:39:23]	Updating model parameters
+INFO:root:[2024/07/09 13:39:36]	Updating latent states
+INFO:root:[2024/07/09 13:39:38]	Updating model parameters
+INFO:root:[2024/07/09 13:40:26]	Updating latent states
+INFO:root:[2024/07/09 13:40:27]	Updating model parameters
+INFO:root:[2024/07/09 13:41:19]	Updating latent states
+INFO:root:[2024/07/09 13:41:21]	Updating model parameters
+INFO:root:[2024/07/09 13:42:03]	Updating latent states
+INFO:root:[2024/07/09 13:42:04]	Updating model parameters
+INFO:root:[2024/07/09 13:42:55]	Updating latent states
+INFO:root:[2024/07/09 13:42:57]	Updating model parameters
+INFO:root:[2024/07/09 13:44:16]	Updating latent states
+INFO:root:[2024/07/09 13:44:18]	Updating model parameters
+INFO:root:[2024/07/09 13:45:00]	Updating latent states
+INFO:root:[2024/07/09 13:45:02]	Updating model parameters
+INFO:root:[2024/07/09 13:46:00]	Updating latent states
+INFO:root:[2024/07/09 13:46:02]	Updating model parameters
+INFO:root:[2024/07/09 13:46:42]	Updating latent states
+INFO:root:[2024/07/09 13:46:44]	Updating model parameters
+INFO:root:[2024/07/09 13:47:30]	Updating latent states
+INFO:root:[2024/07/09 13:47:31]	Updating model parameters
+INFO:root:[2024/07/09 13:48:15]	Updating latent states
+INFO:root:[2024/07/09 13:48:17]	Updating model parameters
+INFO:root:[2024/07/09 13:49:02]	Updating latent states
+INFO:root:[2024/07/09 13:49:04]	Updating model parameters
+INFO:root:[2024/07/09 13:49:42]	Updating latent states
+INFO:root:[2024/07/09 13:49:44]	Updating model parameters
+INFO:root:[2024/07/09 13:50:33]	Updating latent states
+INFO:root:[2024/07/09 13:50:34]	Updating model parameters
+INFO:root:[2024/07/09 13:51:12]	Updating latent states
+INFO:root:[2024/07/09 13:51:14]	Updating model parameters
+INFO:root:[2024/07/09 13:52:01]	Updating latent states
+INFO:root:[2024/07/09 13:52:03]	Updating model parameters
+INFO:root:[2024/07/09 13:53:13]	Updating latent states
+INFO:root:[2024/07/09 13:53:14]	Updating model parameters
+INFO:root:[2024/07/09 13:54:14]	Updating latent states
+INFO:root:[2024/07/09 13:54:16]	Updating model parameters
+INFO:root:[2024/07/09 13:55:01]	Updating latent states
+INFO:root:[2024/07/09 13:55:02]	Updating model parameters
+INFO:root:[2024/07/09 13:56:16]	Updating latent states
+INFO:root:[2024/07/09 13:56:17]	Updating model parameters
+INFO:root:[2024/07/09 13:57:18]	Updating latent states
+INFO:root:[2024/07/09 13:57:19]	Updating model parameters
+INFO:root:[2024/07/09 13:58:00]	Updating latent states
+INFO:root:[2024/07/09 13:58:01]	Updating model parameters
+INFO:root:[2024/07/09 13:58:49]	Updating latent states
+INFO:root:[2024/07/09 13:58:50]	Updating model parameters
+INFO:root:[2024/07/09 13:59:39]	Updating latent states
+INFO:root:[2024/07/09 13:59:41]	Updating model parameters
+INFO:root:[2024/07/09 14:00:24]	Updating latent states
+INFO:root:[2024/07/09 14:00:25]	Updating model parameters
+INFO:root:[2024/07/09 14:01:11]	Updating latent states
+INFO:root:[2024/07/09 14:01:13]	Updating model parameters
+INFO:root:[2024/07/09 14:02:10]	Updating latent states
+INFO:root:[2024/07/09 14:02:11]	Updating model parameters
+INFO:root:[2024/07/09 14:02:54]	Updating latent states
+INFO:root:[2024/07/09 14:02:55]	Updating model parameters
+INFO:root:[2024/07/09 14:03:43]	Updating latent states
+INFO:root:[2024/07/09 14:03:45]	Updating model parameters
+INFO:root:[2024/07/09 14:04:22]	Updating latent states
+INFO:root:[2024/07/09 14:04:23]	Updating model parameters
+INFO:root:[2024/07/09 14:04:55]	Updating latent states
+INFO:root:[2024/07/09 14:04:56]	Updating model parameters
+INFO:root:[2024/07/09 14:05:56]	Updating latent states
+INFO:root:[2024/07/09 14:05:58]	Updating model parameters
+INFO:root:[2024/07/09 14:06:39]	Updating latent states
+INFO:root:[2024/07/09 14:06:41]	Updating model parameters
+INFO:root:[2024/07/09 14:07:16]	Updating latent states
+INFO:root:[2024/07/09 14:07:18]	Updating model parameters
+INFO:root:[2024/07/09 14:08:21]	Updating latent states
+INFO:root:[2024/07/09 14:08:22]	Updating model parameters
+INFO:root:[2024/07/09 14:09:06]	Updating latent states
+INFO:root:[2024/07/09 14:09:07]	Updating model parameters
+INFO:root:[2024/07/09 14:09:53]	Updating latent states
+INFO:root:[2024/07/09 14:09:54]	Updating model parameters
+INFO:root:[2024/07/09 14:10:41]	Updating latent states
+INFO:root:[2024/07/09 14:10:43]	Updating model parameters
+INFO:root:[2024/07/09 14:11:34]	Updating latent states
+INFO:root:[2024/07/09 14:11:36]	Updating model parameters
+INFO:root:[2024/07/09 14:13:03]	Updating latent states
+INFO:root:[2024/07/09 14:13:04]	Updating model parameters
+INFO:root:[2024/07/09 14:14:16]	Updating latent states
+INFO:root:[2024/07/09 14:14:17]	Updating model parameters
+INFO:root:[2024/07/09 14:15:06]	Updating latent states
+INFO:root:[2024/07/09 14:15:08]	Updating model parameters
+INFO:root:[2024/07/09 14:15:54]	Updating latent states
+INFO:root:[2024/07/09 14:15:56]	Updating model parameters
+INFO:root:[2024/07/09 14:16:40]	Updating latent states
+INFO:root:[2024/07/09 14:16:42]	Updating model parameters
+INFO:root:[2024/07/09 14:18:15]	Updating latent states
+INFO:root:[2024/07/09 14:18:17]	Updating model parameters
+INFO:root:[2024/07/09 14:19:04]	Updating latent states
+INFO:root:[2024/07/09 14:19:05]	Updating model parameters
+INFO:root:[2024/07/09 14:19:52]	Updating latent states
+INFO:root:[2024/07/09 14:19:54]	Updating model parameters
+INFO:root:[2024/07/09 14:20:50]	Updating latent states
+INFO:root:[2024/07/09 14:20:52]	Updating model parameters
+INFO:root:[2024/07/09 14:21:42]	Updating latent states
+INFO:root:[2024/07/09 14:21:44]	Updating model parameters
+INFO:root:[2024/07/09 14:22:29]	Updating latent states
+INFO:root:[2024/07/09 14:22:31]	Updating model parameters
+INFO:root:[2024/07/09 14:23:06]	Updating latent states
+INFO:root:[2024/07/09 14:23:08]	Updating model parameters
+INFO:root:[2024/07/09 14:24:01]	Updating latent states
+INFO:root:[2024/07/09 14:24:02]	Updating model parameters
+INFO:root:[2024/07/09 14:24:47]	Updating latent states
+INFO:root:[2024/07/09 14:24:49]	Updating model parameters
+INFO:root:[2024/07/09 14:25:48]	Updating latent states
+INFO:root:[2024/07/09 14:25:50]	Updating model parameters
+INFO:root:[2024/07/09 14:26:38]	Updating latent states
+INFO:root:[2024/07/09 14:26:39]	Updating model parameters
+INFO:root:[2024/07/09 14:27:13]	Updating latent states
+INFO:root:[2024/07/09 14:27:14]	Updating model parameters
+INFO:root:[2024/07/09 14:28:07]	Updating latent states
+INFO:root:[2024/07/09 14:28:09]	Updating model parameters
+INFO:root:[2024/07/09 14:29:06]	Updating latent states
+INFO:root:[2024/07/09 14:29:08]	Updating model parameters
+INFO:root:[2024/07/09 14:29:59]	Updating latent states
+INFO:root:[2024/07/09 14:30:01]	Updating model parameters
+INFO:root:[2024/07/09 14:30:37]	Updating latent states
+INFO:root:[2024/07/09 14:30:38]	Updating model parameters
+INFO:root:[2024/07/09 14:31:24]	Updating latent states
+INFO:root:[2024/07/09 14:31:25]	Updating model parameters
+INFO:root:[2024/07/09 14:32:05]	Updating latent states
+INFO:root:[2024/07/09 14:32:06]	Updating model parameters
+INFO:root:[2024/07/09 14:32:40]	Updating latent states
+INFO:root:[2024/07/09 14:32:42]	Updating model parameters
+INFO:root:[2024/07/09 14:33:39]	Updating latent states
+INFO:root:[2024/07/09 14:33:41]	Updating model parameters
+INFO:root:[2024/07/09 14:34:26]	Updating latent states
+INFO:root:[2024/07/09 14:34:28]	Updating model parameters
+INFO:root:[2024/07/09 14:35:00]	Updating latent states
+INFO:root:[2024/07/09 14:35:01]	Updating model parameters
+INFO:root:[2024/07/09 14:35:49]	Updating latent states
+INFO:root:[2024/07/09 14:35:50]	Updating model parameters
+INFO:root:[2024/07/09 14:36:47]	Updating latent states
+INFO:root:[2024/07/09 14:36:48]	Updating model parameters
+INFO:root:[2024/07/09 14:37:24]	Updating latent states
+INFO:root:[2024/07/09 14:37:26]	Updating model parameters
+INFO:root:[2024/07/09 14:38:07]	Updating latent states
+INFO:root:[2024/07/09 14:38:09]	Updating model parameters
+INFO:root:[2024/07/09 14:38:38]	Updating latent states
+INFO:root:[2024/07/09 14:38:39]	Updating model parameters
+INFO:root:[2024/07/09 14:39:42]	Updating latent states
+INFO:root:[2024/07/09 14:39:43]	Updating model parameters
+INFO:root:[2024/07/09 14:40:31]	Updating latent states
+INFO:root:[2024/07/09 14:40:32]	Updating model parameters
+INFO:root:[2024/07/09 14:41:30]	Updating latent states
+INFO:root:[2024/07/09 14:41:32]	Updating model parameters
+INFO:root:[2024/07/09 14:42:20]	Updating latent states
+INFO:root:[2024/07/09 14:42:22]	Updating model parameters
+INFO:root:[2024/07/09 14:43:10]	Updating latent states
+INFO:root:[2024/07/09 14:43:11]	Updating model parameters
+INFO:root:[2024/07/09 14:44:32]	Updating latent states
+INFO:root:[2024/07/09 14:44:34]	Updating model parameters
+INFO:root:[2024/07/09 14:46:17]	Updating latent states
+INFO:root:[2024/07/09 14:46:19]	Updating model parameters
+INFO:root:[2024/07/09 14:46:59]	Updating latent states
+INFO:root:[2024/07/09 14:47:00]	Updating model parameters
+INFO:root:[2024/07/09 14:47:49]	Updating latent states
+INFO:root:[2024/07/09 14:47:51]	Updating model parameters
+INFO:root:[2024/07/09 14:48:36]	Updating latent states
+INFO:root:[2024/07/09 14:48:38]	Updating model parameters
+INFO:root:[2024/07/09 14:49:07]	Updating latent states
+INFO:root:[2024/07/09 14:49:08]	Updating model parameters
+INFO:root:[2024/07/09 14:49:35]	Updating latent states
+INFO:root:[2024/07/09 14:49:37]	Updating model parameters
+INFO:root:[2024/07/09 14:50:10]	Updating latent states
+INFO:root:[2024/07/09 14:50:11]	Updating model parameters
+INFO:root:[2024/07/09 14:51:00]	Updating latent states
+INFO:root:[2024/07/09 14:51:01]	Updating model parameters
+INFO:root:[2024/07/09 14:51:33]	Updating latent states
+INFO:root:[2024/07/09 14:51:34]	Updating model parameters
+INFO:root:[2024/07/09 14:52:36]	Updating latent states
+INFO:root:[2024/07/09 14:52:38]	Updating model parameters
+INFO:root:[2024/07/09 14:53:20]	Updating latent states
+INFO:root:[2024/07/09 14:53:22]	Updating model parameters
+INFO:root:[2024/07/09 14:54:08]	Updating latent states
+INFO:root:[2024/07/09 14:54:09]	Updating model parameters
+INFO:root:[2024/07/09 14:54:58]	Updating latent states
+INFO:root:[2024/07/09 14:55:00]	Updating model parameters
+INFO:root:[2024/07/09 14:55:49]	Updating latent states
+INFO:root:[2024/07/09 14:55:50]	Updating model parameters
+INFO:root:[2024/07/09 14:56:31]	Updating latent states
+INFO:root:[2024/07/09 14:56:32]	Updating model parameters
+INFO:root:[2024/07/09 14:57:15]	Updating latent states
+INFO:root:[2024/07/09 14:57:16]	Updating model parameters
+INFO:root:[2024/07/09 14:57:54]	Updating latent states
+INFO:root:[2024/07/09 14:57:55]	Updating model parameters
+INFO:root:[2024/07/09 14:59:13]	Updating latent states
+INFO:root:[2024/07/09 14:59:14]	Updating model parameters
+INFO:root:[2024/07/09 15:00:12]	Updating latent states
+INFO:root:[2024/07/09 15:00:14]	Updating model parameters
+INFO:root:[2024/07/09 15:00:58]	Updating latent states
+INFO:root:[2024/07/09 15:01:00]	Updating model parameters
+INFO:root:[2024/07/09 15:01:46]	Updating latent states
+INFO:root:[2024/07/09 15:01:47]	Updating model parameters
+INFO:root:[2024/07/09 15:02:31]	Updating latent states
+INFO:root:[2024/07/09 15:02:33]	Updating model parameters
+INFO:root:[2024/07/09 15:03:21]	Updating latent states
+INFO:root:[2024/07/09 15:03:22]	Updating model parameters
+INFO:root:[2024/07/09 15:04:13]	Updating latent states
+INFO:root:[2024/07/09 15:04:15]	Updating model parameters
+INFO:root:[2024/07/09 15:05:20]	Updating latent states
+INFO:root:[2024/07/09 15:05:22]	Updating model parameters
+INFO:root:[2024/07/09 15:06:11]	Updating latent states
+INFO:root:[2024/07/09 15:06:13]	Updating model parameters
+INFO:root:[2024/07/09 15:07:05]	Updating latent states
+INFO:root:[2024/07/09 15:07:06]	Updating model parameters
+INFO:root:[2024/07/09 15:07:36]	Updating latent states
+INFO:root:[2024/07/09 15:07:37]	Updating model parameters
+INFO:root:[2024/07/09 15:08:05]	Updating latent states
+INFO:root:[2024/07/09 15:08:07]	Updating model parameters
+INFO:root:[2024/07/09 15:08:48]	Updating latent states
+INFO:root:[2024/07/09 15:08:50]	Updating model parameters
+INFO:root:[2024/07/09 15:10:13]	Updating latent states
+INFO:root:[2024/07/09 15:10:14]	Updating model parameters
+INFO:root:[2024/07/09 15:11:16]	Updating latent states
+INFO:root:[2024/07/09 15:11:18]	Updating model parameters
+INFO:root:[2024/07/09 15:13:03]	Updating latent states
+INFO:root:[2024/07/09 15:13:05]	Updating model parameters
+INFO:root:[2024/07/09 15:14:07]	Updating latent states
+INFO:root:[2024/07/09 15:14:09]	Updating model parameters
+INFO:root:[2024/07/09 15:14:47]	Updating latent states
+INFO:root:[2024/07/09 15:14:48]	Updating model parameters
+INFO:root:[2024/07/09 15:15:17]	Updating latent states
+INFO:root:[2024/07/09 15:15:18]	Updating model parameters
+INFO:root:[2024/07/09 15:15:58]	Updating latent states
+INFO:root:[2024/07/09 15:16:00]	Updating model parameters
+INFO:root:[2024/07/09 15:17:21]	Updating latent states
+INFO:root:[2024/07/09 15:17:22]	Updating model parameters
+INFO:root:[2024/07/09 15:18:04]	Updating latent states
+INFO:root:[2024/07/09 15:18:05]	Updating model parameters
+INFO:root:[2024/07/09 15:20:13]	Updating latent states
+INFO:root:[2024/07/09 15:20:15]	Updating model parameters
+INFO:root:[2024/07/09 15:21:06]	Updating latent states
+INFO:root:[2024/07/09 15:21:07]	Updating model parameters
+INFO:root:[2024/07/09 15:22:55]	Updating latent states
+INFO:root:[2024/07/09 15:22:57]	Updating model parameters
+INFO:root:[2024/07/09 15:23:44]	Updating latent states
+INFO:root:[2024/07/09 15:23:46]	Updating model parameters
+INFO:root:[2024/07/09 15:24:23]	Updating latent states
+INFO:root:[2024/07/09 15:24:25]	Updating model parameters
+INFO:root:[2024/07/09 15:25:02]	Updating latent states
+INFO:root:[2024/07/09 15:25:03]	Updating model parameters
+INFO:root:[2024/07/09 15:26:35]	Updating latent states
+INFO:root:[2024/07/09 15:26:37]	Updating model parameters
+INFO:root:[2024/07/09 15:27:05]	Updating latent states
+INFO:root:[2024/07/09 15:27:07]	Updating model parameters
+INFO:root:[2024/07/09 15:28:10]	Updating latent states
+INFO:root:[2024/07/09 15:28:12]	Updating model parameters
+INFO:root:[2024/07/09 15:28:57]	Updating latent states
+INFO:root:[2024/07/09 15:28:58]	Updating model parameters
+INFO:root:[2024/07/09 15:29:47]	Updating latent states
+INFO:root:[2024/07/09 15:29:49]	Updating model parameters
+INFO:root:[2024/07/09 15:30:31]	Updating latent states
+INFO:root:[2024/07/09 15:30:33]	Updating model parameters
+INFO:root:[2024/07/09 15:31:00]	Updating latent states
+INFO:root:[2024/07/09 15:31:02]	Updating model parameters
+INFO:root:[2024/07/09 15:31:26]	Updating latent states
+INFO:root:[2024/07/09 15:31:27]	Updating model parameters
+INFO:root:[2024/07/09 15:32:12]	Updating latent states
+INFO:root:[2024/07/09 15:32:14]	Updating model parameters
+INFO:root:[2024/07/09 15:32:45]	Updating latent states
+INFO:root:[2024/07/09 15:32:47]	Updating model parameters
+INFO:root:[2024/07/09 15:34:04]	Updating latent states
+INFO:root:[2024/07/09 15:34:06]	Updating model parameters
+INFO:root:[2024/07/09 15:35:48]	Updating latent states
+INFO:root:[2024/07/09 15:35:50]	Updating model parameters
+INFO:root:[2024/07/09 15:36:32]	Updating latent states
+INFO:root:[2024/07/09 15:36:34]	Updating model parameters
+INFO:root:[2024/07/09 15:37:07]	Updating latent states
+INFO:root:[2024/07/09 15:37:08]	Updating model parameters
+INFO:root:[2024/07/09 15:37:56]	Updating latent states
+INFO:root:[2024/07/09 15:37:58]	Updating model parameters
+INFO:root:[2024/07/09 15:38:45]	Updating latent states
+INFO:root:[2024/07/09 15:38:47]	Updating model parameters
+INFO:root:[2024/07/09 15:39:27]	Updating latent states
+INFO:root:[2024/07/09 15:39:28]	Updating model parameters
+INFO:root:[2024/07/09 15:40:16]	Updating latent states
+INFO:root:[2024/07/09 15:40:17]	Updating model parameters
+INFO:root:[2024/07/09 15:40:58]	Updating latent states
+INFO:root:[2024/07/09 15:40:59]	Updating model parameters
+INFO:root:[2024/07/09 15:42:00]	Updating latent states
+INFO:root:[2024/07/09 15:42:02]	Updating model parameters
+INFO:root:[2024/07/09 15:43:05]	Updating latent states
+INFO:root:[2024/07/09 15:43:06]	Updating model parameters
+INFO:root:[2024/07/09 15:44:09]	Updating latent states
+INFO:root:[2024/07/09 15:44:11]	Updating model parameters
+INFO:root:[2024/07/09 15:45:51]	Updating latent states
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e</span><span class="o">.</span><span class="n">analyze_metagenes</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/9e1fe453c2ae04e835b00fe18d29db2b02b16d607e0fb6d24e68dfdd2601388f.png" src="../_images/9e1fe453c2ae04e835b00fe18d29db2b02b16d607e0fb6d24e68dfdd2601388f.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e</span><span class="o">.</span><span class="n">compute_TF_activity</span><span class="p">(</span><span class="n">peak_tsv</span><span class="o">=</span><span class="s1">&#39;data/spatialatacrna/spatialATACRNAmouseembryo2_peaks.tsv&#39;</span><span class="p">,</span>
+                      <span class="n">archr_dataset_name</span><span class="o">=</span><span class="s1">&#39;spatialATACRNAmouseembryo2&#39;</span><span class="p">,</span>
+                      <span class="n">motif_tsv</span><span class="o">=</span><span class="s1">&#39;data/spatialatacrna/spatialATACRNAmouseembryo2_motifs.tsv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e</span><span class="o">.</span><span class="n">compute_TF_metagene_weights</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+100
+200
+300
+400
+500
+600
+700
+800
+900
+1000
+1100
+1200
+1300
+1400
+1500
+1600
+1700
+1800
+1900
+2000
+2100
+0
+100
+200
+300
+400
+500
+600
+700
+800
+900
+1000
+1100
+1200
+1300
+1400
+1500
+1600
+1700
+1800
+1900
+2000
+2100
+0
+100
+200
+300
+400
+500
+600
+700
+800
+900
+1000
+1100
+1200
+1300
+1400
+1500
+1600
+1700
+1800
+1900
+2000
+2100
+0
+100
+200
+300
+400
+500
+600
+700
+800
+900
+1000
+1100
+1200
+1300
+1400
+1500
+1600
+1700
+1800
+1900
+2000
+2100
+0
+100
+200
+300
+400
+500
+600
+700
+800
+900
+1000
+1100
+1200
+1300
+1400
+1500
+1600
+1700
+1800
+1900
+2000
+2100
+0
+100
+200
+300
+400
+500
+600
+700
+800
+900
+1000
+1100
+1200
+1300
+1400
+1500
+1600
+1700
+1800
+1900
+2000
+2100
+0
+100
+200
+300
+400
+500
+600
+700
+800
+900
+1000
+1100
+1200
+1300
+1400
+1500
+1600
+1700
+1800
+1900
+2000
+2100
+0
+100
+200
+300
+400
+500
+600
+700
+800
+900
+1000
+1100
+1200
+1300
+1400
+1500
+1600
+1700
+1800
+1900
+2000
+2100
+0
+100
+200
+300
+400
+500
+600
+700
+800
+900
+1000
+1100
+1200
+1300
+1400
+1500
+1600
+1700
+1800
+1900
+2000
+2100
+0
+100
+200
+300
+400
+500
+600
+700
+800
+900
+1000
+1100
+1200
+1300
+1400
+1500
+1600
+1700
+1800
+1900
+2000
+2100
+0
+100
+200
+300
+400
+500
+600
+700
+800
+900
+1000
+1100
+1200
+1300
+1400
+1500
+1600
+1700
+1800
+1900
+2000
+2100
+0
+100
+200
+300
+400
+500
+600
+700
+800
+900
+1000
+1100
+1200
+1300
+1400
+1500
+1600
+1700
+1800
+1900
+2000
+2100
+0
+100
+200
+300
+400
+500
+600
+700
+800
+900
+1000
+1100
+1200
+1300
+1400
+1500
+1600
+1700
+1800
+1900
+2000
+2100
+0
+100
+200
+300
+400
+500
+600
+700
+800
+900
+1000
+1100
+1200
+1300
+1400
+1500
+1600
+1700
+1800
+1900
+2000
+2100
+0
+100
+200
+300
+400
+500
+600
+700
+800
+900
+1000
+1100
+1200
+1300
+1400
+1500
+1600
+1700
+1800
+1900
+2000
+2100
+0
+100
+200
+300
+400
+500
+600
+700
+800
+900
+1000
+1100
+1200
+1300
+1400
+1500
+1600
+1700
+1800
+1900
+2000
+2100
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e</span><span class="o">.</span><span class="n">run_all_perturbations</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+100
+200
+300
+400
+500
+600
+700
+done perturbation
+done leiden
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e</span><span class="o">.</span><span class="n">save_anndata</span><span class="p">(</span><span class="s1">&#39;eykthyrtest2.h5ad&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>... storing &#39;leiden_Tcfap2a_dropout&#39; as categorical
+... storing &#39;leiden_Tcfap2b_dropout&#39; as categorical
+... storing &#39;leiden_Tcfap2c_dropout&#39; as categorical
+... storing &#39;leiden_Tcfap2e_dropout&#39; as categorical
+... storing &#39;leiden_Tcfap2d_dropout&#39; as categorical
+... storing &#39;leiden_Arid3b_dropout&#39; as categorical
+... storing &#39;leiden_Arid3a_dropout&#39; as categorical
+... storing &#39;leiden_Arid5b_dropout&#39; as categorical
+... storing &#39;leiden_Arid5a_dropout&#39; as categorical
+... storing &#39;leiden_Arid3c_dropout&#39; as categorical
+... storing &#39;leiden_Arid2_dropout&#39; as categorical
+... storing &#39;leiden_Setbp1_dropout&#39; as categorical
+... storing &#39;leiden_Ahctf1_dropout&#39; as categorical
+... storing &#39;leiden_Hmga2_dropout&#39; as categorical
+... storing &#39;leiden_Phf21a_dropout&#39; as categorical
+... storing &#39;leiden_Zfp957_dropout&#39; as categorical
+... storing &#39;leiden_Tcfe3_dropout&#39; as categorical
+... storing &#39;leiden_Mnt_dropout&#39; as categorical
+... storing &#39;leiden_Npas1_dropout&#39; as categorical
+... storing &#39;leiden_Tcfap4_dropout&#39; as categorical
+... storing &#39;leiden_Twist2_dropout&#39; as categorical
+... storing &#39;leiden_Id3_dropout&#39; as categorical
+... storing &#39;leiden_Ascl2_dropout&#39; as categorical
+... storing &#39;leiden_Myod1_dropout&#39; as categorical
+... storing &#39;leiden_Arnt_dropout&#39; as categorical
+... storing &#39;leiden_Arnt2_dropout&#39; as categorical
+... storing &#39;leiden_Mlx_dropout&#39; as categorical
+... storing &#39;leiden_Ahr_dropout&#39; as categorical
+... storing &#39;leiden_Hey2_dropout&#39; as categorical
+... storing &#39;leiden_Sim1_dropout&#39; as categorical
+... storing &#39;leiden_Tcf3_dropout&#39; as categorical
+... storing &#39;leiden_Srebf1_dropout&#39; as categorical
+... storing &#39;leiden_Id2_dropout&#39; as categorical
+... storing &#39;leiden_Npas3_dropout&#39; as categorical
+... storing &#39;leiden_Id4_dropout&#39; as categorical
+... storing &#39;leiden_Ahrr_dropout&#39; as categorical
+... storing &#39;leiden_Myc_dropout&#39; as categorical
+... storing &#39;leiden_Srebf2_dropout&#39; as categorical
+... storing &#39;leiden_Hes1_dropout&#39; as categorical
+... storing &#39;leiden_Hes7_dropout&#39; as categorical
+... storing &#39;leiden_Tcfeb_dropout&#39; as categorical
+... storing &#39;leiden_Bhlhe22_dropout&#39; as categorical
+... storing &#39;leiden_Msc_dropout&#39; as categorical
+... storing &#39;leiden_Npas2_dropout&#39; as categorical
+... storing &#39;leiden_Myog_dropout&#39; as categorical
+... storing &#39;leiden_Usf1_dropout&#39; as categorical
+... storing &#39;leiden_Ptf1a_dropout&#39; as categorical
+... storing &#39;leiden_Sohlh2_dropout&#39; as categorical
+... storing &#39;leiden_Neurog2_dropout&#39; as categorical
+... storing &#39;leiden_Mycl1_dropout&#39; as categorical
+... storing &#39;leiden_Hes2_dropout&#39; as categorical
+... storing &#39;leiden_Clock_dropout&#39; as categorical
+... storing &#39;leiden_Tcfec_dropout&#39; as categorical
+... storing &#39;leiden_Figla_dropout&#39; as categorical
+... storing &#39;leiden_Bhlhe40_dropout&#39; as categorical
+... storing &#39;leiden_Bhlhe41_dropout&#39; as categorical
+... storing &#39;leiden_Mesp2_dropout&#39; as categorical
+... storing &#39;leiden_Mesp1_dropout&#39; as categorical
+... storing &#39;leiden_Tcf12_dropout&#39; as categorical
+... storing &#39;leiden_Heyl_dropout&#39; as categorical
+... storing &#39;leiden_Scx_dropout&#39; as categorical
+... storing &#39;leiden_Mitf_dropout&#39; as categorical
+... storing &#39;leiden_Myf6_dropout&#39; as categorical
+... storing &#39;leiden_Atoh7_dropout&#39; as categorical
+... storing &#39;leiden_Mycn_dropout&#39; as categorical
+... storing &#39;leiden_Hand1_dropout&#39; as categorical
+... storing &#39;leiden_Atoh8_dropout&#39; as categorical
+... storing &#39;leiden_Hand2_dropout&#39; as categorical
+... storing &#39;leiden_Neurod2_dropout&#39; as categorical
+... storing &#39;leiden_Mlxip_dropout&#39; as categorical
+... storing &#39;leiden_Tcfl5_dropout&#39; as categorical
+... storing &#39;leiden_Olig2_dropout&#39; as categorical
+... storing &#39;leiden_Hey1_dropout&#39; as categorical
+... storing &#39;leiden_Id1_dropout&#39; as categorical
+... storing &#39;leiden_Neurog3_dropout&#39; as categorical
+... storing &#39;leiden_Mycs_dropout&#39; as categorical
+... storing &#39;leiden_Bhlhe23_dropout&#39; as categorical
+... storing &#39;leiden_Olig3_dropout&#39; as categorical
+... storing &#39;leiden_Tcf21_dropout&#39; as categorical
+... storing &#39;leiden_Npas4_dropout&#39; as categorical
+... storing &#39;leiden_Olig1_dropout&#39; as categorical
+... storing &#39;leiden_Ferd3l_dropout&#39; as categorical
+... storing &#39;leiden_Hes5_dropout&#39; as categorical
+... storing &#39;leiden_Nhlh2_dropout&#39; as categorical
+... storing &#39;leiden_Neurog1_dropout&#39; as categorical
+... storing &#39;leiden_Nhlh1_dropout&#39; as categorical
+... storing &#39;leiden_Bhlha15_dropout&#39; as categorical
+... storing &#39;leiden_Tcf4_dropout&#39; as categorical
+... storing &#39;leiden_Arntl_dropout&#39; as categorical
+... storing &#39;leiden_Ebf1_dropout&#39; as categorical
+... storing &#39;leiden_Max_dropout&#39; as categorical
+... storing &#39;leiden_Sim2_dropout&#39; as categorical
+... storing &#39;leiden_Tcf15_dropout&#39; as categorical
+... storing &#39;leiden_Atoh1_dropout&#39; as categorical
+... storing &#39;leiden_Usf2_dropout&#39; as categorical
+... storing &#39;leiden_Mga_dropout&#39; as categorical
+... storing &#39;leiden_Cebpd_dropout&#39; as categorical
+... storing &#39;leiden_Fosb_dropout&#39; as categorical
+... storing &#39;leiden_Hlf_dropout&#39; as categorical
+... storing &#39;leiden_Atf6b_dropout&#39; as categorical
+... storing &#39;leiden_Nfe2l2_dropout&#39; as categorical
+... storing &#39;leiden_Mafk_dropout&#39; as categorical
+... storing &#39;leiden_Xbp1_dropout&#39; as categorical
+... storing &#39;leiden_Fos_dropout&#39; as categorical
+... storing &#39;leiden_Tef_dropout&#39; as categorical
+... storing &#39;leiden_Atf1_dropout&#39; as categorical
+... storing &#39;leiden_Fosl1_dropout&#39; as categorical
+... storing &#39;leiden_Bach1_dropout&#39; as categorical
+... storing &#39;leiden_Creb1_dropout&#39; as categorical
+... storing &#39;leiden_Atf3_dropout&#39; as categorical
+... storing &#39;leiden_Atf6_dropout&#39; as categorical
+... storing &#39;leiden_Atf2_dropout&#39; as categorical
+... storing &#39;leiden_Fosl2_dropout&#39; as categorical
+... storing &#39;leiden_Jdp2_dropout&#39; as categorical
+... storing &#39;leiden_Cebpa_dropout&#39; as categorical
+... storing &#39;leiden_Creb3l3_dropout&#39; as categorical
+... storing &#39;leiden_Nfe2l1_dropout&#39; as categorical
+... storing &#39;leiden_Creb3l2_dropout&#39; as categorical
+... storing &#39;leiden_Bach2_dropout&#39; as categorical
+... storing &#39;leiden_Nrl_dropout&#39; as categorical
+... storing &#39;leiden_Atf4_dropout&#39; as categorical
+... storing &#39;leiden_Crebzf_dropout&#39; as categorical
+... storing &#39;leiden_Mafg_dropout&#39; as categorical
+... storing &#39;leiden_Atf7_dropout&#39; as categorical
+... storing &#39;leiden_Cebpe_dropout&#39; as categorical
+... storing &#39;leiden_Jun_dropout&#39; as categorical
+... storing &#39;leiden_Junb_dropout&#39; as categorical
+... storing &#39;leiden_X9430076C15Rik_dropout&#39; as categorical
+... storing &#39;leiden_Cebpg_dropout&#39; as categorical
+... storing &#39;leiden_Cebpb_dropout&#39; as categorical
+... storing &#39;leiden_Nfil3_dropout&#39; as categorical
+... storing &#39;leiden_Nfe2_dropout&#39; as categorical
+... storing &#39;leiden_Dbp_dropout&#39; as categorical
+... storing &#39;leiden_Crem_dropout&#39; as categorical
+... storing &#39;leiden_Jund_dropout&#39; as categorical
+... storing &#39;leiden_Mafb_dropout&#39; as categorical
+... storing &#39;leiden_Zeb1_dropout&#39; as categorical
+... storing &#39;leiden_Zscan4_dropout&#39; as categorical
+... storing &#39;leiden_Bcl6b_dropout&#39; as categorical
+... storing &#39;leiden_Sp1_dropout&#39; as categorical
+... storing &#39;leiden_Klf4_dropout&#39; as categorical
+... storing &#39;leiden_Plag1_dropout&#39; as categorical
+... storing &#39;leiden_Klf5_dropout&#39; as categorical
+... storing &#39;leiden_Ctcf_dropout&#39; as categorical
+... storing &#39;leiden_Snai3_dropout&#39; as categorical
+... storing &#39;leiden_Glis2_dropout&#39; as categorical
+... storing &#39;leiden_Ikzf1_dropout&#39; as categorical
+... storing &#39;leiden_Sp2_dropout&#39; as categorical
+... storing &#39;leiden_Zbtb4_dropout&#39; as categorical
+... storing &#39;leiden_Plagl1_dropout&#39; as categorical
+... storing &#39;leiden_Patz1_dropout&#39; as categorical
+... storing &#39;leiden_Yy1_dropout&#39; as categorical
+... storing &#39;leiden_Gli3_dropout&#39; as categorical
+... storing &#39;leiden_Zkscan3_dropout&#39; as categorical
+... storing &#39;leiden_Hivep1_dropout&#39; as categorical
+... storing &#39;leiden_Zfp369_dropout&#39; as categorical
+... storing &#39;leiden_Fezf2_dropout&#39; as categorical
+... storing &#39;leiden_Zfp187_dropout&#39; as categorical
+... storing &#39;leiden_Osr2_dropout&#39; as categorical
+... storing &#39;leiden_Bcl6_dropout&#39; as categorical
+... storing &#39;leiden_Zfp263_dropout&#39; as categorical
+... storing &#39;leiden_Zscan10_dropout&#39; as categorical
+... storing &#39;leiden_Zfp523_dropout&#39; as categorical
+... storing &#39;leiden_Ovol1_dropout&#39; as categorical
+... storing &#39;leiden_Sp4_dropout&#39; as categorical
+... storing &#39;leiden_Zfp711_dropout&#39; as categorical
+... storing &#39;leiden_Zfp202_dropout&#39; as categorical
+... storing &#39;leiden_Zfp282_dropout&#39; as categorical
+... storing &#39;leiden_Klf7_dropout&#39; as categorical
+... storing &#39;leiden_Gfi1b_dropout&#39; as categorical
+... storing &#39;leiden_Mecom_dropout&#39; as categorical
+... storing &#39;leiden_Zbtb7b_dropout&#39; as categorical
+... storing &#39;leiden_Mtf1_dropout&#39; as categorical
+... storing &#39;leiden_Zbtb49_dropout&#39; as categorical
+... storing &#39;leiden_Fezf1_dropout&#39; as categorical
+... storing &#39;leiden_Zkscan1_dropout&#39; as categorical
+... storing &#39;leiden_Mzf1_dropout&#39; as categorical
+... storing &#39;leiden_Zfp300_dropout&#39; as categorical
+... storing &#39;leiden_Zic1_dropout&#39; as categorical
+... storing &#39;leiden_Zbtb1_dropout&#39; as categorical
+... storing &#39;leiden_Egr3_dropout&#39; as categorical
+... storing &#39;leiden_Klf9_dropout&#39; as categorical
+... storing &#39;leiden_Glis1_dropout&#39; as categorical
+... storing &#39;leiden_Prdm4_dropout&#39; as categorical
+... storing &#39;leiden_Zic4_dropout&#39; as categorical
+... storing &#39;leiden_Egr2_dropout&#39; as categorical
+... storing &#39;leiden_Prdm1_dropout&#39; as categorical
+... storing &#39;leiden_Egr1_dropout&#39; as categorical
+... storing &#39;leiden_Sp6_dropout&#39; as categorical
+... storing &#39;leiden_Rreb1_dropout&#39; as categorical
+... storing &#39;leiden_Zfp281_dropout&#39; as categorical
+... storing &#39;leiden_Klf8_dropout&#39; as categorical
+... storing &#39;leiden_Zic5_dropout&#39; as categorical
+... storing &#39;leiden_Zfp410_dropout&#39; as categorical
+... storing &#39;leiden_Snai1_dropout&#39; as categorical
+... storing &#39;leiden_Hic1_dropout&#39; as categorical
+... storing &#39;leiden_Zfp784_dropout&#39; as categorical
+... storing &#39;leiden_Zfp3_dropout&#39; as categorical
+... storing &#39;leiden_Dnajc21_dropout&#39; as categorical
+... storing &#39;leiden_Zfp354c_dropout&#39; as categorical
+... storing &#39;leiden_Zfp691_dropout&#39; as categorical
+... storing &#39;leiden_Zfp740_dropout&#39; as categorical
+... storing &#39;leiden_Scrt1_dropout&#39; as categorical
+... storing &#39;leiden_Osr1_dropout&#39; as categorical
+... storing &#39;leiden_Sp8_dropout&#39; as categorical
+... storing &#39;leiden_Zfa_dropout&#39; as categorical
+... storing &#39;leiden_Zfp161_dropout&#39; as categorical
+... storing &#39;leiden_Zbtb12_dropout&#39; as categorical
+... storing &#39;leiden_Hic2_dropout&#39; as categorical
+... storing &#39;leiden_Zfp524_dropout&#39; as categorical
+... storing &#39;leiden_Zfy1_dropout&#39; as categorical
+... storing &#39;leiden_Klf1_dropout&#39; as categorical
+... storing &#39;leiden_Zscan4c_dropout&#39; as categorical
+... storing &#39;leiden_Zkscan4_dropout&#39; as categorical
+... storing &#39;leiden_Zkscan5_dropout&#39; as categorical
+... storing &#39;leiden_Zfp105_dropout&#39; as categorical
+... storing &#39;leiden_Zfp110_dropout&#39; as categorical
+... storing &#39;leiden_Zfp637_dropout&#39; as categorical
+... storing &#39;leiden_Scrt2_dropout&#39; as categorical
+... storing &#39;leiden_Sp7_dropout&#39; as categorical
+... storing &#39;leiden_Zfp128_dropout&#39; as categorical
+... storing &#39;leiden_Zfp143_dropout&#39; as categorical
+... storing &#39;leiden_Zic2_dropout&#39; as categorical
+... storing &#39;leiden_Zscan20_dropout&#39; as categorical
+... storing &#39;leiden_Zfp238_dropout&#39; as categorical
+... storing &#39;leiden_Zbtb6_dropout&#39; as categorical
+... storing &#39;leiden_Zic3_dropout&#39; as categorical
+... storing &#39;leiden_Insm1_dropout&#39; as categorical
+... storing &#39;leiden_Sp9_dropout&#39; as categorical
+... storing &#39;leiden_Zscan4ps2_dropout&#39; as categorical
+... storing &#39;leiden_Zscan4f_dropout&#39; as categorical
+... storing &#39;leiden_Egr4_dropout&#39; as categorical
+... storing &#39;leiden_Zbtb3_dropout&#39; as categorical
+... storing &#39;leiden_Klf12_dropout&#39; as categorical
+... storing &#39;leiden_Klf14_dropout&#39; as categorical
+... storing &#39;leiden_Sp5_dropout&#39; as categorical
+... storing &#39;leiden_Zfp652_dropout&#39; as categorical
+... storing &#39;leiden_Zfx_dropout&#39; as categorical
+... storing &#39;leiden_Myt1l_dropout&#39; as categorical
+... storing &#39;leiden_Nfya_dropout&#39; as categorical
+... storing &#39;leiden_Cenpb_dropout&#39; as categorical
+... storing &#39;leiden_Cux2_dropout&#39; as categorical
+... storing &#39;leiden_Onecut3_dropout&#39; as categorical
+... storing &#39;leiden_Lin54_dropout&#39; as categorical
+... storing &#39;leiden_Cxxc1_dropout&#39; as categorical
+... storing &#39;leiden_Mbd1_dropout&#39; as categorical
+... storing &#39;leiden_Kdm2b_dropout&#39; as categorical
+... storing &#39;leiden_Dmrtc2_dropout&#39; as categorical
+... storing &#39;leiden_Dmrt1_dropout&#39; as categorical
+... storing &#39;leiden_Dmrt3_dropout&#39; as categorical
+... storing &#39;leiden_Dmrta1_dropout&#39; as categorical
+... storing &#39;leiden_Dmrt2_dropout&#39; as categorical
+... storing &#39;leiden_Tfdp2_dropout&#39; as categorical
+... storing &#39;leiden_Tfdp1_dropout&#39; as categorical
+... storing &#39;leiden_E2f4_dropout&#39; as categorical
+... storing &#39;leiden_E2f3_dropout&#39; as categorical
+... storing &#39;leiden_E2f2_dropout&#39; as categorical
+... storing &#39;leiden_E2f7_dropout&#39; as categorical
+... storing &#39;leiden_E2f1_dropout&#39; as categorical
+... storing &#39;leiden_E2f5_dropout&#39; as categorical
+... storing &#39;leiden_E2f8_dropout&#39; as categorical
+... storing &#39;leiden_E2f6_dropout&#39; as categorical
+... storing &#39;leiden_Sfpi1_dropout&#39; as categorical
+... storing &#39;leiden_Elf3_dropout&#39; as categorical
+... storing &#39;leiden_Etv3_dropout&#39; as categorical
+... storing &#39;leiden_Etv1_dropout&#39; as categorical
+... storing &#39;leiden_Spic_dropout&#39; as categorical
+... storing &#39;leiden_Etv2_dropout&#39; as categorical
+... storing &#39;leiden_Spib_dropout&#39; as categorical
+... storing &#39;leiden_Elk3_dropout&#39; as categorical
+... storing &#39;leiden_Gabpa_dropout&#39; as categorical
+... storing &#39;leiden_Elk1_dropout&#39; as categorical
+... storing &#39;leiden_Ehf_dropout&#39; as categorical
+... storing &#39;leiden_Etv5_dropout&#39; as categorical
+... storing &#39;leiden_Fli1_dropout&#39; as categorical
+... storing &#39;leiden_Etv4_dropout&#39; as categorical
+... storing &#39;leiden_Spdef_dropout&#39; as categorical
+... storing &#39;leiden_Elk4_dropout&#39; as categorical
+... storing &#39;leiden_Elf5_dropout&#39; as categorical
+... storing &#39;leiden_Etv6_dropout&#39; as categorical
+... storing &#39;leiden_Elf4_dropout&#39; as categorical
+... storing &#39;leiden_Ets1_dropout&#39; as categorical
+... storing &#39;leiden_Elf1_dropout&#39; as categorical
+... storing &#39;leiden_Elf2_dropout&#39; as categorical
+... storing &#39;leiden_Erg_dropout&#39; as categorical
+... storing &#39;leiden_Erf_dropout&#39; as categorical
+... storing &#39;leiden_ENSMUSG00000044690_dropout&#39; as categorical
+... storing &#39;leiden_Gm5454_dropout&#39; as categorical
+... storing &#39;leiden_Fev_dropout&#39; as categorical
+... storing &#39;leiden_Gm4881_dropout&#39; as categorical
+... storing &#39;leiden_Foxj2_dropout&#39; as categorical
+... storing &#39;leiden_Foxg1_dropout&#39; as categorical
+... storing &#39;leiden_Foxp4_dropout&#39; as categorical
+... storing &#39;leiden_Foxp2_dropout&#39; as categorical
+... storing &#39;leiden_Foxp1_dropout&#39; as categorical
+... storing &#39;leiden_Foxj3_dropout&#39; as categorical
+... storing &#39;leiden_Foxh1_dropout&#39; as categorical
+... storing &#39;leiden_Foxj1_dropout&#39; as categorical
+... storing &#39;leiden_Foxa1_dropout&#39; as categorical
+... storing &#39;leiden_Foxa2_dropout&#39; as categorical
+... storing &#39;leiden_Foxf2_dropout&#39; as categorical
+... storing &#39;leiden_Foxq1_dropout&#39; as categorical
+... storing &#39;leiden_Foxk2_dropout&#39; as categorical
+... storing &#39;leiden_Foxp3_dropout&#39; as categorical
+... storing &#39;leiden_Foxf1a_dropout&#39; as categorical
+... storing &#39;leiden_Foxo4_dropout&#39; as categorical
+... storing &#39;leiden_Foxo1_dropout&#39; as categorical
+... storing &#39;leiden_Foxe3_dropout&#39; as categorical
+... storing &#39;leiden_Foxc2_dropout&#39; as categorical
+... storing &#39;leiden_Foxi1_dropout&#39; as categorical
+... storing &#39;leiden_Foxi2_dropout&#39; as categorical
+... storing &#39;leiden_Foxo3_dropout&#39; as categorical
+... storing &#39;leiden_Foxc1_dropout&#39; as categorical
+... storing &#39;leiden_Foxo6_dropout&#39; as categorical
+... storing &#39;leiden_Foxd2_dropout&#39; as categorical
+... storing &#39;leiden_Foxi3_dropout&#39; as categorical
+... storing &#39;leiden_Foxk1_dropout&#39; as categorical
+... storing &#39;leiden_Foxb2_dropout&#39; as categorical
+... storing &#39;leiden_Foxb1_dropout&#39; as categorical
+... storing &#39;leiden_Foxd3_dropout&#39; as categorical
+... storing &#39;leiden_Foxe1_dropout&#39; as categorical
+... storing &#39;leiden_Foxs1_dropout&#39; as categorical
+... storing &#39;leiden_Foxd1_dropout&#39; as categorical
+... storing &#39;leiden_Gm5294_dropout&#39; as categorical
+... storing &#39;leiden_Foxl1_dropout&#39; as categorical
+... storing &#39;leiden_Gata6_dropout&#39; as categorical
+... storing &#39;leiden_Gata2_dropout&#39; as categorical
+... storing &#39;leiden_Gata3_dropout&#39; as categorical
+... storing &#39;leiden_Gata5_dropout&#39; as categorical
+... storing &#39;leiden_Gata4_dropout&#39; as categorical
+... storing &#39;leiden_Gata1_dropout&#39; as categorical
+... storing &#39;leiden_Gcm1_dropout&#39; as categorical
+... storing &#39;leiden_Tcfcp2_dropout&#39; as categorical
+... storing &#39;leiden_Grhl1_dropout&#39; as categorical
+... storing &#39;leiden_Tcfcp2l1_dropout&#39; as categorical
+... storing &#39;leiden_Dux_dropout&#39; as categorical
+... storing &#39;leiden_Lhx2_dropout&#39; as categorical
+... storing &#39;leiden_Hoxb6_dropout&#39; as categorical
+... storing &#39;leiden_Hoxa10_dropout&#39; as categorical
+... storing &#39;leiden_Hoxa4_dropout&#39; as categorical
+... storing &#39;leiden_Sebox_dropout&#39; as categorical
+... storing &#39;leiden_Meox1_dropout&#39; as categorical
+... storing &#39;leiden_Nkx21_dropout&#39; as categorical
+... storing &#39;leiden_Irx2_dropout&#39; as categorical
+... storing &#39;leiden_Dlx3_dropout&#39; as categorical
+... storing &#39;leiden_Mnx1_dropout&#39; as categorical
+... storing &#39;leiden_Hoxc13_dropout&#39; as categorical
+... storing &#39;leiden_Hoxc11_dropout&#39; as categorical
+... storing &#39;leiden_Hoxc8_dropout&#39; as categorical
+... storing &#39;leiden_Hoxc6_dropout&#39; as categorical
+... storing &#39;leiden_Evx2_dropout&#39; as categorical
+... storing &#39;leiden_Hoxd13_dropout&#39; as categorical
+... storing &#39;leiden_Hoxd12_dropout&#39; as categorical
+... storing &#39;leiden_Evx1_dropout&#39; as categorical
+... storing &#39;leiden_Otx1_dropout&#39; as categorical
+... storing &#39;leiden_Rhox6_dropout&#39; as categorical
+... storing &#39;leiden_Vax1_dropout&#39; as categorical
+... storing &#39;leiden_Pknox1_dropout&#39; as categorical
+... storing &#39;leiden_Phox2a_dropout&#39; as categorical
+... storing &#39;leiden_Pou6f1_dropout&#39; as categorical
+... storing &#39;leiden_Nanog_dropout&#39; as categorical
+... storing &#39;leiden_Phox2b_dropout&#39; as categorical
+... storing &#39;leiden_Alx3_dropout&#39; as categorical
+... storing &#39;leiden_Hoxa2_dropout&#39; as categorical
+... storing &#39;leiden_Nkx25_dropout&#39; as categorical
+... storing &#39;leiden_Lhx1_dropout&#39; as categorical
+... storing &#39;leiden_Hoxb1_dropout&#39; as categorical
+... storing &#39;leiden_Lhx9_dropout&#39; as categorical
+... storing &#39;leiden_Meis1_dropout&#39; as categorical
+... storing &#39;leiden_Hnf1b_dropout&#39; as categorical
+... storing &#39;leiden_Dlx4_dropout&#39; as categorical
+... storing &#39;leiden_Hoxb9_dropout&#39; as categorical
+... storing &#39;leiden_Gsc_dropout&#39; as categorical
+... storing &#39;leiden_Six6_dropout&#39; as categorical
+... storing &#39;leiden_Vsx2_dropout&#39; as categorical
+... storing &#39;leiden_Barx1_dropout&#39; as categorical
+... storing &#39;leiden_Msx2_dropout&#39; as categorical
+... storing &#39;leiden_Pitx1_dropout&#39; as categorical
+... storing &#39;leiden_Irx4_dropout&#39; as categorical
+... storing &#39;leiden_Otp_dropout&#39; as categorical
+... storing &#39;leiden_Otx2_dropout&#39; as categorical
+... storing &#39;leiden_Hmbox1_dropout&#39; as categorical
+... storing &#39;leiden_Nkx31_dropout&#39; as categorical
+... storing &#39;leiden_Hoxc10_dropout&#39; as categorical
+... storing &#39;leiden_Hoxc5_dropout&#39; as categorical
+... storing &#39;leiden_Gsc2_dropout&#39; as categorical
+... storing &#39;leiden_Dlx2_dropout&#39; as categorical
+... storing &#39;leiden_Esx1_dropout&#39; as categorical
+... storing &#39;leiden_Six2_dropout&#39; as categorical
+... storing &#39;leiden_Pou4f3_dropout&#39; as categorical
+... storing &#39;leiden_Rax_dropout&#39; as categorical
+... storing &#39;leiden_Cdx1_dropout&#39; as categorical
+... storing &#39;leiden_Hhex_dropout&#39; as categorical
+... storing &#39;leiden_Tlx1_dropout&#39; as categorical
+... storing &#39;leiden_Lbx1_dropout&#39; as categorical
+... storing &#39;leiden_Pitx3_dropout&#39; as categorical
+... storing &#39;leiden_Msx3_dropout&#39; as categorical
+... storing &#39;leiden_Lhx4_dropout&#39; as categorical
+... storing &#39;leiden_Prrx1_dropout&#39; as categorical
+... storing &#39;leiden_Lmx1a_dropout&#39; as categorical
+... storing &#39;leiden_Barhl1_dropout&#39; as categorical
+... storing &#39;leiden_Lhx6_dropout&#39; as categorical
+... storing &#39;leiden_Lhx3_dropout&#39; as categorical
+... storing &#39;leiden_Hoxd8_dropout&#39; as categorical
+... storing &#39;leiden_Meis2_dropout&#39; as categorical
+... storing &#39;leiden_Nkx22_dropout&#39; as categorical
+... storing &#39;leiden_Shox2_dropout&#39; as categorical
+... storing &#39;leiden_Pitx2_dropout&#39; as categorical
+... storing &#39;leiden_Lhx8_dropout&#39; as categorical
+... storing &#39;leiden_Dmbx1_dropout&#39; as categorical
+... storing &#39;leiden_Pax7_dropout&#39; as categorical
+... storing &#39;leiden_Nkx11_dropout&#39; as categorical
+... storing &#39;leiden_Uncx_dropout&#39; as categorical
+... storing &#39;leiden_Hnf1a_dropout&#39; as categorical
+... storing &#39;leiden_Lhx5_dropout&#39; as categorical
+... storing &#39;leiden_Pdx1_dropout&#39; as categorical
+... storing &#39;leiden_Cdx2_dropout&#39; as categorical
+... storing &#39;leiden_Cux1_dropout&#39; as categorical
+... storing &#39;leiden_Pax4_dropout&#39; as categorical
+... storing &#39;leiden_Nobox_dropout&#39; as categorical
+... storing &#39;leiden_Dlx6_dropout&#39; as categorical
+... storing &#39;leiden_Dlx5_dropout&#39; as categorical
+... storing &#39;leiden_Hoxa1_dropout&#39; as categorical
+... storing &#39;leiden_Dbx1_dropout&#39; as categorical
+... storing &#39;leiden_Cdx4_dropout&#39; as categorical
+... storing &#39;leiden_Isx_dropout&#39; as categorical
+... storing &#39;leiden_Irx3_dropout&#39; as categorical
+... storing &#39;leiden_Irx5_dropout&#39; as categorical
+... storing &#39;leiden_Irx6_dropout&#39; as categorical
+... storing &#39;leiden_Pbx4_dropout&#39; as categorical
+... storing &#39;leiden_Pou2f3_dropout&#39; as categorical
+... storing &#39;leiden_Barx2_dropout&#39; as categorical
+... storing &#39;leiden_Isl2_dropout&#39; as categorical
+... storing &#39;leiden_Vsx1_dropout&#39; as categorical
+... storing &#39;leiden_Emx1_dropout&#39; as categorical
+... storing &#39;leiden_Barhl2_dropout&#39; as categorical
+... storing &#39;leiden_Six4_dropout&#39; as categorical
+... storing &#39;leiden_Gbx2_dropout&#39; as categorical
+... storing &#39;leiden_Hdx_dropout&#39; as categorical
+... storing &#39;leiden_Pbx2_dropout&#39; as categorical
+... storing &#39;leiden_Vax2_dropout&#39; as categorical
+... storing &#39;leiden_Lbx2_dropout&#39; as categorical
+... storing &#39;leiden_Nkx61_dropout&#39; as categorical
+... storing &#39;leiden_Arx_dropout&#39; as categorical
+... storing &#39;leiden_Pknox2_dropout&#39; as categorical
+... storing &#39;leiden_Gsx2_dropout&#39; as categorical
+... storing &#39;leiden_Hoxc9_dropout&#39; as categorical
+... storing &#39;leiden_Meox2_dropout&#39; as categorical
+... storing &#39;leiden_Alx1_dropout&#39; as categorical
+... storing &#39;leiden_Hoxa13_dropout&#39; as categorical
+... storing &#39;leiden_Hoxa11_dropout&#39; as categorical
+... storing &#39;leiden_Hoxa9_dropout&#39; as categorical
+... storing &#39;leiden_Hoxa7_dropout&#39; as categorical
+... storing &#39;leiden_Hoxa5_dropout&#39; as categorical
+... storing &#39;leiden_Hoxb4_dropout&#39; as categorical
+... storing &#39;leiden_Hoxb5_dropout&#39; as categorical
+... storing &#39;leiden_Pbx3_dropout&#39; as categorical
+... storing &#39;leiden_Hoxb7_dropout&#39; as categorical
+... storing &#39;leiden_Lmx1b_dropout&#39; as categorical
+... storing &#39;leiden_Six3_dropout&#39; as categorical
+... storing &#39;leiden_En2_dropout&#39; as categorical
+... storing &#39;leiden_Hlx_dropout&#39; as categorical
+... storing &#39;leiden_Prrx2_dropout&#39; as categorical
+... storing &#39;leiden_Hmx3_dropout&#39; as categorical
+... storing &#39;leiden_Alx4_dropout&#39; as categorical
+... storing &#39;leiden_Tlx3_dropout&#39; as categorical
+... storing &#39;leiden_Hesx1_dropout&#39; as categorical
+... storing &#39;leiden_ENSMUSG00000040953_dropout&#39; as categorical
+... storing &#39;leiden_Meis3_dropout&#39; as categorical
+... storing &#39;leiden_Crx_dropout&#39; as categorical
+... storing &#39;leiden_Obox6_dropout&#39; as categorical
+... storing &#39;leiden_Dlx1_dropout&#39; as categorical
+... storing &#39;leiden_Isl1_dropout&#39; as categorical
+... storing &#39;leiden_Hoxd1_dropout&#39; as categorical
+... storing &#39;leiden_Hoxd4_dropout&#39; as categorical
+... storing &#39;leiden_Hoxd11_dropout&#39; as categorical
+... storing &#39;leiden_Hoxa6_dropout&#39; as categorical
+... storing &#39;leiden_Hoxd9_dropout&#39; as categorical
+... storing &#39;leiden_Emx2_dropout&#39; as categorical
+... storing &#39;leiden_Nkx26_dropout&#39; as categorical
+... storing &#39;leiden_Nkx23_dropout&#39; as categorical
+... storing &#39;leiden_Gm4830_dropout&#39; as categorical
+... storing &#39;leiden_Prop1_dropout&#39; as categorical
+... storing &#39;leiden_Pou3f3_dropout&#39; as categorical
+... storing &#39;leiden_Dbx2_dropout&#39; as categorical
+... storing &#39;leiden_Tgif1_dropout&#39; as categorical
+... storing &#39;leiden_Msx1_dropout&#39; as categorical
+... storing &#39;leiden_Duxbl_dropout&#39; as categorical
+... storing &#39;leiden_Nkx12_dropout&#39; as categorical
+... storing &#39;leiden_Hoxb3_dropout&#39; as categorical
+... storing &#39;leiden_Hoxb13_dropout&#39; as categorical
+... storing &#39;leiden_Nkx32_dropout&#39; as categorical
+... storing &#39;leiden_Hmx2_dropout&#39; as categorical
+... storing &#39;leiden_Hoxc12_dropout&#39; as categorical
+... storing &#39;leiden_Hoxd10_dropout&#39; as categorical
+... storing &#39;leiden_Rhox11_dropout&#39; as categorical
+... storing &#39;leiden_Six1_dropout&#39; as categorical
+... storing &#39;leiden_Pbx1_dropout&#39; as categorical
+... storing &#39;leiden_Pou3f2_dropout&#39; as categorical
+... storing &#39;leiden_Gsx1_dropout&#39; as categorical
+... storing &#39;leiden_Nkx24_dropout&#39; as categorical
+... storing &#39;leiden_Obox1_dropout&#39; as categorical
+... storing &#39;leiden_Bsx_dropout&#39; as categorical
+... storing &#39;leiden_Hoxb8_dropout&#39; as categorical
+... storing &#39;leiden_Pou3f4_dropout&#39; as categorical
+... storing &#39;leiden_Homez_dropout&#39; as categorical
+... storing &#39;leiden_En1_dropout&#39; as categorical
+... storing &#39;leiden_Nkx29_dropout&#39; as categorical
+... storing &#39;leiden_Irx1_dropout&#39; as categorical
+... storing &#39;leiden_Tgif2_dropout&#39; as categorical
+... storing &#39;leiden_Nkx63_dropout&#39; as categorical
+... storing &#39;leiden_Rhox8_dropout&#39; as categorical
+... storing &#39;leiden_Obox3_dropout&#39; as categorical
+... storing &#39;leiden_Hmx1_dropout&#39; as categorical
+... storing &#39;leiden_Gbx1_dropout&#39; as categorical
+... storing &#39;leiden_Rhox9_dropout&#39; as categorical
+... storing &#39;leiden_Noto_dropout&#39; as categorical
+... storing &#39;leiden_Tlx2_dropout&#39; as categorical
+... storing &#39;leiden_Gm10391_dropout&#39; as categorical
+... storing &#39;leiden_Gm10394_dropout&#39; as categorical
+... storing &#39;leiden_Cphx_dropout&#39; as categorical
+... storing &#39;leiden_Obox5_dropout&#39; as categorical
+... storing &#39;leiden_AC1890281_dropout&#39; as categorical
+... storing &#39;leiden_Gm5889_dropout&#39; as categorical
+... storing &#39;leiden_Hoxc4_dropout&#39; as categorical
+... storing &#39;leiden_Hoxb2_dropout&#39; as categorical
+... storing &#39;leiden_Hoxd3_dropout&#39; as categorical
+... storing &#39;leiden_Hoxa3_dropout&#39; as categorical
+... storing &#39;leiden_NP_dropout&#39; as categorical
+... storing &#39;leiden_Q8VHG7_dropout&#39; as categorical
+... storing &#39;leiden_Dobox4_dropout&#39; as categorical
+... storing &#39;leiden_Pax2_dropout&#39; as categorical
+... storing &#39;leiden_Pax3_dropout&#39; as categorical
+... storing &#39;leiden_Pax6_dropout&#39; as categorical
+... storing &#39;leiden_Pou1f1_dropout&#39; as categorical
+... storing &#39;leiden_Pou2f2_dropout&#39; as categorical
+... storing &#39;leiden_Pou6f2_dropout&#39; as categorical
+... storing &#39;leiden_Pou5f1_dropout&#39; as categorical
+... storing &#39;leiden_Pou2f1_dropout&#39; as categorical
+... storing &#39;leiden_Pou3f1_dropout&#39; as categorical
+... storing &#39;leiden_Pit1_dropout&#39; as categorical
+... storing &#39;leiden_Hsf2_dropout&#39; as categorical
+... storing &#39;leiden_Hsf1_dropout&#39; as categorical
+... storing &#39;leiden_Hsf4_dropout&#39; as categorical
+... storing &#39;leiden_Hsfy2_dropout&#39; as categorical
+... storing &#39;leiden_Irf9_dropout&#39; as categorical
+... storing &#39;leiden_Irf3_dropout&#39; as categorical
+... storing &#39;leiden_Irf1_dropout&#39; as categorical
+... storing &#39;leiden_Irf4_dropout&#39; as categorical
+... storing &#39;leiden_Irf7_dropout&#39; as categorical
+... storing &#39;leiden_Irf6_dropout&#39; as categorical
+... storing &#39;leiden_Irf5_dropout&#39; as categorical
+... storing &#39;leiden_Irf2_dropout&#39; as categorical
+... storing &#39;leiden_Naif1_dropout&#39; as categorical
+... storing &#39;leiden_Mef2c_dropout&#39; as categorical
+... storing &#39;leiden_Srf_dropout&#39; as categorical
+... storing &#39;leiden_Mef2a_dropout&#39; as categorical
+... storing &#39;leiden_Mbd2_dropout&#39; as categorical
+... storing &#39;leiden_Mecp2_dropout&#39; as categorical
+... storing &#39;leiden_Mybl2_dropout&#39; as categorical
+... storing &#39;leiden_Myb_dropout&#39; as categorical
+... storing &#39;leiden_Cdc5l_dropout&#39; as categorical
+... storing &#39;leiden_Smarcc2_dropout&#39; as categorical
+... storing &#39;leiden_Mybl1_dropout&#39; as categorical
+... storing &#39;leiden_Terf2_dropout&#39; as categorical
+... storing &#39;leiden_Mypop_dropout&#39; as categorical
+... storing &#39;leiden_Prdm11_dropout&#39; as categorical
+... storing &#39;leiden_Gm239_dropout&#39; as categorical
+... storing &#39;leiden_Gm98_dropout&#39; as categorical
+... storing &#39;leiden_Pparg_dropout&#39; as categorical
+... storing &#39;leiden_Rarg_dropout&#39; as categorical
+... storing &#39;leiden_Nr1h3_dropout&#39; as categorical
+... storing &#39;leiden_Ppard_dropout&#39; as categorical
+... storing &#39;leiden_Nr2f6_dropout&#39; as categorical
+... storing &#39;leiden_Nr1i3_dropout&#39; as categorical
+... storing &#39;leiden_Nr2c2_dropout&#39; as categorical
+... storing &#39;leiden_Nr2c1_dropout&#39; as categorical
+... storing &#39;leiden_Rxrg_dropout&#39; as categorical
+... storing &#39;leiden_Rxra_dropout&#39; as categorical
+... storing &#39;leiden_Rarb_dropout&#39; as categorical
+... storing &#39;leiden_Hnf4g_dropout&#39; as categorical
+... storing &#39;leiden_Hnf4a_dropout&#39; as categorical
+... storing &#39;leiden_Esr1_dropout&#39; as categorical
+... storing &#39;leiden_Nr2e1_dropout&#39; as categorical
+... storing &#39;leiden_Esr2_dropout&#39; as categorical
+... storing &#39;leiden_Esrrb_dropout&#39; as categorical
+... storing &#39;leiden_Ppara_dropout&#39; as categorical
+... storing &#39;leiden_Vdr_dropout&#39; as categorical
+... storing &#39;leiden_Nr1i2_dropout&#39; as categorical
+... storing &#39;leiden_Nr3c1_dropout&#39; as categorical
+... storing &#39;leiden_Esrra_dropout&#39; as categorical
+... storing &#39;leiden_Nr5a2_dropout&#39; as categorical
+... storing &#39;leiden_Esrrg_dropout&#39; as categorical
+... storing &#39;leiden_Nr4a2_dropout&#39; as categorical
+... storing &#39;leiden_Rorc_dropout&#39; as categorical
+... storing &#39;leiden_Nr4a3_dropout&#39; as categorical
+... storing &#39;leiden_Nr2f2_dropout&#39; as categorical
+... storing &#39;leiden_Nr3c2_dropout&#39; as categorical
+... storing &#39;leiden_Rora_dropout&#39; as categorical
+... storing &#39;leiden_Nr2e3_dropout&#39; as categorical
+... storing &#39;leiden_Rorb_dropout&#39; as categorical
+... storing &#39;leiden_Rara_dropout&#39; as categorical
+... storing &#39;leiden_Rxrb_dropout&#39; as categorical
+... storing &#39;leiden_Ar_dropout&#39; as categorical
+... storing &#39;leiden_Nr1h2_dropout&#39; as categorical
+... storing &#39;leiden_Nr6a1_dropout&#39; as categorical
+... storing &#39;leiden_Nr2f1_dropout&#39; as categorical
+... storing &#39;leiden_Trp73_dropout&#39; as categorical
+... storing &#39;leiden_Trp53_dropout&#39; as categorical
+... storing &#39;leiden_Pax9_dropout&#39; as categorical
+... storing &#39;leiden_Pax5_dropout&#39; as categorical
+... storing &#39;leiden_Lcor_dropout&#39; as categorical
+... storing &#39;leiden_Nfat5_dropout&#39; as categorical
+... storing &#39;leiden_Rel_dropout&#39; as categorical
+... storing &#39;leiden_Rela_dropout&#39; as categorical
+... storing &#39;leiden_Nfkb2_dropout&#39; as categorical
+... storing &#39;leiden_Nfatc2_dropout&#39; as categorical
+... storing &#39;leiden_Nfkb1_dropout&#39; as categorical
+... storing &#39;leiden_Nfatc3_dropout&#39; as categorical
+... storing &#39;leiden_Nfatc1_dropout&#39; as categorical
+... storing &#39;leiden_Rfx5_dropout&#39; as categorical
+... storing &#39;leiden_Rfx6_dropout&#39; as categorical
+... storing &#39;leiden_Rfx4_dropout&#39; as categorical
+... storing &#39;leiden_Rfx2_dropout&#39; as categorical
+... storing &#39;leiden_Rfx1_dropout&#39; as categorical
+... storing &#39;leiden_Rfx7_dropout&#39; as categorical
+... storing &#39;leiden_Rfx3_dropout&#39; as categorical
+... storing &#39;leiden_Rfx8_dropout&#39; as categorical
+... storing &#39;leiden_Runx1_dropout&#39; as categorical
+... storing &#39;leiden_Runx2_dropout&#39; as categorical
+... storing &#39;leiden_Sp100_dropout&#39; as categorical
+... storing &#39;leiden_Gmeb1_dropout&#39; as categorical
+... storing &#39;leiden_Gmeb2_dropout&#39; as categorical
+... storing &#39;leiden_Sp140_dropout&#39; as categorical
+... storing &#39;leiden_Sp110_dropout&#39; as categorical
+... storing &#39;leiden_AC1689771_dropout&#39; as categorical
+... storing &#39;leiden_IRC900814_dropout&#39; as categorical
+... storing &#39;leiden_Nfix_dropout&#39; as categorical
+... storing &#39;leiden_Smad3_dropout&#39; as categorical
+... storing &#39;leiden_Nfic_dropout&#39; as categorical
+... storing &#39;leiden_Sox9_dropout&#39; as categorical
+... storing &#39;leiden_Tcf7_dropout&#39; as categorical
+... storing &#39;leiden_Hbp1_dropout&#39; as categorical
+... storing &#39;leiden_Cic_dropout&#39; as categorical
+... storing &#39;leiden_Hmg20b_dropout&#39; as categorical
+... storing &#39;leiden_Bbx_dropout&#39; as categorical
+... storing &#39;leiden_Sox8_dropout&#39; as categorical
+... storing &#39;leiden_Tcf7l2_dropout&#39; as categorical
+... storing &#39;leiden_Sox17_dropout&#39; as categorical
+... storing &#39;leiden_Lef1_dropout&#39; as categorical
+... storing &#39;leiden_Sox10_dropout&#39; as categorical
+... storing &#39;leiden_Sox30_dropout&#39; as categorical
+... storing &#39;leiden_Sox15_dropout&#39; as categorical
+... storing &#39;leiden_Sox5_dropout&#39; as categorical
+... storing &#39;leiden_Sox3_dropout&#39; as categorical
+... storing &#39;leiden_Sox18_dropout&#39; as categorical
+... storing &#39;leiden_Sox12_dropout&#39; as categorical
+... storing &#39;leiden_Sox6_dropout&#39; as categorical
+... storing &#39;leiden_Sox14_dropout&#39; as categorical
+... storing &#39;leiden_Tcf7l1_dropout&#39; as categorical
+... storing &#39;leiden_Sox21_dropout&#39; as categorical
+... storing &#39;leiden_Sox7_dropout&#39; as categorical
+... storing &#39;leiden_Sox11_dropout&#39; as categorical
+... storing &#39;leiden_Sry_dropout&#39; as categorical
+... storing &#39;leiden_Sox13_dropout&#39; as categorical
+... storing &#39;leiden_Sox2_dropout&#39; as categorical
+... storing &#39;leiden_Sox4_dropout&#39; as categorical
+... storing &#39;leiden_ENSMUSG00000079994_dropout&#39; as categorical
+... storing &#39;leiden_Stat6_dropout&#39; as categorical
+... storing &#39;leiden_Stat3_dropout&#39; as categorical
+... storing &#39;leiden_Stat5a_dropout&#39; as categorical
+... storing &#39;leiden_Stat5b_dropout&#39; as categorical
+... storing &#39;leiden_Stat1_dropout&#39; as categorical
+... storing &#39;leiden_Stat2_dropout&#39; as categorical
+... storing &#39;leiden_Stat4_dropout&#39; as categorical
+... storing &#39;leiden_Tbx2_dropout&#39; as categorical
+... storing &#39;leiden_Tbx4_dropout&#39; as categorical
+... storing &#39;leiden_Tbx21_dropout&#39; as categorical
+... storing &#39;leiden_Tbx1_dropout&#39; as categorical
+... storing &#39;leiden_Tbx5_dropout&#39; as categorical
+... storing &#39;leiden_Tbx3_dropout&#39; as categorical
+... storing &#39;leiden_Tbx19_dropout&#39; as categorical
+... storing &#39;leiden_Tbx20_dropout&#39; as categorical
+... storing &#39;leiden_Eomes_dropout&#39; as categorical
+... storing &#39;leiden_Tbr1_dropout&#39; as categorical
+... storing &#39;leiden_Tbx10_dropout&#39; as categorical
+... storing &#39;leiden_T_dropout&#39; as categorical
+... storing &#39;leiden_Tbp_dropout&#39; as categorical
+... storing &#39;leiden_Tbpl2_dropout&#39; as categorical
+... storing &#39;leiden_Prkrir_dropout&#39; as categorical
+... storing &#39;leiden_Spz1_dropout&#39; as categorical
+... storing &#39;leiden_Hmga1_dropout&#39; as categorical
+... storing &#39;leiden_Hmga1rs1_dropout&#39; as categorical
+... storing &#39;leiden_Myf5_dropout&#39; as categorical
+... storing &#39;leiden_Mlxipl_dropout&#39; as categorical
+... storing &#39;leiden_Ascl1_dropout&#39; as categorical
+... storing &#39;leiden_Tal2_dropout&#39; as categorical
+... storing &#39;leiden_Tal1_dropout&#39; as categorical
+... storing &#39;leiden_Lyl1_dropout&#39; as categorical
+... storing &#39;leiden_Neurod1_dropout&#39; as categorical
+... storing &#39;leiden_Twist1_dropout&#39; as categorical
+... storing &#39;leiden_Neurod6_dropout&#39; as categorical
+... storing &#39;leiden_Neurod4_dropout&#39; as categorical
+... storing &#39;leiden_Ddit3_dropout&#39; as categorical
+... storing &#39;leiden_Batf3_dropout&#39; as categorical
+... storing &#39;leiden_Batf_dropout&#39; as categorical
+... storing &#39;leiden_Atf5_dropout&#39; as categorical
+... storing &#39;leiden_Mafa_dropout&#39; as categorical
+... storing &#39;leiden_Maf_dropout&#39; as categorical
+... storing &#39;leiden_Klf6_dropout&#39; as categorical
+... storing &#39;leiden_Bcl11a_dropout&#39; as categorical
+... storing &#39;leiden_Ikzf4_dropout&#39; as categorical
+... storing &#39;leiden_Hivep2_dropout&#39; as categorical
+... storing &#39;leiden_Klf11_dropout&#39; as categorical
+... storing &#39;leiden_Snai2_dropout&#39; as categorical
+... storing &#39;leiden_Zfp148_dropout&#39; as categorical
+... storing &#39;leiden_Gli1_dropout&#39; as categorical
+... storing &#39;leiden_Sp3_dropout&#39; as categorical
+... storing &#39;leiden_Hivep3_dropout&#39; as categorical
+... storing &#39;leiden_Klf3_dropout&#39; as categorical
+... storing &#39;leiden_Rest_dropout&#39; as categorical
+... storing &#39;leiden_Klf15_dropout&#39; as categorical
+... storing &#39;leiden_Maz_dropout&#39; as categorical
+... storing &#39;leiden_Zbtb7a_dropout&#39; as categorical
+... storing &#39;leiden_Ovol2_dropout&#39; as categorical
+... storing &#39;leiden_Klf10_dropout&#39; as categorical
+... storing &#39;leiden_Zfp384_dropout&#39; as categorical
+... storing &#39;leiden_Zbtb7c_dropout&#39; as categorical
+... storing &#39;leiden_Mbtps2_dropout&#39; as categorical
+... storing &#39;leiden_Bcl11b_dropout&#39; as categorical
+... storing &#39;leiden_Gli2_dropout&#39; as categorical
+... storing &#39;leiden_Zfp219_dropout&#39; as categorical
+... storing &#39;leiden_Klf13_dropout&#39; as categorical
+... storing &#39;leiden_Glis3_dropout&#39; as categorical
+... storing &#39;leiden_Klf2_dropout&#39; as categorical
+... storing &#39;leiden_Ctcfl_dropout&#39; as categorical
+... storing &#39;leiden_Ybx2_dropout&#39; as categorical
+... storing &#39;leiden_Ybx1_dropout&#39; as categorical
+... storing &#39;leiden_Csda_dropout&#39; as categorical
+... storing &#39;leiden_Rbpj_dropout&#39; as categorical
+... storing &#39;leiden_Rbpsuhrs3_dropout&#39; as categorical
+... storing &#39;leiden_Onecut1_dropout&#39; as categorical
+... storing &#39;leiden_Onecut2_dropout&#39; as categorical
+... storing &#39;leiden_Ets2_dropout&#39; as categorical
+... storing &#39;leiden_Foxn3_dropout&#39; as categorical
+... storing &#39;leiden_Foxn2_dropout&#39; as categorical
+... storing &#39;leiden_Foxa3_dropout&#39; as categorical
+... storing &#39;leiden_Foxl2_dropout&#39; as categorical
+... storing &#39;leiden_Foxd4_dropout&#39; as categorical
+... storing &#39;leiden_ENSMUSG00000090020_dropout&#39; as categorical
+... storing &#39;leiden_Gcm2_dropout&#39; as categorical
+... storing &#39;leiden_Ubp1_dropout&#39; as categorical
+... storing &#39;leiden_Six5_dropout&#39; as categorical
+... storing &#39;leiden_Nkx62_dropout&#39; as categorical
+... storing &#39;leiden_Prrxl1_dropout&#39; as categorical
+... storing &#39;leiden_Pou4f2_dropout&#39; as categorical
+... storing &#39;leiden_Pou4f1_dropout&#39; as categorical
+... storing &#39;leiden_Mef2d_dropout&#39; as categorical
+... storing &#39;leiden_Smarcc1_dropout&#39; as categorical
+... storing &#39;leiden_Nr1d1_dropout&#39; as categorical
+... storing &#39;leiden_Nr1d2_dropout&#39; as categorical
+... storing &#39;leiden_Thrb_dropout&#39; as categorical
+... storing &#39;leiden_Nr4a1_dropout&#39; as categorical
+... storing &#39;leiden_Nr5a1_dropout&#39; as categorical
+... storing &#39;leiden_Pgr_dropout&#39; as categorical
+... storing &#39;leiden_Nr1h4_dropout&#39; as categorical
+... storing &#39;leiden_Nr1h5_dropout&#39; as categorical
+... storing &#39;leiden_Thra_dropout&#39; as categorical
+... storing &#39;leiden_Trp63_dropout&#39; as categorical
+... storing &#39;leiden_Pax8_dropout&#39; as categorical
+... storing &#39;leiden_Pax1_dropout&#39; as categorical
+... storing &#39;leiden_Relb_dropout&#39; as categorical
+... storing &#39;leiden_Nfatc4_dropout&#39; as categorical
+... storing &#39;leiden_Runx3_dropout&#39; as categorical
+... storing &#39;leiden_Nfib_dropout&#39; as categorical
+... storing &#39;leiden_Smad4_dropout&#39; as categorical
+... storing &#39;leiden_Smad2_dropout&#39; as categorical
+... storing &#39;leiden_Nfia_dropout&#39; as categorical
+... storing &#39;leiden_Smad1_dropout&#39; as categorical
+... storing &#39;leiden_Tbx15_dropout&#39; as categorical
+... storing &#39;leiden_Tbx22_dropout&#39; as categorical
+... storing &#39;leiden_Tbx18_dropout&#39; as categorical
+... storing &#39;leiden_Tead3_dropout&#39; as categorical
+... storing &#39;leiden_Tead4_dropout&#39; as categorical
+... storing &#39;leiden_Hif3a_dropout&#39; as categorical
+... storing &#39;leiden_Creb3_dropout&#39; as categorical
+... storing &#39;leiden_Nfe2l3_dropout&#39; as categorical
+... storing &#39;leiden_Wt1_dropout&#39; as categorical
+... storing &#39;leiden_E4f1_dropout&#39; as categorical
+... storing &#39;leiden_Klf16_dropout&#39; as categorical
+... storing &#39;leiden_Zfp42_dropout&#39; as categorical
+... storing &#39;leiden_Dmrta2_dropout&#39; as categorical
+... storing &#39;leiden_Foxm1_dropout&#39; as categorical
+... storing &#39;leiden_Mixl1_dropout&#39; as categorical
+... storing &#39;leiden_Mef2b_dropout&#39; as categorical
+... storing &#39;leiden_Smad5_dropout&#39; as categorical
+... storing &#39;leiden_Smad9_dropout&#39; as categorical
+... storing &#39;leiden_Tcfap2a_dropout&#39; as categorical
+... storing &#39;leiden_Tcfap2b_dropout&#39; as categorical
+... storing &#39;leiden_Tcfap2c_dropout&#39; as categorical
+... storing &#39;leiden_Tcfap2e_dropout&#39; as categorical
+... storing &#39;leiden_Tcfap2d_dropout&#39; as categorical
+... storing &#39;leiden_Arid3b_dropout&#39; as categorical
+... storing &#39;leiden_Arid3a_dropout&#39; as categorical
+... storing &#39;leiden_Arid5b_dropout&#39; as categorical
+... storing &#39;leiden_Arid5a_dropout&#39; as categorical
+... storing &#39;leiden_Arid3c_dropout&#39; as categorical
+... storing &#39;leiden_Arid2_dropout&#39; as categorical
+... storing &#39;leiden_Setbp1_dropout&#39; as categorical
+... storing &#39;leiden_Ahctf1_dropout&#39; as categorical
+... storing &#39;leiden_Hmga2_dropout&#39; as categorical
+... storing &#39;leiden_Phf21a_dropout&#39; as categorical
+... storing &#39;leiden_Zfp957_dropout&#39; as categorical
+... storing &#39;leiden_Tcfe3_dropout&#39; as categorical
+... storing &#39;leiden_Mnt_dropout&#39; as categorical
+... storing &#39;leiden_Npas1_dropout&#39; as categorical
+... storing &#39;leiden_Tcfap4_dropout&#39; as categorical
+... storing &#39;leiden_Twist2_dropout&#39; as categorical
+... storing &#39;leiden_Id3_dropout&#39; as categorical
+... storing &#39;leiden_Ascl2_dropout&#39; as categorical
+... storing &#39;leiden_Myod1_dropout&#39; as categorical
+... storing &#39;leiden_Arnt_dropout&#39; as categorical
+... storing &#39;leiden_Arnt2_dropout&#39; as categorical
+... storing &#39;leiden_Mlx_dropout&#39; as categorical
+... storing &#39;leiden_Ahr_dropout&#39; as categorical
+... storing &#39;leiden_Hey2_dropout&#39; as categorical
+... storing &#39;leiden_Sim1_dropout&#39; as categorical
+... storing &#39;leiden_Tcf3_dropout&#39; as categorical
+... storing &#39;leiden_Srebf1_dropout&#39; as categorical
+... storing &#39;leiden_Id2_dropout&#39; as categorical
+... storing &#39;leiden_Npas3_dropout&#39; as categorical
+... storing &#39;leiden_Id4_dropout&#39; as categorical
+... storing &#39;leiden_Ahrr_dropout&#39; as categorical
+... storing &#39;leiden_Myc_dropout&#39; as categorical
+... storing &#39;leiden_Srebf2_dropout&#39; as categorical
+... storing &#39;leiden_Hes1_dropout&#39; as categorical
+... storing &#39;leiden_Hes7_dropout&#39; as categorical
+... storing &#39;leiden_Tcfeb_dropout&#39; as categorical
+... storing &#39;leiden_Bhlhe22_dropout&#39; as categorical
+... storing &#39;leiden_Msc_dropout&#39; as categorical
+... storing &#39;leiden_Npas2_dropout&#39; as categorical
+... storing &#39;leiden_Myog_dropout&#39; as categorical
+... storing &#39;leiden_Usf1_dropout&#39; as categorical
+... storing &#39;leiden_Ptf1a_dropout&#39; as categorical
+... storing &#39;leiden_Sohlh2_dropout&#39; as categorical
+... storing &#39;leiden_Neurog2_dropout&#39; as categorical
+... storing &#39;leiden_Mycl1_dropout&#39; as categorical
+... storing &#39;leiden_Hes2_dropout&#39; as categorical
+... storing &#39;leiden_Clock_dropout&#39; as categorical
+... storing &#39;leiden_Tcfec_dropout&#39; as categorical
+... storing &#39;leiden_Figla_dropout&#39; as categorical
+... storing &#39;leiden_Bhlhe40_dropout&#39; as categorical
+... storing &#39;leiden_Bhlhe41_dropout&#39; as categorical
+... storing &#39;leiden_Mesp2_dropout&#39; as categorical
+... storing &#39;leiden_Mesp1_dropout&#39; as categorical
+... storing &#39;leiden_Tcf12_dropout&#39; as categorical
+... storing &#39;leiden_Heyl_dropout&#39; as categorical
+... storing &#39;leiden_Scx_dropout&#39; as categorical
+... storing &#39;leiden_Mitf_dropout&#39; as categorical
+... storing &#39;leiden_Myf6_dropout&#39; as categorical
+... storing &#39;leiden_Atoh7_dropout&#39; as categorical
+... storing &#39;leiden_Mycn_dropout&#39; as categorical
+... storing &#39;leiden_Hand1_dropout&#39; as categorical
+... storing &#39;leiden_Atoh8_dropout&#39; as categorical
+... storing &#39;leiden_Hand2_dropout&#39; as categorical
+... storing &#39;leiden_Neurod2_dropout&#39; as categorical
+... storing &#39;leiden_Mlxip_dropout&#39; as categorical
+... storing &#39;leiden_Tcfl5_dropout&#39; as categorical
+... storing &#39;leiden_Olig2_dropout&#39; as categorical
+... storing &#39;leiden_Hey1_dropout&#39; as categorical
+... storing &#39;leiden_Id1_dropout&#39; as categorical
+... storing &#39;leiden_Neurog3_dropout&#39; as categorical
+... storing &#39;leiden_Mycs_dropout&#39; as categorical
+... storing &#39;leiden_Bhlhe23_dropout&#39; as categorical
+... storing &#39;leiden_Olig3_dropout&#39; as categorical
+... storing &#39;leiden_Tcf21_dropout&#39; as categorical
+... storing &#39;leiden_Npas4_dropout&#39; as categorical
+... storing &#39;leiden_Olig1_dropout&#39; as categorical
+... storing &#39;leiden_Ferd3l_dropout&#39; as categorical
+... storing &#39;leiden_Hes5_dropout&#39; as categorical
+... storing &#39;leiden_Nhlh2_dropout&#39; as categorical
+... storing &#39;leiden_Neurog1_dropout&#39; as categorical
+... storing &#39;leiden_Nhlh1_dropout&#39; as categorical
+... storing &#39;leiden_Bhlha15_dropout&#39; as categorical
+... storing &#39;leiden_Tcf4_dropout&#39; as categorical
+... storing &#39;leiden_Arntl_dropout&#39; as categorical
+... storing &#39;leiden_Ebf1_dropout&#39; as categorical
+... storing &#39;leiden_Max_dropout&#39; as categorical
+... storing &#39;leiden_Sim2_dropout&#39; as categorical
+... storing &#39;leiden_Tcf15_dropout&#39; as categorical
+... storing &#39;leiden_Atoh1_dropout&#39; as categorical
+... storing &#39;leiden_Usf2_dropout&#39; as categorical
+... storing &#39;leiden_Mga_dropout&#39; as categorical
+... storing &#39;leiden_Cebpd_dropout&#39; as categorical
+... storing &#39;leiden_Fosb_dropout&#39; as categorical
+... storing &#39;leiden_Hlf_dropout&#39; as categorical
+... storing &#39;leiden_Atf6b_dropout&#39; as categorical
+... storing &#39;leiden_Nfe2l2_dropout&#39; as categorical
+... storing &#39;leiden_Mafk_dropout&#39; as categorical
+... storing &#39;leiden_Xbp1_dropout&#39; as categorical
+... storing &#39;leiden_Fos_dropout&#39; as categorical
+... storing &#39;leiden_Tef_dropout&#39; as categorical
+... storing &#39;leiden_Atf1_dropout&#39; as categorical
+... storing &#39;leiden_Fosl1_dropout&#39; as categorical
+... storing &#39;leiden_Bach1_dropout&#39; as categorical
+... storing &#39;leiden_Creb1_dropout&#39; as categorical
+... storing &#39;leiden_Atf3_dropout&#39; as categorical
+... storing &#39;leiden_Atf6_dropout&#39; as categorical
+... storing &#39;leiden_Atf2_dropout&#39; as categorical
+... storing &#39;leiden_Fosl2_dropout&#39; as categorical
+... storing &#39;leiden_Jdp2_dropout&#39; as categorical
+... storing &#39;leiden_Cebpa_dropout&#39; as categorical
+... storing &#39;leiden_Creb3l3_dropout&#39; as categorical
+... storing &#39;leiden_Nfe2l1_dropout&#39; as categorical
+... storing &#39;leiden_Creb3l2_dropout&#39; as categorical
+... storing &#39;leiden_Bach2_dropout&#39; as categorical
+... storing &#39;leiden_Nrl_dropout&#39; as categorical
+... storing &#39;leiden_Atf4_dropout&#39; as categorical
+... storing &#39;leiden_Crebzf_dropout&#39; as categorical
+... storing &#39;leiden_Mafg_dropout&#39; as categorical
+... storing &#39;leiden_Atf7_dropout&#39; as categorical
+... storing &#39;leiden_Cebpe_dropout&#39; as categorical
+... storing &#39;leiden_Jun_dropout&#39; as categorical
+... storing &#39;leiden_Junb_dropout&#39; as categorical
+... storing &#39;leiden_X9430076C15Rik_dropout&#39; as categorical
+... storing &#39;leiden_Cebpg_dropout&#39; as categorical
+... storing &#39;leiden_Cebpb_dropout&#39; as categorical
+... storing &#39;leiden_Nfil3_dropout&#39; as categorical
+... storing &#39;leiden_Nfe2_dropout&#39; as categorical
+... storing &#39;leiden_Dbp_dropout&#39; as categorical
+... storing &#39;leiden_Crem_dropout&#39; as categorical
+... storing &#39;leiden_Jund_dropout&#39; as categorical
+... storing &#39;leiden_Mafb_dropout&#39; as categorical
+... storing &#39;leiden_Zeb1_dropout&#39; as categorical
+... storing &#39;leiden_Zscan4_dropout&#39; as categorical
+... storing &#39;leiden_Bcl6b_dropout&#39; as categorical
+... storing &#39;leiden_Sp1_dropout&#39; as categorical
+... storing &#39;leiden_Klf4_dropout&#39; as categorical
+... storing &#39;leiden_Plag1_dropout&#39; as categorical
+... storing &#39;leiden_Klf5_dropout&#39; as categorical
+... storing &#39;leiden_Ctcf_dropout&#39; as categorical
+... storing &#39;leiden_Snai3_dropout&#39; as categorical
+... storing &#39;leiden_Glis2_dropout&#39; as categorical
+... storing &#39;leiden_Ikzf1_dropout&#39; as categorical
+... storing &#39;leiden_Sp2_dropout&#39; as categorical
+... storing &#39;leiden_Zbtb4_dropout&#39; as categorical
+... storing &#39;leiden_Plagl1_dropout&#39; as categorical
+... storing &#39;leiden_Patz1_dropout&#39; as categorical
+... storing &#39;leiden_Yy1_dropout&#39; as categorical
+... storing &#39;leiden_Gli3_dropout&#39; as categorical
+... storing &#39;leiden_Zkscan3_dropout&#39; as categorical
+... storing &#39;leiden_Hivep1_dropout&#39; as categorical
+... storing &#39;leiden_Zfp369_dropout&#39; as categorical
+... storing &#39;leiden_Fezf2_dropout&#39; as categorical
+... storing &#39;leiden_Zfp187_dropout&#39; as categorical
+... storing &#39;leiden_Osr2_dropout&#39; as categorical
+... storing &#39;leiden_Bcl6_dropout&#39; as categorical
+... storing &#39;leiden_Zfp263_dropout&#39; as categorical
+... storing &#39;leiden_Zscan10_dropout&#39; as categorical
+... storing &#39;leiden_Zfp523_dropout&#39; as categorical
+... storing &#39;leiden_Ovol1_dropout&#39; as categorical
+... storing &#39;leiden_Sp4_dropout&#39; as categorical
+... storing &#39;leiden_Zfp711_dropout&#39; as categorical
+... storing &#39;leiden_Zfp202_dropout&#39; as categorical
+... storing &#39;leiden_Zfp282_dropout&#39; as categorical
+... storing &#39;leiden_Klf7_dropout&#39; as categorical
+... storing &#39;leiden_Gfi1b_dropout&#39; as categorical
+... storing &#39;leiden_Mecom_dropout&#39; as categorical
+... storing &#39;leiden_Zbtb7b_dropout&#39; as categorical
+... storing &#39;leiden_Mtf1_dropout&#39; as categorical
+... storing &#39;leiden_Zbtb49_dropout&#39; as categorical
+... storing &#39;leiden_Fezf1_dropout&#39; as categorical
+... storing &#39;leiden_Zkscan1_dropout&#39; as categorical
+... storing &#39;leiden_Mzf1_dropout&#39; as categorical
+... storing &#39;leiden_Zfp300_dropout&#39; as categorical
+... storing &#39;leiden_Zic1_dropout&#39; as categorical
+... storing &#39;leiden_Zbtb1_dropout&#39; as categorical
+... storing &#39;leiden_Egr3_dropout&#39; as categorical
+... storing &#39;leiden_Klf9_dropout&#39; as categorical
+... storing &#39;leiden_Glis1_dropout&#39; as categorical
+... storing &#39;leiden_Prdm4_dropout&#39; as categorical
+... storing &#39;leiden_Zic4_dropout&#39; as categorical
+... storing &#39;leiden_Egr2_dropout&#39; as categorical
+... storing &#39;leiden_Prdm1_dropout&#39; as categorical
+... storing &#39;leiden_Egr1_dropout&#39; as categorical
+... storing &#39;leiden_Sp6_dropout&#39; as categorical
+... storing &#39;leiden_Rreb1_dropout&#39; as categorical
+... storing &#39;leiden_Zfp281_dropout&#39; as categorical
+... storing &#39;leiden_Klf8_dropout&#39; as categorical
+... storing &#39;leiden_Zic5_dropout&#39; as categorical
+... storing &#39;leiden_Zfp410_dropout&#39; as categorical
+... storing &#39;leiden_Snai1_dropout&#39; as categorical
+... storing &#39;leiden_Hic1_dropout&#39; as categorical
+... storing &#39;leiden_Zfp784_dropout&#39; as categorical
+... storing &#39;leiden_Zfp3_dropout&#39; as categorical
+... storing &#39;leiden_Dnajc21_dropout&#39; as categorical
+... storing &#39;leiden_Zfp354c_dropout&#39; as categorical
+... storing &#39;leiden_Zfp691_dropout&#39; as categorical
+... storing &#39;leiden_Zfp740_dropout&#39; as categorical
+... storing &#39;leiden_Scrt1_dropout&#39; as categorical
+... storing &#39;leiden_Osr1_dropout&#39; as categorical
+... storing &#39;leiden_Sp8_dropout&#39; as categorical
+... storing &#39;leiden_Zfa_dropout&#39; as categorical
+... storing &#39;leiden_Zfp161_dropout&#39; as categorical
+... storing &#39;leiden_Zbtb12_dropout&#39; as categorical
+... storing &#39;leiden_Hic2_dropout&#39; as categorical
+... storing &#39;leiden_Zfp524_dropout&#39; as categorical
+... storing &#39;leiden_Zfy1_dropout&#39; as categorical
+... storing &#39;leiden_Klf1_dropout&#39; as categorical
+... storing &#39;leiden_Zscan4c_dropout&#39; as categorical
+... storing &#39;leiden_Zkscan4_dropout&#39; as categorical
+... storing &#39;leiden_Zkscan5_dropout&#39; as categorical
+... storing &#39;leiden_Zfp105_dropout&#39; as categorical
+... storing &#39;leiden_Zfp110_dropout&#39; as categorical
+... storing &#39;leiden_Zfp637_dropout&#39; as categorical
+... storing &#39;leiden_Scrt2_dropout&#39; as categorical
+... storing &#39;leiden_Sp7_dropout&#39; as categorical
+... storing &#39;leiden_Zfp128_dropout&#39; as categorical
+... storing &#39;leiden_Zfp143_dropout&#39; as categorical
+... storing &#39;leiden_Zic2_dropout&#39; as categorical
+... storing &#39;leiden_Zscan20_dropout&#39; as categorical
+... storing &#39;leiden_Zfp238_dropout&#39; as categorical
+... storing &#39;leiden_Zbtb6_dropout&#39; as categorical
+... storing &#39;leiden_Zic3_dropout&#39; as categorical
+... storing &#39;leiden_Insm1_dropout&#39; as categorical
+... storing &#39;leiden_Sp9_dropout&#39; as categorical
+... storing &#39;leiden_Zscan4ps2_dropout&#39; as categorical
+... storing &#39;leiden_Zscan4f_dropout&#39; as categorical
+... storing &#39;leiden_Egr4_dropout&#39; as categorical
+... storing &#39;leiden_Zbtb3_dropout&#39; as categorical
+... storing &#39;leiden_Klf12_dropout&#39; as categorical
+... storing &#39;leiden_Klf14_dropout&#39; as categorical
+... storing &#39;leiden_Sp5_dropout&#39; as categorical
+... storing &#39;leiden_Zfp652_dropout&#39; as categorical
+... storing &#39;leiden_Zfx_dropout&#39; as categorical
+... storing &#39;leiden_Myt1l_dropout&#39; as categorical
+... storing &#39;leiden_Nfya_dropout&#39; as categorical
+... storing &#39;leiden_Cenpb_dropout&#39; as categorical
+... storing &#39;leiden_Cux2_dropout&#39; as categorical
+... storing &#39;leiden_Onecut3_dropout&#39; as categorical
+... storing &#39;leiden_Lin54_dropout&#39; as categorical
+... storing &#39;leiden_Cxxc1_dropout&#39; as categorical
+... storing &#39;leiden_Mbd1_dropout&#39; as categorical
+... storing &#39;leiden_Kdm2b_dropout&#39; as categorical
+... storing &#39;leiden_Dmrtc2_dropout&#39; as categorical
+... storing &#39;leiden_Dmrt1_dropout&#39; as categorical
+... storing &#39;leiden_Dmrt3_dropout&#39; as categorical
+... storing &#39;leiden_Dmrta1_dropout&#39; as categorical
+... storing &#39;leiden_Dmrt2_dropout&#39; as categorical
+... storing &#39;leiden_Tfdp2_dropout&#39; as categorical
+... storing &#39;leiden_Tfdp1_dropout&#39; as categorical
+... storing &#39;leiden_E2f4_dropout&#39; as categorical
+... storing &#39;leiden_E2f3_dropout&#39; as categorical
+... storing &#39;leiden_E2f2_dropout&#39; as categorical
+... storing &#39;leiden_E2f7_dropout&#39; as categorical
+... storing &#39;leiden_E2f1_dropout&#39; as categorical
+... storing &#39;leiden_E2f5_dropout&#39; as categorical
+... storing &#39;leiden_E2f8_dropout&#39; as categorical
+... storing &#39;leiden_E2f6_dropout&#39; as categorical
+... storing &#39;leiden_Sfpi1_dropout&#39; as categorical
+... storing &#39;leiden_Elf3_dropout&#39; as categorical
+... storing &#39;leiden_Etv3_dropout&#39; as categorical
+... storing &#39;leiden_Etv1_dropout&#39; as categorical
+... storing &#39;leiden_Spic_dropout&#39; as categorical
+... storing &#39;leiden_Etv2_dropout&#39; as categorical
+... storing &#39;leiden_Spib_dropout&#39; as categorical
+... storing &#39;leiden_Elk3_dropout&#39; as categorical
+... storing &#39;leiden_Gabpa_dropout&#39; as categorical
+... storing &#39;leiden_Elk1_dropout&#39; as categorical
+... storing &#39;leiden_Ehf_dropout&#39; as categorical
+... storing &#39;leiden_Etv5_dropout&#39; as categorical
+... storing &#39;leiden_Fli1_dropout&#39; as categorical
+... storing &#39;leiden_Etv4_dropout&#39; as categorical
+... storing &#39;leiden_Spdef_dropout&#39; as categorical
+... storing &#39;leiden_Elk4_dropout&#39; as categorical
+... storing &#39;leiden_Elf5_dropout&#39; as categorical
+... storing &#39;leiden_Etv6_dropout&#39; as categorical
+... storing &#39;leiden_Elf4_dropout&#39; as categorical
+... storing &#39;leiden_Ets1_dropout&#39; as categorical
+... storing &#39;leiden_Elf1_dropout&#39; as categorical
+... storing &#39;leiden_Elf2_dropout&#39; as categorical
+... storing &#39;leiden_Erg_dropout&#39; as categorical
+... storing &#39;leiden_Erf_dropout&#39; as categorical
+... storing &#39;leiden_ENSMUSG00000044690_dropout&#39; as categorical
+... storing &#39;leiden_Gm5454_dropout&#39; as categorical
+... storing &#39;leiden_Fev_dropout&#39; as categorical
+... storing &#39;leiden_Gm4881_dropout&#39; as categorical
+... storing &#39;leiden_Foxj2_dropout&#39; as categorical
+... storing &#39;leiden_Foxg1_dropout&#39; as categorical
+... storing &#39;leiden_Foxp4_dropout&#39; as categorical
+... storing &#39;leiden_Foxp2_dropout&#39; as categorical
+... storing &#39;leiden_Foxp1_dropout&#39; as categorical
+... storing &#39;leiden_Foxj3_dropout&#39; as categorical
+... storing &#39;leiden_Foxh1_dropout&#39; as categorical
+... storing &#39;leiden_Foxj1_dropout&#39; as categorical
+... storing &#39;leiden_Foxa1_dropout&#39; as categorical
+... storing &#39;leiden_Foxa2_dropout&#39; as categorical
+... storing &#39;leiden_Foxf2_dropout&#39; as categorical
+... storing &#39;leiden_Foxq1_dropout&#39; as categorical
+... storing &#39;leiden_Foxk2_dropout&#39; as categorical
+... storing &#39;leiden_Foxp3_dropout&#39; as categorical
+... storing &#39;leiden_Foxf1a_dropout&#39; as categorical
+... storing &#39;leiden_Foxo4_dropout&#39; as categorical
+... storing &#39;leiden_Foxo1_dropout&#39; as categorical
+... storing &#39;leiden_Foxe3_dropout&#39; as categorical
+... storing &#39;leiden_Foxc2_dropout&#39; as categorical
+... storing &#39;leiden_Foxi1_dropout&#39; as categorical
+... storing &#39;leiden_Foxi2_dropout&#39; as categorical
+... storing &#39;leiden_Foxo3_dropout&#39; as categorical
+... storing &#39;leiden_Foxc1_dropout&#39; as categorical
+... storing &#39;leiden_Foxo6_dropout&#39; as categorical
+... storing &#39;leiden_Foxd2_dropout&#39; as categorical
+... storing &#39;leiden_Foxi3_dropout&#39; as categorical
+... storing &#39;leiden_Foxk1_dropout&#39; as categorical
+... storing &#39;leiden_Foxb2_dropout&#39; as categorical
+... storing &#39;leiden_Foxb1_dropout&#39; as categorical
+... storing &#39;leiden_Foxd3_dropout&#39; as categorical
+... storing &#39;leiden_Foxe1_dropout&#39; as categorical
+... storing &#39;leiden_Foxs1_dropout&#39; as categorical
+... storing &#39;leiden_Foxd1_dropout&#39; as categorical
+... storing &#39;leiden_Gm5294_dropout&#39; as categorical
+... storing &#39;leiden_Foxl1_dropout&#39; as categorical
+... storing &#39;leiden_Gata6_dropout&#39; as categorical
+... storing &#39;leiden_Gata2_dropout&#39; as categorical
+... storing &#39;leiden_Gata3_dropout&#39; as categorical
+... storing &#39;leiden_Gata5_dropout&#39; as categorical
+... storing &#39;leiden_Gata4_dropout&#39; as categorical
+... storing &#39;leiden_Gata1_dropout&#39; as categorical
+... storing &#39;leiden_Gcm1_dropout&#39; as categorical
+... storing &#39;leiden_Tcfcp2_dropout&#39; as categorical
+... storing &#39;leiden_Grhl1_dropout&#39; as categorical
+... storing &#39;leiden_Tcfcp2l1_dropout&#39; as categorical
+... storing &#39;leiden_Dux_dropout&#39; as categorical
+... storing &#39;leiden_Lhx2_dropout&#39; as categorical
+... storing &#39;leiden_Hoxb6_dropout&#39; as categorical
+... storing &#39;leiden_Hoxa10_dropout&#39; as categorical
+... storing &#39;leiden_Hoxa4_dropout&#39; as categorical
+... storing &#39;leiden_Sebox_dropout&#39; as categorical
+... storing &#39;leiden_Meox1_dropout&#39; as categorical
+... storing &#39;leiden_Nkx21_dropout&#39; as categorical
+... storing &#39;leiden_Irx2_dropout&#39; as categorical
+... storing &#39;leiden_Dlx3_dropout&#39; as categorical
+... storing &#39;leiden_Mnx1_dropout&#39; as categorical
+... storing &#39;leiden_Hoxc13_dropout&#39; as categorical
+... storing &#39;leiden_Hoxc11_dropout&#39; as categorical
+... storing &#39;leiden_Hoxc8_dropout&#39; as categorical
+... storing &#39;leiden_Hoxc6_dropout&#39; as categorical
+... storing &#39;leiden_Evx2_dropout&#39; as categorical
+... storing &#39;leiden_Hoxd13_dropout&#39; as categorical
+... storing &#39;leiden_Hoxd12_dropout&#39; as categorical
+... storing &#39;leiden_Evx1_dropout&#39; as categorical
+... storing &#39;leiden_Otx1_dropout&#39; as categorical
+... storing &#39;leiden_Rhox6_dropout&#39; as categorical
+... storing &#39;leiden_Vax1_dropout&#39; as categorical
+... storing &#39;leiden_Pknox1_dropout&#39; as categorical
+... storing &#39;leiden_Phox2a_dropout&#39; as categorical
+... storing &#39;leiden_Pou6f1_dropout&#39; as categorical
+... storing &#39;leiden_Nanog_dropout&#39; as categorical
+... storing &#39;leiden_Phox2b_dropout&#39; as categorical
+... storing &#39;leiden_Alx3_dropout&#39; as categorical
+... storing &#39;leiden_Hoxa2_dropout&#39; as categorical
+... storing &#39;leiden_Nkx25_dropout&#39; as categorical
+... storing &#39;leiden_Lhx1_dropout&#39; as categorical
+... storing &#39;leiden_Hoxb1_dropout&#39; as categorical
+... storing &#39;leiden_Lhx9_dropout&#39; as categorical
+... storing &#39;leiden_Meis1_dropout&#39; as categorical
+... storing &#39;leiden_Hnf1b_dropout&#39; as categorical
+... storing &#39;leiden_Dlx4_dropout&#39; as categorical
+... storing &#39;leiden_Hoxb9_dropout&#39; as categorical
+... storing &#39;leiden_Gsc_dropout&#39; as categorical
+... storing &#39;leiden_Six6_dropout&#39; as categorical
+... storing &#39;leiden_Vsx2_dropout&#39; as categorical
+... storing &#39;leiden_Barx1_dropout&#39; as categorical
+... storing &#39;leiden_Msx2_dropout&#39; as categorical
+... storing &#39;leiden_Pitx1_dropout&#39; as categorical
+... storing &#39;leiden_Irx4_dropout&#39; as categorical
+... storing &#39;leiden_Otp_dropout&#39; as categorical
+... storing &#39;leiden_Otx2_dropout&#39; as categorical
+... storing &#39;leiden_Hmbox1_dropout&#39; as categorical
+... storing &#39;leiden_Nkx31_dropout&#39; as categorical
+... storing &#39;leiden_Hoxc10_dropout&#39; as categorical
+... storing &#39;leiden_Hoxc5_dropout&#39; as categorical
+... storing &#39;leiden_Gsc2_dropout&#39; as categorical
+... storing &#39;leiden_Dlx2_dropout&#39; as categorical
+... storing &#39;leiden_Esx1_dropout&#39; as categorical
+... storing &#39;leiden_Six2_dropout&#39; as categorical
+... storing &#39;leiden_Pou4f3_dropout&#39; as categorical
+... storing &#39;leiden_Rax_dropout&#39; as categorical
+... storing &#39;leiden_Cdx1_dropout&#39; as categorical
+... storing &#39;leiden_Hhex_dropout&#39; as categorical
+... storing &#39;leiden_Tlx1_dropout&#39; as categorical
+... storing &#39;leiden_Lbx1_dropout&#39; as categorical
+... storing &#39;leiden_Pitx3_dropout&#39; as categorical
+... storing &#39;leiden_Msx3_dropout&#39; as categorical
+... storing &#39;leiden_Lhx4_dropout&#39; as categorical
+... storing &#39;leiden_Prrx1_dropout&#39; as categorical
+... storing &#39;leiden_Lmx1a_dropout&#39; as categorical
+... storing &#39;leiden_Barhl1_dropout&#39; as categorical
+... storing &#39;leiden_Lhx6_dropout&#39; as categorical
+... storing &#39;leiden_Lhx3_dropout&#39; as categorical
+... storing &#39;leiden_Hoxd8_dropout&#39; as categorical
+... storing &#39;leiden_Meis2_dropout&#39; as categorical
+... storing &#39;leiden_Nkx22_dropout&#39; as categorical
+... storing &#39;leiden_Shox2_dropout&#39; as categorical
+... storing &#39;leiden_Pitx2_dropout&#39; as categorical
+... storing &#39;leiden_Lhx8_dropout&#39; as categorical
+... storing &#39;leiden_Dmbx1_dropout&#39; as categorical
+... storing &#39;leiden_Pax7_dropout&#39; as categorical
+... storing &#39;leiden_Nkx11_dropout&#39; as categorical
+... storing &#39;leiden_Uncx_dropout&#39; as categorical
+... storing &#39;leiden_Hnf1a_dropout&#39; as categorical
+... storing &#39;leiden_Lhx5_dropout&#39; as categorical
+... storing &#39;leiden_Pdx1_dropout&#39; as categorical
+... storing &#39;leiden_Cdx2_dropout&#39; as categorical
+... storing &#39;leiden_Cux1_dropout&#39; as categorical
+... storing &#39;leiden_Pax4_dropout&#39; as categorical
+... storing &#39;leiden_Nobox_dropout&#39; as categorical
+... storing &#39;leiden_Dlx6_dropout&#39; as categorical
+... storing &#39;leiden_Dlx5_dropout&#39; as categorical
+... storing &#39;leiden_Hoxa1_dropout&#39; as categorical
+... storing &#39;leiden_Dbx1_dropout&#39; as categorical
+... storing &#39;leiden_Cdx4_dropout&#39; as categorical
+... storing &#39;leiden_Isx_dropout&#39; as categorical
+... storing &#39;leiden_Irx3_dropout&#39; as categorical
+... storing &#39;leiden_Irx5_dropout&#39; as categorical
+... storing &#39;leiden_Irx6_dropout&#39; as categorical
+... storing &#39;leiden_Pbx4_dropout&#39; as categorical
+... storing &#39;leiden_Pou2f3_dropout&#39; as categorical
+... storing &#39;leiden_Barx2_dropout&#39; as categorical
+... storing &#39;leiden_Isl2_dropout&#39; as categorical
+... storing &#39;leiden_Vsx1_dropout&#39; as categorical
+... storing &#39;leiden_Emx1_dropout&#39; as categorical
+... storing &#39;leiden_Barhl2_dropout&#39; as categorical
+... storing &#39;leiden_Six4_dropout&#39; as categorical
+... storing &#39;leiden_Gbx2_dropout&#39; as categorical
+... storing &#39;leiden_Hdx_dropout&#39; as categorical
+... storing &#39;leiden_Pbx2_dropout&#39; as categorical
+... storing &#39;leiden_Vax2_dropout&#39; as categorical
+... storing &#39;leiden_Lbx2_dropout&#39; as categorical
+... storing &#39;leiden_Nkx61_dropout&#39; as categorical
+... storing &#39;leiden_Arx_dropout&#39; as categorical
+... storing &#39;leiden_Pknox2_dropout&#39; as categorical
+... storing &#39;leiden_Gsx2_dropout&#39; as categorical
+... storing &#39;leiden_Hoxc9_dropout&#39; as categorical
+... storing &#39;leiden_Meox2_dropout&#39; as categorical
+... storing &#39;leiden_Alx1_dropout&#39; as categorical
+... storing &#39;leiden_Hoxa13_dropout&#39; as categorical
+... storing &#39;leiden_Hoxa11_dropout&#39; as categorical
+... storing &#39;leiden_Hoxa9_dropout&#39; as categorical
+... storing &#39;leiden_Hoxa7_dropout&#39; as categorical
+... storing &#39;leiden_Hoxa5_dropout&#39; as categorical
+... storing &#39;leiden_Hoxb4_dropout&#39; as categorical
+... storing &#39;leiden_Hoxb5_dropout&#39; as categorical
+... storing &#39;leiden_Pbx3_dropout&#39; as categorical
+... storing &#39;leiden_Hoxb7_dropout&#39; as categorical
+... storing &#39;leiden_Lmx1b_dropout&#39; as categorical
+... storing &#39;leiden_Six3_dropout&#39; as categorical
+... storing &#39;leiden_En2_dropout&#39; as categorical
+... storing &#39;leiden_Hlx_dropout&#39; as categorical
+... storing &#39;leiden_Prrx2_dropout&#39; as categorical
+... storing &#39;leiden_Hmx3_dropout&#39; as categorical
+... storing &#39;leiden_Alx4_dropout&#39; as categorical
+... storing &#39;leiden_Tlx3_dropout&#39; as categorical
+... storing &#39;leiden_Hesx1_dropout&#39; as categorical
+... storing &#39;leiden_ENSMUSG00000040953_dropout&#39; as categorical
+... storing &#39;leiden_Meis3_dropout&#39; as categorical
+... storing &#39;leiden_Crx_dropout&#39; as categorical
+... storing &#39;leiden_Obox6_dropout&#39; as categorical
+... storing &#39;leiden_Dlx1_dropout&#39; as categorical
+... storing &#39;leiden_Isl1_dropout&#39; as categorical
+... storing &#39;leiden_Hoxd1_dropout&#39; as categorical
+... storing &#39;leiden_Hoxd4_dropout&#39; as categorical
+... storing &#39;leiden_Hoxd11_dropout&#39; as categorical
+... storing &#39;leiden_Hoxa6_dropout&#39; as categorical
+... storing &#39;leiden_Hoxd9_dropout&#39; as categorical
+... storing &#39;leiden_Emx2_dropout&#39; as categorical
+... storing &#39;leiden_Nkx26_dropout&#39; as categorical
+... storing &#39;leiden_Nkx23_dropout&#39; as categorical
+... storing &#39;leiden_Gm4830_dropout&#39; as categorical
+... storing &#39;leiden_Prop1_dropout&#39; as categorical
+... storing &#39;leiden_Pou3f3_dropout&#39; as categorical
+... storing &#39;leiden_Dbx2_dropout&#39; as categorical
+... storing &#39;leiden_Tgif1_dropout&#39; as categorical
+... storing &#39;leiden_Msx1_dropout&#39; as categorical
+... storing &#39;leiden_Duxbl_dropout&#39; as categorical
+... storing &#39;leiden_Nkx12_dropout&#39; as categorical
+... storing &#39;leiden_Hoxb3_dropout&#39; as categorical
+... storing &#39;leiden_Hoxb13_dropout&#39; as categorical
+... storing &#39;leiden_Nkx32_dropout&#39; as categorical
+... storing &#39;leiden_Hmx2_dropout&#39; as categorical
+... storing &#39;leiden_Hoxc12_dropout&#39; as categorical
+... storing &#39;leiden_Hoxd10_dropout&#39; as categorical
+... storing &#39;leiden_Rhox11_dropout&#39; as categorical
+... storing &#39;leiden_Six1_dropout&#39; as categorical
+... storing &#39;leiden_Pbx1_dropout&#39; as categorical
+... storing &#39;leiden_Pou3f2_dropout&#39; as categorical
+... storing &#39;leiden_Gsx1_dropout&#39; as categorical
+... storing &#39;leiden_Nkx24_dropout&#39; as categorical
+... storing &#39;leiden_Obox1_dropout&#39; as categorical
+... storing &#39;leiden_Bsx_dropout&#39; as categorical
+... storing &#39;leiden_Hoxb8_dropout&#39; as categorical
+... storing &#39;leiden_Pou3f4_dropout&#39; as categorical
+... storing &#39;leiden_Homez_dropout&#39; as categorical
+... storing &#39;leiden_En1_dropout&#39; as categorical
+... storing &#39;leiden_Nkx29_dropout&#39; as categorical
+... storing &#39;leiden_Irx1_dropout&#39; as categorical
+... storing &#39;leiden_Tgif2_dropout&#39; as categorical
+... storing &#39;leiden_Nkx63_dropout&#39; as categorical
+... storing &#39;leiden_Rhox8_dropout&#39; as categorical
+... storing &#39;leiden_Obox3_dropout&#39; as categorical
+... storing &#39;leiden_Hmx1_dropout&#39; as categorical
+... storing &#39;leiden_Gbx1_dropout&#39; as categorical
+... storing &#39;leiden_Rhox9_dropout&#39; as categorical
+... storing &#39;leiden_Noto_dropout&#39; as categorical
+... storing &#39;leiden_Tlx2_dropout&#39; as categorical
+... storing &#39;leiden_Gm10391_dropout&#39; as categorical
+... storing &#39;leiden_Gm10394_dropout&#39; as categorical
+... storing &#39;leiden_Cphx_dropout&#39; as categorical
+... storing &#39;leiden_Obox5_dropout&#39; as categorical
+... storing &#39;leiden_AC1890281_dropout&#39; as categorical
+... storing &#39;leiden_Gm5889_dropout&#39; as categorical
+... storing &#39;leiden_Hoxc4_dropout&#39; as categorical
+... storing &#39;leiden_Hoxb2_dropout&#39; as categorical
+... storing &#39;leiden_Hoxd3_dropout&#39; as categorical
+... storing &#39;leiden_Hoxa3_dropout&#39; as categorical
+... storing &#39;leiden_NP_dropout&#39; as categorical
+... storing &#39;leiden_Q8VHG7_dropout&#39; as categorical
+... storing &#39;leiden_Dobox4_dropout&#39; as categorical
+... storing &#39;leiden_Pax2_dropout&#39; as categorical
+... storing &#39;leiden_Pax3_dropout&#39; as categorical
+... storing &#39;leiden_Pax6_dropout&#39; as categorical
+... storing &#39;leiden_Pou1f1_dropout&#39; as categorical
+... storing &#39;leiden_Pou2f2_dropout&#39; as categorical
+... storing &#39;leiden_Pou6f2_dropout&#39; as categorical
+... storing &#39;leiden_Pou5f1_dropout&#39; as categorical
+... storing &#39;leiden_Pou2f1_dropout&#39; as categorical
+... storing &#39;leiden_Pou3f1_dropout&#39; as categorical
+... storing &#39;leiden_Pit1_dropout&#39; as categorical
+... storing &#39;leiden_Hsf2_dropout&#39; as categorical
+... storing &#39;leiden_Hsf1_dropout&#39; as categorical
+... storing &#39;leiden_Hsf4_dropout&#39; as categorical
+... storing &#39;leiden_Hsfy2_dropout&#39; as categorical
+... storing &#39;leiden_Irf9_dropout&#39; as categorical
+... storing &#39;leiden_Irf3_dropout&#39; as categorical
+... storing &#39;leiden_Irf1_dropout&#39; as categorical
+... storing &#39;leiden_Irf4_dropout&#39; as categorical
+... storing &#39;leiden_Irf7_dropout&#39; as categorical
+... storing &#39;leiden_Irf6_dropout&#39; as categorical
+... storing &#39;leiden_Irf5_dropout&#39; as categorical
+... storing &#39;leiden_Irf2_dropout&#39; as categorical
+... storing &#39;leiden_Naif1_dropout&#39; as categorical
+... storing &#39;leiden_Mef2c_dropout&#39; as categorical
+... storing &#39;leiden_Srf_dropout&#39; as categorical
+... storing &#39;leiden_Mef2a_dropout&#39; as categorical
+... storing &#39;leiden_Mbd2_dropout&#39; as categorical
+... storing &#39;leiden_Mecp2_dropout&#39; as categorical
+... storing &#39;leiden_Mybl2_dropout&#39; as categorical
+... storing &#39;leiden_Myb_dropout&#39; as categorical
+... storing &#39;leiden_Cdc5l_dropout&#39; as categorical
+... storing &#39;leiden_Smarcc2_dropout&#39; as categorical
+... storing &#39;leiden_Mybl1_dropout&#39; as categorical
+... storing &#39;leiden_Terf2_dropout&#39; as categorical
+... storing &#39;leiden_Mypop_dropout&#39; as categorical
+... storing &#39;leiden_Prdm11_dropout&#39; as categorical
+... storing &#39;leiden_Gm239_dropout&#39; as categorical
+... storing &#39;leiden_Gm98_dropout&#39; as categorical
+... storing &#39;leiden_Pparg_dropout&#39; as categorical
+... storing &#39;leiden_Rarg_dropout&#39; as categorical
+... storing &#39;leiden_Nr1h3_dropout&#39; as categorical
+... storing &#39;leiden_Ppard_dropout&#39; as categorical
+... storing &#39;leiden_Nr2f6_dropout&#39; as categorical
+... storing &#39;leiden_Nr1i3_dropout&#39; as categorical
+... storing &#39;leiden_Nr2c2_dropout&#39; as categorical
+... storing &#39;leiden_Nr2c1_dropout&#39; as categorical
+... storing &#39;leiden_Rxrg_dropout&#39; as categorical
+... storing &#39;leiden_Rxra_dropout&#39; as categorical
+... storing &#39;leiden_Rarb_dropout&#39; as categorical
+... storing &#39;leiden_Hnf4g_dropout&#39; as categorical
+... storing &#39;leiden_Hnf4a_dropout&#39; as categorical
+... storing &#39;leiden_Esr1_dropout&#39; as categorical
+... storing &#39;leiden_Nr2e1_dropout&#39; as categorical
+... storing &#39;leiden_Esr2_dropout&#39; as categorical
+... storing &#39;leiden_Esrrb_dropout&#39; as categorical
+... storing &#39;leiden_Ppara_dropout&#39; as categorical
+... storing &#39;leiden_Vdr_dropout&#39; as categorical
+... storing &#39;leiden_Nr1i2_dropout&#39; as categorical
+... storing &#39;leiden_Nr3c1_dropout&#39; as categorical
+... storing &#39;leiden_Esrra_dropout&#39; as categorical
+... storing &#39;leiden_Nr5a2_dropout&#39; as categorical
+... storing &#39;leiden_Esrrg_dropout&#39; as categorical
+... storing &#39;leiden_Nr4a2_dropout&#39; as categorical
+... storing &#39;leiden_Rorc_dropout&#39; as categorical
+... storing &#39;leiden_Nr4a3_dropout&#39; as categorical
+... storing &#39;leiden_Nr2f2_dropout&#39; as categorical
+... storing &#39;leiden_Nr3c2_dropout&#39; as categorical
+... storing &#39;leiden_Rora_dropout&#39; as categorical
+... storing &#39;leiden_Nr2e3_dropout&#39; as categorical
+... storing &#39;leiden_Rorb_dropout&#39; as categorical
+... storing &#39;leiden_Rara_dropout&#39; as categorical
+... storing &#39;leiden_Rxrb_dropout&#39; as categorical
+... storing &#39;leiden_Ar_dropout&#39; as categorical
+... storing &#39;leiden_Nr1h2_dropout&#39; as categorical
+... storing &#39;leiden_Nr6a1_dropout&#39; as categorical
+... storing &#39;leiden_Nr2f1_dropout&#39; as categorical
+... storing &#39;leiden_Trp73_dropout&#39; as categorical
+... storing &#39;leiden_Trp53_dropout&#39; as categorical
+... storing &#39;leiden_Pax9_dropout&#39; as categorical
+... storing &#39;leiden_Pax5_dropout&#39; as categorical
+... storing &#39;leiden_Lcor_dropout&#39; as categorical
+... storing &#39;leiden_Nfat5_dropout&#39; as categorical
+... storing &#39;leiden_Rel_dropout&#39; as categorical
+... storing &#39;leiden_Rela_dropout&#39; as categorical
+... storing &#39;leiden_Nfkb2_dropout&#39; as categorical
+... storing &#39;leiden_Nfatc2_dropout&#39; as categorical
+... storing &#39;leiden_Nfkb1_dropout&#39; as categorical
+... storing &#39;leiden_Nfatc3_dropout&#39; as categorical
+... storing &#39;leiden_Nfatc1_dropout&#39; as categorical
+... storing &#39;leiden_Rfx5_dropout&#39; as categorical
+... storing &#39;leiden_Rfx6_dropout&#39; as categorical
+... storing &#39;leiden_Rfx4_dropout&#39; as categorical
+... storing &#39;leiden_Rfx2_dropout&#39; as categorical
+... storing &#39;leiden_Rfx1_dropout&#39; as categorical
+... storing &#39;leiden_Rfx7_dropout&#39; as categorical
+... storing &#39;leiden_Rfx3_dropout&#39; as categorical
+... storing &#39;leiden_Rfx8_dropout&#39; as categorical
+... storing &#39;leiden_Runx1_dropout&#39; as categorical
+... storing &#39;leiden_Runx2_dropout&#39; as categorical
+... storing &#39;leiden_Sp100_dropout&#39; as categorical
+... storing &#39;leiden_Gmeb1_dropout&#39; as categorical
+... storing &#39;leiden_Gmeb2_dropout&#39; as categorical
+... storing &#39;leiden_Sp140_dropout&#39; as categorical
+... storing &#39;leiden_Sp110_dropout&#39; as categorical
+... storing &#39;leiden_AC1689771_dropout&#39; as categorical
+... storing &#39;leiden_IRC900814_dropout&#39; as categorical
+... storing &#39;leiden_Nfix_dropout&#39; as categorical
+... storing &#39;leiden_Smad3_dropout&#39; as categorical
+... storing &#39;leiden_Nfic_dropout&#39; as categorical
+... storing &#39;leiden_Sox9_dropout&#39; as categorical
+... storing &#39;leiden_Tcf7_dropout&#39; as categorical
+... storing &#39;leiden_Hbp1_dropout&#39; as categorical
+... storing &#39;leiden_Cic_dropout&#39; as categorical
+... storing &#39;leiden_Hmg20b_dropout&#39; as categorical
+... storing &#39;leiden_Bbx_dropout&#39; as categorical
+... storing &#39;leiden_Sox8_dropout&#39; as categorical
+... storing &#39;leiden_Tcf7l2_dropout&#39; as categorical
+... storing &#39;leiden_Sox17_dropout&#39; as categorical
+... storing &#39;leiden_Lef1_dropout&#39; as categorical
+... storing &#39;leiden_Sox10_dropout&#39; as categorical
+... storing &#39;leiden_Sox30_dropout&#39; as categorical
+... storing &#39;leiden_Sox15_dropout&#39; as categorical
+... storing &#39;leiden_Sox5_dropout&#39; as categorical
+... storing &#39;leiden_Sox3_dropout&#39; as categorical
+... storing &#39;leiden_Sox18_dropout&#39; as categorical
+... storing &#39;leiden_Sox12_dropout&#39; as categorical
+... storing &#39;leiden_Sox6_dropout&#39; as categorical
+... storing &#39;leiden_Sox14_dropout&#39; as categorical
+... storing &#39;leiden_Tcf7l1_dropout&#39; as categorical
+... storing &#39;leiden_Sox21_dropout&#39; as categorical
+... storing &#39;leiden_Sox7_dropout&#39; as categorical
+... storing &#39;leiden_Sox11_dropout&#39; as categorical
+... storing &#39;leiden_Sry_dropout&#39; as categorical
+... storing &#39;leiden_Sox13_dropout&#39; as categorical
+... storing &#39;leiden_Sox2_dropout&#39; as categorical
+... storing &#39;leiden_Sox4_dropout&#39; as categorical
+... storing &#39;leiden_ENSMUSG00000079994_dropout&#39; as categorical
+... storing &#39;leiden_Stat6_dropout&#39; as categorical
+... storing &#39;leiden_Stat3_dropout&#39; as categorical
+... storing &#39;leiden_Stat5a_dropout&#39; as categorical
+... storing &#39;leiden_Stat5b_dropout&#39; as categorical
+... storing &#39;leiden_Stat1_dropout&#39; as categorical
+... storing &#39;leiden_Stat2_dropout&#39; as categorical
+... storing &#39;leiden_Stat4_dropout&#39; as categorical
+... storing &#39;leiden_Tbx2_dropout&#39; as categorical
+... storing &#39;leiden_Tbx4_dropout&#39; as categorical
+... storing &#39;leiden_Tbx21_dropout&#39; as categorical
+... storing &#39;leiden_Tbx1_dropout&#39; as categorical
+... storing &#39;leiden_Tbx5_dropout&#39; as categorical
+... storing &#39;leiden_Tbx3_dropout&#39; as categorical
+... storing &#39;leiden_Tbx19_dropout&#39; as categorical
+... storing &#39;leiden_Tbx20_dropout&#39; as categorical
+... storing &#39;leiden_Eomes_dropout&#39; as categorical
+... storing &#39;leiden_Tbr1_dropout&#39; as categorical
+... storing &#39;leiden_Tbx10_dropout&#39; as categorical
+... storing &#39;leiden_T_dropout&#39; as categorical
+... storing &#39;leiden_Tbp_dropout&#39; as categorical
+... storing &#39;leiden_Tbpl2_dropout&#39; as categorical
+... storing &#39;leiden_Prkrir_dropout&#39; as categorical
+... storing &#39;leiden_Spz1_dropout&#39; as categorical
+... storing &#39;leiden_Hmga1_dropout&#39; as categorical
+... storing &#39;leiden_Hmga1rs1_dropout&#39; as categorical
+... storing &#39;leiden_Myf5_dropout&#39; as categorical
+... storing &#39;leiden_Mlxipl_dropout&#39; as categorical
+... storing &#39;leiden_Ascl1_dropout&#39; as categorical
+... storing &#39;leiden_Tal2_dropout&#39; as categorical
+... storing &#39;leiden_Tal1_dropout&#39; as categorical
+... storing &#39;leiden_Lyl1_dropout&#39; as categorical
+... storing &#39;leiden_Neurod1_dropout&#39; as categorical
+... storing &#39;leiden_Twist1_dropout&#39; as categorical
+... storing &#39;leiden_Neurod6_dropout&#39; as categorical
+... storing &#39;leiden_Neurod4_dropout&#39; as categorical
+... storing &#39;leiden_Ddit3_dropout&#39; as categorical
+... storing &#39;leiden_Batf3_dropout&#39; as categorical
+... storing &#39;leiden_Batf_dropout&#39; as categorical
+... storing &#39;leiden_Atf5_dropout&#39; as categorical
+... storing &#39;leiden_Mafa_dropout&#39; as categorical
+... storing &#39;leiden_Maf_dropout&#39; as categorical
+... storing &#39;leiden_Klf6_dropout&#39; as categorical
+... storing &#39;leiden_Bcl11a_dropout&#39; as categorical
+... storing &#39;leiden_Ikzf4_dropout&#39; as categorical
+... storing &#39;leiden_Hivep2_dropout&#39; as categorical
+... storing &#39;leiden_Klf11_dropout&#39; as categorical
+... storing &#39;leiden_Snai2_dropout&#39; as categorical
+... storing &#39;leiden_Zfp148_dropout&#39; as categorical
+... storing &#39;leiden_Gli1_dropout&#39; as categorical
+... storing &#39;leiden_Sp3_dropout&#39; as categorical
+... storing &#39;leiden_Hivep3_dropout&#39; as categorical
+... storing &#39;leiden_Klf3_dropout&#39; as categorical
+... storing &#39;leiden_Rest_dropout&#39; as categorical
+... storing &#39;leiden_Klf15_dropout&#39; as categorical
+... storing &#39;leiden_Maz_dropout&#39; as categorical
+... storing &#39;leiden_Zbtb7a_dropout&#39; as categorical
+... storing &#39;leiden_Ovol2_dropout&#39; as categorical
+... storing &#39;leiden_Klf10_dropout&#39; as categorical
+... storing &#39;leiden_Zfp384_dropout&#39; as categorical
+... storing &#39;leiden_Zbtb7c_dropout&#39; as categorical
+... storing &#39;leiden_Mbtps2_dropout&#39; as categorical
+... storing &#39;leiden_Bcl11b_dropout&#39; as categorical
+... storing &#39;leiden_Gli2_dropout&#39; as categorical
+... storing &#39;leiden_Zfp219_dropout&#39; as categorical
+... storing &#39;leiden_Klf13_dropout&#39; as categorical
+... storing &#39;leiden_Glis3_dropout&#39; as categorical
+... storing &#39;leiden_Klf2_dropout&#39; as categorical
+... storing &#39;leiden_Ctcfl_dropout&#39; as categorical
+... storing &#39;leiden_Ybx2_dropout&#39; as categorical
+... storing &#39;leiden_Ybx1_dropout&#39; as categorical
+... storing &#39;leiden_Csda_dropout&#39; as categorical
+... storing &#39;leiden_Rbpj_dropout&#39; as categorical
+... storing &#39;leiden_Rbpsuhrs3_dropout&#39; as categorical
+... storing &#39;leiden_Onecut1_dropout&#39; as categorical
+... storing &#39;leiden_Onecut2_dropout&#39; as categorical
+... storing &#39;leiden_Ets2_dropout&#39; as categorical
+... storing &#39;leiden_Foxn3_dropout&#39; as categorical
+... storing &#39;leiden_Foxn2_dropout&#39; as categorical
+... storing &#39;leiden_Foxa3_dropout&#39; as categorical
+... storing &#39;leiden_Foxl2_dropout&#39; as categorical
+... storing &#39;leiden_Foxd4_dropout&#39; as categorical
+... storing &#39;leiden_ENSMUSG00000090020_dropout&#39; as categorical
+... storing &#39;leiden_Gcm2_dropout&#39; as categorical
+... storing &#39;leiden_Ubp1_dropout&#39; as categorical
+... storing &#39;leiden_Six5_dropout&#39; as categorical
+... storing &#39;leiden_Nkx62_dropout&#39; as categorical
+... storing &#39;leiden_Prrxl1_dropout&#39; as categorical
+... storing &#39;leiden_Pou4f2_dropout&#39; as categorical
+... storing &#39;leiden_Pou4f1_dropout&#39; as categorical
+... storing &#39;leiden_Mef2d_dropout&#39; as categorical
+... storing &#39;leiden_Smarcc1_dropout&#39; as categorical
+... storing &#39;leiden_Nr1d1_dropout&#39; as categorical
+... storing &#39;leiden_Nr1d2_dropout&#39; as categorical
+... storing &#39;leiden_Thrb_dropout&#39; as categorical
+... storing &#39;leiden_Nr4a1_dropout&#39; as categorical
+... storing &#39;leiden_Nr5a1_dropout&#39; as categorical
+... storing &#39;leiden_Pgr_dropout&#39; as categorical
+... storing &#39;leiden_Nr1h4_dropout&#39; as categorical
+... storing &#39;leiden_Nr1h5_dropout&#39; as categorical
+... storing &#39;leiden_Thra_dropout&#39; as categorical
+... storing &#39;leiden_Trp63_dropout&#39; as categorical
+... storing &#39;leiden_Pax8_dropout&#39; as categorical
+... storing &#39;leiden_Pax1_dropout&#39; as categorical
+... storing &#39;leiden_Relb_dropout&#39; as categorical
+... storing &#39;leiden_Nfatc4_dropout&#39; as categorical
+... storing &#39;leiden_Runx3_dropout&#39; as categorical
+... storing &#39;leiden_Nfib_dropout&#39; as categorical
+... storing &#39;leiden_Smad4_dropout&#39; as categorical
+... storing &#39;leiden_Smad2_dropout&#39; as categorical
+... storing &#39;leiden_Nfia_dropout&#39; as categorical
+... storing &#39;leiden_Smad1_dropout&#39; as categorical
+... storing &#39;leiden_Tbx15_dropout&#39; as categorical
+... storing &#39;leiden_Tbx22_dropout&#39; as categorical
+... storing &#39;leiden_Tbx18_dropout&#39; as categorical
+... storing &#39;leiden_Tead3_dropout&#39; as categorical
+... storing &#39;leiden_Tead4_dropout&#39; as categorical
+... storing &#39;leiden_Hif3a_dropout&#39; as categorical
+... storing &#39;leiden_Creb3_dropout&#39; as categorical
+... storing &#39;leiden_Nfe2l3_dropout&#39; as categorical
+... storing &#39;leiden_Wt1_dropout&#39; as categorical
+... storing &#39;leiden_E4f1_dropout&#39; as categorical
+... storing &#39;leiden_Klf16_dropout&#39; as categorical
+... storing &#39;leiden_Zfp42_dropout&#39; as categorical
+... storing &#39;leiden_Dmrta2_dropout&#39; as categorical
+... storing &#39;leiden_Foxm1_dropout&#39; as categorical
+... storing &#39;leiden_Mixl1_dropout&#39; as categorical
+... storing &#39;leiden_Mef2b_dropout&#39; as categorical
+... storing &#39;leiden_Smad5_dropout&#39; as categorical
+... storing &#39;leiden_Smad9_dropout&#39; as categorical
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">eykthyr.eykthyr</span> <span class="kn">import</span> <span class="n">pl</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e</span> <span class="o">=</span> <span class="n">load_anndata</span><span class="p">(</span><span class="s1">&#39;eykthyrtest2.h5ad&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/work/magroup/skrieger/newconda/envs/tangram3/lib/python3.8/site-packages/popari/util.py:500: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at  ../torch/csrc/utils/tensor_new.cpp:201.)
+  i = torch.LongTensor(indices)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2024/07/11 09:51:59]	 Reloading level 0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pl</span><span class="o">.</span><span class="n">prep_paga</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="s1">&#39;original_leiden&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">draw_graph</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">perturbed_X</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;original_leiden&#39;</span><span class="p">,</span> <span class="n">legend_loc</span><span class="o">=</span><span class="s1">&#39;on data&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/c79f7a3eceacf35710bff7b35eeb4bc41d84ad007449c72c9fde26b295d30a7e.png" src="../_images/c79f7a3eceacf35710bff7b35eeb4bc41d84ad007449c72c9fde26b295d30a7e.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pl</span><span class="o">.</span><span class="n">paga_spatial_simulation</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Msx1&#39;</span><span class="p">],</span> <span class="s1">&#39;original_leiden&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>16 genes were found in the adata. Note that Celloracle is intended to use around 1000-3000 genes, so the behavior with this number of genes may differ from what is expected.
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">UFuncTypeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">pl</span><span class="o">.</span><span class="n">paga_spatial_simulation</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Msx1&#39;</span><span class="p">],</span> <span class="s1">&#39;original_leiden&#39;</span><span class="p">)</span>
+
+<span class="nn">File /work/magroup/skrieger/DEcausation/eykthyr/eykthyr/plotting.py:18,</span> in <span class="ni">paga_spatial_simulation</span><span class="nt">(eykthyr, TFs, cluster_name)</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="k">def</span> <span class="nf">paga_spatial_simulation</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span>     <span class="n">eykthyr</span><span class="p">:</span> <span class="n">Eykthyr</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="n">TFs</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="n">cluster_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span><span class="w">     </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span><span class="sd">     &#39;&#39;&#39;</span>
+<span class="ne">---&gt; </span><span class="mi">18</span>     <span class="n">umap_spatial_simulation</span><span class="p">(</span><span class="n">TFs</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span>                             <span class="p">[</span><span class="n">eykthyr</span><span class="o">.</span><span class="n">perturbed_X</span><span class="p">],</span>
+<span class="g g-Whitespace">     </span><span class="mi">20</span>                             <span class="n">cluster_name</span> <span class="o">=</span> <span class="n">cluster_name</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">21</span>                             <span class="p">)</span>
+
+<span class="nn">File /work/magroup/skrieger/DEcausation/eykthyr/eykthyr/plotting.py:68,</span> in <span class="ni">umap_spatial_simulation</span><span class="nt">(TFs, datasets, n_grid, min_masses, scales, embeddings, n_neighbors, cluster_name, show_plots)</span>
+<span class="g g-Whitespace">     </span><span class="mi">62</span>         <span class="n">oracle</span><span class="o">.</span><span class="n">adata</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="s1">&#39;delta_X&#39;</span><span class="p">]</span> <span class="o">=</span>  <span class="n">oracle</span><span class="o">.</span><span class="n">adata</span><span class="o">.</span><span class="n">obsm</span><span class="p">[</span>
+<span class="g g-Whitespace">     </span><span class="mi">63</span>                                 <span class="sa">f</span><span class="s1">&#39;normalized_X_</span><span class="si">{</span><span class="n">TF</span><span class="si">}</span><span class="s1">_dropout&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">oracle</span><span class="o">.</span><span class="n">adata</span><span class="o">.</span><span class="n">obsm</span><span class="p">[</span><span class="s1">&#39;normalized_X&#39;</span><span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">64</span>         <span class="n">oracle</span><span class="o">.</span><span class="n">estimate_transition_prob</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">65</span>                         <span class="n">n_neighbors</span><span class="o">=</span><span class="n">n</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">66</span>                         <span class="n">sampled_fraction</span><span class="o">=</span><span class="mi">1</span>
+<span class="g g-Whitespace">     </span><span class="mi">67</span>                         <span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">68</span>         <span class="n">oracle</span><span class="o">.</span><span class="n">calculate_embedding_shift</span><span class="p">(</span><span class="n">sigma_corr</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">72</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">73</span>     <span class="k">for</span> <span class="n">j</span><span class="p">,</span><span class="n">oracles</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">oracless</span><span class="p">):</span>
+
+<span class="nn">File /work/magroup/skrieger/newconda/envs/tangram3/lib/python3.8/site-packages/celloracle/trajectory/modified_VelocytoLoom_class.py:433,</span> in <span class="ni">modified_VelocytoLoom.calculate_embedding_shift</span><span class="nt">(self, sigma_corr)</span>
+<span class="g g-Whitespace">    </span><span class="mi">431</span> <span class="n">unitary_vectors</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding</span><span class="o">.</span><span class="n">T</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">,</span> <span class="p">:]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding</span><span class="o">.</span><span class="n">T</span><span class="p">[:,</span> <span class="p">:,</span> <span class="kc">None</span><span class="p">]</span>  <span class="c1"># shape (2,ncells,ncells)</span>
+<span class="g g-Whitespace">    </span><span class="mi">432</span> <span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">errstate</span><span class="p">(</span><span class="n">divide</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">invalid</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">433</span>     <span class="n">unitary_vectors</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">unitary_vectors</span><span class="p">,</span> <span class="nb">ord</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># divide by L2</span>
+<span class="g g-Whitespace">    </span><span class="mi">434</span>     <span class="n">np</span><span class="o">.</span><span class="n">fill_diagonal</span><span class="p">(</span><span class="n">unitary_vectors</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># fix nans</span>
+<span class="g g-Whitespace">    </span><span class="mi">435</span>     <span class="n">np</span><span class="o">.</span><span class="n">fill_diagonal</span><span class="p">(</span><span class="n">unitary_vectors</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="ne">UFuncTypeError</span>: Cannot cast ufunc &#39;true_divide&#39; output from dtype(&#39;float64&#39;) to dtype(&#39;int64&#39;) with casting rule &#39;same_kind&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">slidetags</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting">Plotting</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-atac-rna">spatial ATAC-RNA</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Spencer Krieger
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, Spencer Krieger.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

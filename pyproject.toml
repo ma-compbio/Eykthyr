@@ -1,0 +1,67 @@
+[build-system]
+requires = ["hatchling", "numpy>=1.20.1"]
+build-backend = "hatchling.build"
+
+[project]
+name = "eykthyr"
+dynamic = ["version"]
+
+authors = [
+  { name="Spencer Krieger", email="spencer.krieger@gmail.com" },
+]
+dependencies = [
+    "numpy>=1.20.1",
+    "scipy>=1.7.1",
+    "scikit-learn>=0.24.1",
+    "pandas>=1.5.2",
+    "anndata>=0.9.1",
+    "torch>=1.13.0",
+    "tqdm>=4.60.0",
+    "umap-learn>=0.5.1",
+    "scanpy>=1.9.2",
+    "seaborn>=0.11.1",
+    "matplotlib>=3.7.0",
+    "squidpy>=1.2.3",
+    "louvain>=0.8.0",
+    "popari>=0.0.72",
+    "cython>=3.0.11",
+]
+description = "Eykthyr: Revealing transcriptional regulators of spatial gene programs"
+readme = "README.md"
+license = { file="LICENSE" }
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[tool.hatch.version]
+path = "eykthyr/__about__.py"
+
+[project.urls]
+"Homepage" = "https://github.com/gkrieg/eykthyr"
+"Bug Tracker" = "https://github.com/gkrieg/eykthyr/issues"
+
+[project.scripts]
+eykthyr = "eykthyr:main"
+
+[project.optional-dependencies]
+simulation = [
+  "jupyterlab",
+  "ipycanvas",
+]
+with_velocyto = [
+  "velocyto>=0.17.17"
+]
+[tool]
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "eykthyr/*.py",
+]
+
+[tool.hatch.build.targets.wheel]
+include = [
+  "eykthyr/*.py",
+]

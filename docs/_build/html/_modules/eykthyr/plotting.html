@@ -1,0 +1,537 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>eykthyr.plotting &#8212; Eykthyr 0.0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=e645c8fa"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/eykthyr/plotting';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Eykthyr 0.0.1 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../usage.html">Usage</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart.html">Quickstart</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../api.html">API</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../api/eykthyr.embedding.Embedding.html">eykthyr.embedding.Embedding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/eykthyr.plotting.paga_spatial_simulation.html">eykthyr.plotting.paga_spatial_simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/eykthyr.plotting.prep_paga.html">eykthyr.plotting.prep_paga</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/alam-shahul/popari" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for eykthyr.plotting</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Union</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">scanpy</span> <span class="k">as</span> <span class="nn">sc</span>
+
+<span class="kn">from</span> <span class="nn">.embedding</span> <span class="kn">import</span> <span class="n">Embedding</span>
+<span class="kn">from</span> <span class="nn">.eykthyr</span> <span class="kn">import</span> <span class="n">Eykthyr</span>
+
+
+<div class="viewcode-block" id="paga_spatial_simulation">
+<a class="viewcode-back" href="../../api/eykthyr.plotting.paga_spatial_simulation.html#eykthyr.plotting.paga_spatial_simulation">[docs]</a>
+<span class="k">def</span> <span class="nf">paga_spatial_simulation</span><span class="p">(</span>
+    <span class="n">eykthyr</span><span class="p">:</span> <span class="n">Eykthyr</span><span class="p">,</span>
+    <span class="n">TFs</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+    <span class="n">cluster_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;&quot;&quot;&quot;</span>
+    <span class="n">umap_spatial_simulation</span><span class="p">(</span>
+        <span class="n">eykthyr</span><span class="p">,</span>
+        <span class="n">TFs</span><span class="p">,</span>
+        <span class="p">[</span><span class="n">eykthyr</span><span class="o">.</span><span class="n">perturbed_X</span><span class="p">],</span>
+        <span class="n">cluster_name</span><span class="o">=</span><span class="n">cluster_name</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="prep_paga">
+<a class="viewcode-back" href="../../api/eykthyr.plotting.prep_paga.html#eykthyr.plotting.prep_paga">[docs]</a>
+<span class="k">def</span> <span class="nf">prep_paga</span><span class="p">(</span>
+    <span class="n">eykthyr</span><span class="p">:</span> <span class="n">Eykthyr</span><span class="p">,</span>
+    <span class="n">groups</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="n">sc</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">neighbors</span><span class="p">(</span><span class="n">eykthyr</span><span class="o">.</span><span class="n">perturbed_X</span><span class="p">,</span> <span class="n">use_rep</span><span class="o">=</span><span class="s2">&quot;normalized_X&quot;</span><span class="p">)</span>
+    <span class="n">sc</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">umap</span><span class="p">(</span><span class="n">eykthyr</span><span class="o">.</span><span class="n">perturbed_X</span><span class="p">)</span>
+    <span class="n">sc</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">paga</span><span class="p">(</span><span class="n">eykthyr</span><span class="o">.</span><span class="n">perturbed_X</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">)</span>
+    <span class="n">sc</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">draw_graph</span><span class="p">(</span><span class="n">eykthyr</span><span class="o">.</span><span class="n">perturbed_X</span><span class="p">,</span> <span class="n">init_pos</span><span class="o">=</span><span class="s2">&quot;X_umap&quot;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
+    <span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">draw_graph</span><span class="p">(</span><span class="n">eykthyr</span><span class="o">.</span><span class="n">perturbed_X</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">legend_loc</span><span class="o">=</span><span class="s2">&quot;on data&quot;</span><span class="p">)</span></div>
+
+
+
+<span class="k">def</span> <span class="nf">umap_spatial_simulation</span><span class="p">(</span>
+    <span class="n">eykthyr</span><span class="p">,</span>
+    <span class="n">TFs</span><span class="p">,</span>
+    <span class="n">datasets</span><span class="p">,</span>
+    <span class="n">n_grid</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span>
+    <span class="n">min_masses</span><span class="o">=</span><span class="p">[</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.007</span><span class="p">],</span>
+    <span class="n">scales</span><span class="o">=</span><span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">],</span>
+    <span class="n">embeddings</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;spatial&quot;</span><span class="p">,</span> <span class="s2">&quot;X_draw_graph_fr&quot;</span><span class="p">],</span>
+    <span class="n">n_neighbors</span><span class="o">=</span><span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">],</span>
+    <span class="n">cluster_name</span><span class="o">=</span><span class="s2">&quot;original_leiden&quot;</span><span class="p">,</span>
+    <span class="n">show_plots</span><span class="o">=</span><span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">],</span>
+<span class="p">):</span>
+
+    <span class="n">eykthyr</span><span class="o">.</span><span class="n">RNA</span><span class="o">.</span><span class="n">X</span> <span class="o">=</span> <span class="n">eykthyr</span><span class="o">.</span><span class="n">RNA</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;double&quot;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">TF</span> <span class="ow">in</span> <span class="n">TFs</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">embedding</span> <span class="ow">in</span> <span class="n">embeddings</span><span class="p">:</span>
+            <span class="n">eykthyr</span><span class="o">.</span><span class="n">embeddings</span><span class="p">[</span><span class="n">embedding</span><span class="p">]</span> <span class="o">=</span> <span class="n">Embedding</span><span class="p">()</span>
+        <span class="n">eykthyr</span><span class="o">.</span><span class="n">estimate_transition_probs</span><span class="p">(</span>
+            <span class="n">embedding_names</span><span class="o">=</span><span class="n">embeddings</span><span class="p">,</span>
+            <span class="n">tf_name</span><span class="o">=</span><span class="n">TF</span><span class="p">,</span>
+            <span class="n">n_neighbors</span><span class="o">=</span><span class="n">n_neighbors</span><span class="p">,</span>
+            <span class="n">sampled_fraction</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">eykthyr</span><span class="o">.</span><span class="n">calculate_embedding_shifts</span><span class="p">(</span><span class="n">embedding_names</span><span class="o">=</span><span class="n">embeddings</span><span class="p">,</span> <span class="n">sigma_corr</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+        <span class="n">eykthyr</span><span class="o">.</span><span class="n">calculate_p_mass</span><span class="p">(</span>
+            <span class="n">embeddings</span><span class="p">,</span>
+            <span class="n">smooth</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+            <span class="n">n_grid</span><span class="o">=</span><span class="n">n_grid</span><span class="p">,</span>
+            <span class="n">n_neighbors</span><span class="o">=</span><span class="n">n_neighbors</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">eykthyr</span><span class="o">.</span><span class="n">calculate_mass_filter</span><span class="p">(</span><span class="n">embeddings</span><span class="p">,</span> <span class="n">min_mass</span><span class="o">=</span><span class="n">min_masses</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="c1"># eykthyr.suggest_mass_thresholds(n_suggestion=12)</span>
+        <span class="k">for</span> <span class="n">embedding</span><span class="p">,</span> <span class="n">show_plot</span><span class="p">,</span> <span class="n">scale</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">embeddings</span><span class="p">,</span> <span class="n">show_plots</span><span class="p">,</span> <span class="n">scales</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">show_plot</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">13</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+
+                <span class="n">eykthyr</span><span class="o">.</span><span class="n">plot_simulation_flow_on_grid</span><span class="p">(</span><span class="n">embedding</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Simulated cell identity shift vector: </span><span class="si">{</span><span class="n">TF</span><span class="si">}</span><span class="s2"> KO&quot;</span><span class="p">)</span>
+
+                <span class="c1"># Show quiver plot that was calculated with randomized graph.</span>
+                <span class="n">eykthyr</span><span class="o">.</span><span class="n">plot_simulation_flow_random_on_grid</span><span class="p">(</span>
+                    <span class="n">embedding</span><span class="p">,</span>
+                    <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span>
+                    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                <span class="p">)</span>
+                <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Randomized simulation vector&quot;</span><span class="p">)</span>
+
+                <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+        <span class="n">fig2</span><span class="p">,</span> <span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">embeddings</span><span class="p">),</span> <span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">embedding</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">embeddings</span><span class="p">):</span>
+
+            <span class="n">eykthyr</span><span class="o">.</span><span class="n">plot_cluster_whole</span><span class="p">(</span><span class="n">embedding</span><span class="p">,</span> <span class="n">cluster_name</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+            <span class="n">eykthyr</span><span class="o">.</span><span class="n">plot_simulation_flow_on_grid</span><span class="p">(</span>
+                <span class="n">embedding</span><span class="p">,</span>
+                <span class="n">scale</span><span class="o">=</span><span class="n">scales</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                <span class="n">show_background</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">ax2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Simulated cell identity shift </span><span class="si">{</span><span class="n">embedding</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">TF</span><span class="si">}</span><span class="s2"> KO&quot;</span><span class="p">)</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">def old_umap_spatial_simulation(TFs,</span>
+<span class="sd">    datasets,</span>
+<span class="sd">    n_grid=40,</span>
+<span class="sd">    min_masses=[.27, 0.007],</span>
+<span class="sd">    scales=[30,1.2],</span>
+<span class="sd">    embeddings=[&#39;spatial&#39;,&#39;X_draw_graph_fa&#39;],</span>
+<span class="sd">    n_neighbors=[20,25],</span>
+<span class="sd">    cluster_name=&#39;original_leiden&#39;,</span>
+<span class="sd">    show_plots=[True, True]</span>
+<span class="sd">):</span>
+
+<span class="sd">    for TF in TFs:</span>
+<span class="sd">        oracless = []</span>
+<span class="sd">        for embedding, n in zip(embeddings, n_neighbors):</span>
+<span class="sd">            oracles = []</span>
+<span class="sd">            for d in datasets:</span>
+
+<span class="sd">                oracle = co.Oracle()</span>
+<span class="sd">                oracle.import_anndata_as_raw_count(adata=d,</span>
+<span class="sd">                                   cluster_column_name=cluster_name,</span>
+<span class="sd">                                   embedding_name=embedding)</span>
+<span class="sd">                oracles.append(oracle)</span>
+<span class="sd">            oracless.append(oracles)</span>
+
+
+<span class="sd">            for oracle in oracles:</span>
+<span class="sd">                oracle.adata.X = oracle.adata.X.astype(&#39;double&#39;)</span>
+<span class="sd">                oracle.adata.layers[&#39;imputed_count&#39;] = oracle.adata.obsm[f&#39;normalized_X_{TF}_dropout&#39;].astype(&#39;double&#39;)</span>
+<span class="sd">                oracle.adata.layers[&#39;delta_X&#39;] =  oracle.adata.obsm[</span>
+<span class="sd">                                        f&#39;normalized_X_{TF}_dropout&#39;] - oracle.adata.obsm[&#39;normalized_X&#39;]</span>
+<span class="sd">                oracle.estimate_transition_prob(</span>
+<span class="sd">                                n_neighbors=n,</span>
+<span class="sd">                                sampled_fraction=1</span>
+<span class="sd">                                )</span>
+<span class="sd">                oracle.calculate_embedding_shift(sigma_corr=0.05)</span>
+
+
+
+<span class="sd">        for i in range(1):</span>
+<span class="sd">            for j,oracles in enumerate(oracless):</span>
+
+
+<span class="sd">                goi = TF</span>
+<span class="sd">                # Show quiver plot</span>
+
+<span class="sd">                oracles[i].calculate_p_mass(smooth=0.8, n_grid=n_grid, n_neighbors=n_neighbors[j])</span>
+<span class="sd">#                 oracles[i].suggest_mass_thresholds(n_suggestion=12)</span>
+<span class="sd">                oracles[i].calculate_mass_filter(min_mass=min_masses[j], plot=False)</span>
+<span class="sd">                if show_plots[j] == True:</span>
+<span class="sd">                    fig, ax = plt.subplots(1, 2,  figsize=[13, 6])</span>
+
+<span class="sd">                    oracles[i].plot_simulation_flow_on_grid(scale=scales[j], ax=ax[0])</span>
+<span class="sd">                    ax[0].set_title(f&quot;Simulated cell identity shift vector: {goi} KO&quot;)</span>
+
+<span class="sd">                    # Show quiver plot that was calculated with randomized graph.</span>
+<span class="sd">                    oracles[i].plot_simulation_flow_random_on_grid(scale=scales[j], ax=ax[1])</span>
+<span class="sd">                    ax[1].set_title(f&quot;Randomized simulation vector&quot;)</span>
+
+<span class="sd">                    plt.show()</span>
+
+<span class="sd">        # Plot vector field with cell cluster</span>
+<span class="sd">            fig2, ax2 = plt.subplots(1,len(embeddings),figsize=[16, 6])</span>
+<span class="sd">            for oracles, embedding, j in zip(oracless, embeddings, range(len(oracless))):</span>
+
+<span class="sd">                oracles[i].plot_cluster_whole(ax=ax2[j], s=5)</span>
+<span class="sd">                oracles[i].plot_simulation_flow_on_grid(scale=scales[j], ax=ax2[j], show_background=False)</span>
+<span class="sd">                ax2[j].set_title(f&quot;Simulated cell identity shift {embedding}: {goi} KO&quot;)</span>
+
+<span class="sd">            plt.show()</span>
+
+<span class="sd">def development_simulation():</span>
+
+<span class="sd">    from celloracle.applications import Gradient_calculator</span>
+<span class="sd">    from celloracle.applications import Oracle_development_module</span>
+
+
+<span class="sd">    return</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Spencer Krieger
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, Spencer Krieger.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
