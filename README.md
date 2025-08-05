@@ -21,6 +21,16 @@ While not required, any additional metadata (e.g., cell types, batch labels) can
 Chromatin accessibility data:
 Chromatin accessibility data can be in the form of a fragments file, where each fragment corresponds to a cell, using the same cell ids as in the gene expression data.
 
+## System requirements
+
+The package was tested on Linux operating systems. Theoretically any OS that can run Python 3.10 should be compatible, however extensive testing has not yet occurred.
+
+A GPU is essentially required for running Popari, which is required for running Eykthyr.
+
+Expected installation time is around 10 minutes.
+
+Expected runtime varies by dataset, but should take less than an hour including running plotting tools.
+
 ## Installation
 
 ### Step 1: Create a Conda Environment
