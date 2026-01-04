@@ -41,7 +41,7 @@ Before installing any Python packages, we strongly recommend using Anaconda (ple
 
 After creating the environment, activate it using:
 
-conda activate eykthyr
+`conda activate eykthyr`
 
 ### Step 2: Install Dependencies
 
@@ -49,21 +49,20 @@ Install PyTorch with CUDA (optional)
 
 If you have an NVIDIA GPU and want to use CUDA for acceleration, install PyTorch with the desired CUDA version. For example, to install PyTorch 2.1.0 with CUDA 11.8, run:
 
-conda install pytorch==2.1.0 cudatoolkit=11.8 -c pytorch
+`conda install pytorch==2.1.0 cudatoolkit=11.8 -c pytorch`
 
 Note: For a CPU-only installation, you can omit the cudatoolkit argument.
 
 You can also use light-the-torch for an easier install of pytorch:
 
-pip install light-the-torch
-
-ltt install --pytorch-computation-backend=cu121 torch torchvision torchaudio
+`pip install light-the-torch
+ltt install --pytorch-computation-backend=cu121 torch torchvision torchaudio`
 
 ### Step 3: Install EYKTHYR
 
 EYKTHYR is available as a pypi package, and can be installed using:
 
-pip install eykthyr[with-velocyto,simulation]
+`pip install eykthyr[with-velocyto,simulation]`
 
 ## Running Code
 
