@@ -37,7 +37,7 @@ Expected runtime varies by dataset, but should take less than an hour including 
 
 Before installing any Python packages, we strongly recommend using Anaconda (please refer to the Anaconda webpage for conda installation instructions) to create a python 3.10 environment using the following command:
 
-conda create --name eykthyr python=3.11
+conda create --name eykthyr python=3.12
 
 After creating the environment, activate it using:
 
@@ -53,11 +53,17 @@ conda install pytorch==2.1.0 cudatoolkit=11.8 -c pytorch
 
 Note: For a CPU-only installation, you can omit the cudatoolkit argument.
 
+You can also use light-the-torch for an easier install of pytorch:
+
+pip install light-the-torch
+
+ltt install --pytorch-computation-backend=cu121 torch torchvision torchaudio
+
 ### Step 3: Install EYKTHYR
 
 EYKTHYR is available as a pypi package, and can be installed using:
 
-pip install eykthyr
+pip install eykthyr[with-velocyto,simulation]
 
 ## Running Code
 
