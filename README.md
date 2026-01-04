@@ -55,8 +55,8 @@ Note: For a CPU-only installation, you can omit the cudatoolkit argument.
 
 You can also use light-the-torch for an easier install of pytorch:
 
-`pip install light-the-torch
-ltt install --pytorch-computation-backend=cu121 torch torchvision torchaudio`
+`pip install light-the-torch`
+`ltt install --pytorch-computation-backend=cu121 torch torchvision torchaudio`
 
 ### Step 3: Install EYKTHYR
 
