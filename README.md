@@ -37,7 +37,7 @@ Expected runtime varies by dataset, but should take less than an hour including 
 
 Before installing any Python packages, we strongly recommend using Anaconda (please refer to the Anaconda webpage for conda installation instructions) to create a python 3.10 environment using the following command:
 
-conda create --name eykthyr python=3.12
+`conda create --name eykthyr python=3.12`
 
 After creating the environment, activate it using:
 
