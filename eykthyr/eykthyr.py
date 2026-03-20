@@ -8,15 +8,20 @@ import numpy as np
 import pandas as pd
 import scanpy as sc
 import torch
-from popari import pl, tl
+from popari.train import TrainParameters, Trainer
+from popari import tl
+import anndata as ad
 from popari.components import PopariDataset
 from popari.io import save_anndata
 from popari.model import Popari, load_trained_model
 from scipy.sparse import spmatrix
-
+import scipy.sparse as sp
 from .embedding import Embedding
 from .modified_VelocytoLoom_class import modified_VelocytoLoom
 from .util import get_metagene_edges_window, run_all_perturbations
+
+
+
 
 
 class Eykthyr(modified_VelocytoLoom):
@@ -29,7 +34,7 @@ class Eykthyr(modified_VelocytoLoom):
         edge_weights: Optional[List[sc.AnnData]] = None,
         perturbed_X: Optional[List[sc.AnnData]] = None,
         names: Optional[List[str]] = ["eykthyr_dataset"],
-        cluster_annotation: Sequence[str] = [],
+        cluster_annotation: Optional[Sequence[str]] = None,
         num_metagenes: int = -1,
         embeddings: Optional[List[Dict[str, Embedding]]] = [],
     ):
@@ -43,7 +48,14 @@ class Eykthyr(modified_VelocytoLoom):
         self.datasetnames = names
         self.rna_preprocessed = False
 
-        self.cluster_annotation = cluster_annotation
+        if cluster_annotation is None:
+            self.cluster_annotation = []
+        else:
+            # convert numpy/pandas sequences safely to a plain python list
+            self.cluster_annotation = list(cluster_annotation)
+        # keep only strings (obs keys)
+        self.cluster_annotation = [x for x in self.cluster_annotation if isinstance(x, str)]
+
         self.num_metagenes = num_metagenes
         self.embeddings = embeddings
 
@@ -95,64 +107,175 @@ class Eykthyr(modified_VelocytoLoom):
         self,
         K: int = 16,
         lambda_Sigma_x_inv: float = 1e-4,
-        torch_context: dict = dict(device="cuda:0", dtype=torch.float64),
+        lambda_Sigma_bar: float = 1e-4,
+        torch_context: dict = None,
         initial_iterations: int = 10,
         spatial_iterations: int = 200,
+        spatial_affinity_mode: str = "differential lookup",
+        save_dir: str = "./popari_runs",
+        run_name: str = "popari_results",
+        # ---- hierarchical popari options ----
+        hierarchical_levels: Optional[int] = None,          
+        downsampling_method: str = "partition",             
+        superresolution_lr: float = 1e-1,                   
     ):
-        """Computes metagenes using the Popari model with specified initial and
-        spatial iterations.
-
-        Parameters:
-            K (int): Number of metagenes to compute.
-            lambda_Sigma_x_inv (float): Regularization parameter for the Popari model.
-            torch_context (dict): Device and data type for torch operations.
-            initial_iterations (int): Number of initial iterations without spatial affinities.
-            spatial_iterations (int): Number of iterations with spatial affinities.
-
-        Returns:
-            None
-
+        """
+        Popari (new API) metagene computation via:
+          1) Build a merged .h5ad with obs['batch'] and uns['adjacency_matrix'] (dict keyed by replicate)
+          2) Popari(dataset_path=...)
+          3) Trainer.train()
+    
+        Requires these module-level imports in eykthyr.py:
+          from popari.components import PopariDataset
+          from popari.model import Popari
+          from popari.train import TrainParameters, Trainer
         """
         if not self.rna_preprocessed:
             print(
-                "RNA appears to not be preprocessed. Please preprocess RNA using Eykthyr.preprocess_rna() or set Eykthyr.rna_preprocessed = True",
+                "RNA appears to not be preprocessed. Please preprocess RNA using "
+                "Eykthyr.preprocess_rna() or set Eykthyr.rna_preprocessed = True"
             )
             return
 
+        if not isinstance(self.datasetnames, list) or len(self.datasetnames) == 0:
+            # fallback: auto-generate names if missing
+            self.datasetnames = [f"rep{i}" for i in range(len(self.RNA))]
+        
+        if len(self.datasetnames) != len(self.RNA):
+            raise ValueError(
+                f"datasetnames length ({len(self.datasetnames)}) must match RNA length ({len(self.RNA)}). "
+                "Otherwise zip(self.RNA, self.datasetnames) will drop replicates."
+            )
+            
         self.num_metagenes = K
-        popari_datasets = []
+
+    
+        # default CUDA context (matches Popari docs style; helps avoid simplex assert)
+        if torch_context is None:
+            torch_context = {"device": "cuda:0", "dtype": torch.float64}
+    
+        save_dir_p = Path(save_dir)
+        save_dir_p.mkdir(parents=True, exist_ok=True)
+    
+        dataset_path = save_dir_p / "preprocessed_dataset.h5ad"
+        results_path = save_dir_p / f"{run_name}.h5ad"
+    
+        prepared = []
+        adjacency_by_rep = {}
+    
         for RNA, name in zip(self.RNA, self.datasetnames):
-            popari_d = PopariDataset(RNA, name)
-            popari_d.compute_spatial_neighbors()
-            RNA.obs["adjacency_list"] = popari_d.obs["adjacency_list"]
-            RNA.obsp["adjacency_matrix"] = popari_d.obsp["adjacency_matrix"]
-            if isinstance(RNA.X, spmatrix):
-                RNA.X = RNA.X.todense()
-            RNA.X = np.asarray(RNA.X)
-            altRNA = RNA.copy()
-            if "X_diffmap" in altRNA.obsm.keys():
-                del altRNA.obsm["X_diffmap"]
-            if "X_pca" in altRNA.obsm.keys():
-                del altRNA.obsm["X_pca"]
-            popari_datasets.append(altRNA)
-        print(popari_datasets)
-        self.popari = Popari(
-            K=K,
-            replicate_names=self.datasetnames,
-            datasets=popari_datasets,
-            lambda_Sigma_x_inv=lambda_Sigma_x_inv,
-            torch_context=torch_context,
-            initial_context=torch_context,
-            verbose=0,
+            rep = str(name)
+            a = RNA.copy()
+    
+            # ensure X is sparse CSR
+            if sp.issparse(a.X):
+                a.X = a.X.tocsr()
+            else:
+                a.X = sp.csr_matrix(a.X)
+    
+            # require spatial coords
+            if "spatial" not in a.obsm:
+                raise KeyError(f"Replicate '{rep}' missing obsm['spatial'].")
+    
+            # mark replicate membership for Popari
+            a.obs["batch"] = rep
+    
+            # compute spatial neighbors via PopariDataset
+            ds = PopariDataset(a, rep)
+            ds.compute_spatial_neighbors()
+    
+            if "adjacency_matrix" not in ds.obsp:
+                raise KeyError(f"PopariDataset '{rep}' did not produce obsp['adjacency_matrix'].")
+    
+            # store adjacency for Popari loader (expects merged.uns['adjacency_matrix'][rep])
+            adjacency_by_rep[rep] = ds.obsp["adjacency_matrix"].tocsr()
+    
+            # remove fields that can complicate concatenation; Popari will initialize internally
+            for k in ["X_umap", "X_pca", "X_diffmap"]:
+                if k in a.obsm:
+                    del a.obsm[k]
+            if "PCs" in a.varm:
+                del a.varm["PCs"]
+    
+            # do NOT keep adjacency artifacts in the AnnData during concat
+            if "adjacency_matrix" in a.obsp:
+                del a.obsp["adjacency_matrix"]
+            if "adjacency_list" in a.obsm:
+                del a.obsm["adjacency_list"]
+            if "adjacency_list" in a.obs:
+                del a.obs["adjacency_list"]
+    
+            # remove scanpy neighbor graphs if present
+            for k in ["distances", "connectivities"]:
+                if k in a.obsp:
+                    del a.obsp[k]
+    
+            # layers can complicate merging; Popari uses X
+            if hasattr(a, "layers") and len(a.layers.keys()) > 0:
+                for lk in list(a.layers.keys()):
+                    del a.layers[lk]
+    
+            prepared.append(a)
+    
+        # merge replicates; keep outer join on genes
+        merged = ad.concat(
+            prepared,
+            join="outer",
+            merge="unique",
+            uns_merge="unique",
+            index_unique="-",
         )
+    
+        if "batch" not in merged.obs:
+            raise KeyError("Merged AnnData missing obs['batch']; Popari multi-replicate requires this.")
 
-        for iteration in range(initial_iterations):
-            self.popari.estimate_parameters(update_spatial_affinities=False)
-            self.popari.estimate_weights(use_neighbors=False)
+        merged.uns["num_metagenes"] = K
+        merged.uns["adjacency_matrix"] = adjacency_by_rep
+        merged.write_h5ad(dataset_path)
+    
+        # instantiate Popari from dataset_path
+        model_parameters = {
+            "K": K,
+            "dataset_path": dataset_path,
+            "lambda_Sigma_x_inv": lambda_Sigma_x_inv,
+            "lambda_Sigma_bar": lambda_Sigma_bar,
+            "initial_context": torch_context,
+            "torch_context": torch_context,
+            "verbose": 0,
+            "spatial_affinity_mode": spatial_affinity_mode,
+        }
 
-        for iteration in range(spatial_iterations):
-            self.popari.estimate_parameters()
-            self.popari.estimate_weights()
+        # Enable hierarchical mode if requested
+        use_hier = (hierarchical_levels is not None) and (int(hierarchical_levels) > 1)
+        if use_hier:
+            model_parameters.update(
+                {
+                    "downsampling_method": downsampling_method,
+                    "hierarchical_levels": int(hierarchical_levels),
+                    "superresolution_lr": float(superresolution_lr),
+                }
+            )
+
+        self.popari = Popari(**model_parameters)
+    
+        # train
+        train_parameters = TrainParameters(
+            nmf_iterations=initial_iterations,
+            iterations=spatial_iterations,
+            savepath=results_path,
+        )
+        trainer = Trainer(parameters=train_parameters, model=self.popari, verbose=1)
+        trainer.train()
+
+        #trainer.superresolve(n_epochs=10000, tol=1e-6)
+    
+        self.popari_dataset_path = str(dataset_path)
+        self.popari_results_path = str(results_path)
+
+        self.popari.save_results(str(results_path))
+
+    
+
 
     def analyze_metagenes(
         self,
@@ -176,6 +299,7 @@ class Eykthyr(modified_VelocytoLoom):
         tl.leiden(
             self.popari,
             use_rep="normalized_X",
+            joint=True,
             target_clusters=num_leiden_clusters,
         )
 
@@ -388,21 +512,9 @@ class Eykthyr(modified_VelocytoLoom):
                 )
             self.TF.append(tf_adata)
 
-    def compute_TF_metagene_weights(
-        self,
-        num_hops: int = 2,
-    ):
-        """Computes the edge weights between transcription factors and metagenes
-        over spatial neighborhoods.
-
-        Parameters:
-            num_hops (int): Number of spatial hops for computing metagene edges in the regulatory network.
-
-        Returns:
-            None
-
-        """
-
+    def compute_TF_metagene_weights(self, num_hops: int = 2):
+        """Computes TF→metagene edge weights over spatial neighborhoods."""
+    
         if not self.popari or not self.TF:
             print(
                 "Popari needs to be run first, please run compute_metagenes().\n"
@@ -410,23 +522,40 @@ class Eykthyr(modified_VelocytoLoom):
                 "preprocessing ATAC-seq data and then run compute_TF_activity().",
             )
             return
-
+    
+        # If you load Popari from disk, num_metagenes may not be set on Eykthyr
+        if self.num_metagenes is None or self.num_metagenes <= 0:
+            K = getattr(self.popari, "K", None)
+            if K is None:
+                # fallback: set manually if your Popari object doesn't expose K
+                raise ValueError(
+                    f"num_metagenes must be > 0. Got {self.num_metagenes}. "
+                    "Set e.num_metagenes = <K> after loading Popari."
+                )
+            self.num_metagenes = int(K)
+    
         if len(self.TF) != len(self.popari.datasets):
-            print(
-                "Number of TF datasets must match the number of datasets in Popari.",
-            )
+            print("Number of TF datasets must match the number of datasets in Popari.")
             return
-
+    
+        if len(self.RNA) != len(self.popari.datasets):
+            print("Number of RNA datasets must match the number of datasets in Popari.")
+            return
+    
         self.edge_weights = []
-        for i, TF, popdata, RNA in zip(
-            range(len(self.TF)),
-            self.TF,
-            self.popari.datasets,
-            self.RNA,
-        ):
-            M_edges = []
+    
+        # iterate by index (clearer than zip(range(...), ...))
+        for i in range(len(self.popari.datasets)):
+            TF = self.TF[i]
+            popdata = self.popari.datasets[i]
+            RNA = self.RNA[i]
+    
+            # Popari obs_names look like "<barcode>-1-<rep>"; edges often keyed by "<barcode>-1"
+            pop_base = pd.Index(popdata.obs_names).str.replace(r"-\d+$", "", regex=True)
+    
+            M_edges: List[sc.AnnData] = []
+    
             for j in range(self.num_metagenes):
-                temp = []
                 edges = get_metagene_edges_window(
                     RNA,
                     TF,
@@ -434,14 +563,37 @@ class Eykthyr(modified_VelocytoLoom):
                     popdata,
                     num_hops=num_hops,
                 )
+    
                 Madata = sc.AnnData(edges)
-                Madata = Madata[popdata.obs_names, :]
+    
+                # safety check: ensure alignment is possible
+                missing = pop_base[~pop_base.isin(Madata.obs_names)]
+                if len(missing) > 0:
+                    raise KeyError(
+                        f"[rep {i}] {len(missing)} cells in popdata not found in edges output after "
+                        f"base-barcode stripping. Example missing: {missing[0]}. "
+                        f"Example pop obs: {popdata.obs_names[0]}, example edges obs: {Madata.obs_names[0]}"
+                    )
+    
+                # reorder to Popari order, then rename to match Popari exactly
+                Madata = Madata[pop_base, :].copy()
+                Madata.obs_names = popdata.obs_names
                 Madata.obsm["spatial"] = popdata.obsm["spatial"]
-                temp.append(Madata)
-                M_edges.append(temp)
-            self.edge_weights.append(M_edges[0][0])
+    
+                M_edges.append(Madata)
+    
+            if len(M_edges) == 0:
+                raise ValueError(
+                    f"[rep {i}] No metagene edge matrices were created. num_metagenes={self.num_metagenes}."
+                )
+    
+            # store the first as the main X, and the rest in layers
+            ew = M_edges[0].copy()
             for k in range(self.num_metagenes):
-                self.edge_weights[i].layers[f"M_{k}"] = M_edges[k][0].X
+                ew.layers[f"M_{k}"] = M_edges[k].X
+    
+            self.edge_weights.append(ew)
+
 
     def run_all_perturbations(
         self,
@@ -532,7 +684,15 @@ def load_anndata(dirpath: str) -> Eykthyr:
     if RNA_list:
         eykthyr.datasetnames = [R.uns.get("datasetname", "unknown") for R in RNA_list]
         eykthyr.rna_preprocessed = RNA_list[0].uns.get("rna_preprocessed", False)
-        eykthyr.cluster_annotation = RNA_list[0].uns.get("cluster_annotation", [])
+        ca = RNA_list[0].uns.get("cluster_annotation", [])
+        # normalize
+        if ca is None:
+            ca = []
+        elif not isinstance(ca, list):
+            ca = list(ca)
+        ca = [x for x in ca if isinstance(x, str)]
+        eykthyr.cluster_annotation = ca
+
         eykthyr.num_metagenes = RNA_list[0].uns.get("num_metagenes", -1)
 
     return eykthyr

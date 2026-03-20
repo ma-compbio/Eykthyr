@@ -97,7 +97,7 @@ def umap_spatial_simulation(
         n_neighbors=n_neighbors,
     )
     eykthyr.calculate_mass_filter(embeddings, min_mass=min_masses, plot=False)
-    # eykthyr.suggest_mass_thresholds(n_suggestion=12)
+    eykthyr.suggest_mass_thresholds(n_suggestion=12)
     for embedding, show_plot, scale in zip(embeddings, show_plots, scales):
         for dataset_num in range(len(eykthyr.perturbed_X)):
             if show_plot == True:
