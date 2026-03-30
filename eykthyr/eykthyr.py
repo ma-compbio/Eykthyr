@@ -21,6 +21,50 @@ from .util import get_metagene_edges_window, run_all_perturbations, get_gene_edg
 
 
 class Eykthyr(modified_VelocytoLoom):
+    """Main class for inferring TF regulatory influences on spatial gene programs.
+
+    Eykthyr integrates spatial transcriptomics (RNA-seq) with spatial
+    chromatin accessibility (ATAC-seq) to:
+
+    1. Learn low-dimensional *metagene* representations of spatial gene expression
+       via the Popari model.
+    2. Compute per-cell TF activity scores from ArchR peak/motif outputs.
+    3. Infer cell-level TF → metagene regulatory edge weights using spatial
+       sliding-window ridge regression.
+    4. Simulate TF knockout perturbations and project the resulting expression
+       shifts onto any 2-D embedding (spatial coordinates, UMAP, force-directed
+       graph, etc.).
+    5. Score each TF's developmental relevance by aligning its simulated flow
+       with a pseudotime gradient.
+
+    Typical usage::
+
+        e = Eykthyr()
+        e.set_RNA([adrna])
+        e.preprocess_rna(make_plots=True)
+        e.compute_metagenes()
+        e.analyze_metagenes()
+        e.compute_TF_activity(peak_tsvs=[...], archr_dataset_names=[...], motif_tsvs=[...])
+        e.compute_TF_metagene_weights()
+        e.run_all_perturbations()
+        e.save_anndata('results.h5ad')
+
+    Attributes:
+        RNA (list[AnnData]): Preprocessed spatial RNA AnnData objects, one per
+            dataset.  Cells must carry spatial coordinates in ``.obsm['spatial']``.
+        popari (Popari | None): Fitted Popari model holding the metagene factors
+            and spatial affinities.
+        TF (list[AnnData]): Per-dataset TF activity AnnData objects (cells × TFs).
+        edge_weights (list[AnnData]): Per-dataset AnnData objects storing
+            TF → metagene edge weights in layers ``M_0`` … ``M_{K-1}``.
+        perturbed_X (list[AnnData]): Simulated post-perturbation expression
+            datasets, one per dataset.
+        datasetnames (list[str]): Human-readable names for each dataset.
+        cluster_annotation (list[str]): ``obs`` keys to overlay on UMAPs.
+        num_metagenes (int): Number of metagenes ``K`` used by Popari.
+        embeddings (list[dict[str, Embedding]]): Per-dataset dicts mapping
+            embedding name → :class:`~eykthyr.embedding.Embedding` instance.
+    """
 
     def __init__(
         self,
@@ -34,6 +78,27 @@ class Eykthyr(modified_VelocytoLoom):
         num_metagenes: int = -1,
         embeddings: Optional[List[Dict[str, Embedding]]] = [],
     ):
+        """Initialize an Eykthyr instance.
+
+        All parameters are optional; a bare ``Eykthyr()`` is valid and you can
+        populate fields later via the ``set_*`` helper methods.
+
+        Parameters:
+            RNA (list[AnnData] | None): Spatial RNA datasets.
+            popari (Popari | None): Pre-trained Popari model.
+            TF (list[AnnData] | None): TF activity datasets.
+            edge_weights (list[AnnData] | None): GRN edge-weight datasets.
+            perturbed_X (list[AnnData] | None): Simulated perturbed datasets.
+            names (list[str]): Human-readable dataset names used internally by
+                Popari and for file naming in :meth:`save_anndata`.
+            cluster_annotation (Sequence[str]): ``obs`` keys to overlay when
+                calling :meth:`preprocess_rna` or :meth:`analyze_metagenes` with
+                ``make_plots=True``.
+            num_metagenes (int): Pre-set ``K``; inferred automatically by
+                :meth:`compute_metagenes`.
+            embeddings (list[dict[str, Embedding]] | None): Pre-populated
+                embedding containers; normally built by the plotting helpers.
+        """
 
         self.RNA = RNA if RNA is not None else []
         self.popari = popari
@@ -315,7 +380,31 @@ class Eykthyr(modified_VelocytoLoom):
         motif_tsvs: List[str],
         archr_suffix: str = "",
     ):
-        """Computes TF activity across multiple RNA datasets."""
+        """Compute per-cell TF activity scores from ArchR peak and motif outputs.
+
+        Reads the peak-by-cell and motif-by-peak TSV files produced by ArchR,
+        multiplies them to obtain a cell × TF activity matrix, normalizes each
+        TF to [0, 1] range, and stores the result in ``self.TF``.
+
+        Cells present in the RNA data but absent from the ArchR output are
+        imputed with the mean TF activity across observed cells.
+
+        Parameters:
+            peak_tsvs (list[str]): Paths to the peak-by-cell count TSV files
+                (one per dataset), as exported by ArchR's ``getMatrixFromProject``.
+            archr_dataset_names (list[str]): ArchR project/sample names
+                corresponding to each dataset.  Used to strip the sample-name
+                prefix that ArchR appends to barcode column names.
+            motif_tsvs (list[str]): Paths to the peak-by-motif binary TSV files
+                (one per dataset), as exported by ArchR's ``getMatches``.
+            archr_suffix (str): Optional suffix appended to each barcode after
+                stripping the sample-name prefix.  Leave empty when barcodes
+                already match ``RNA.obs_names``.
+
+        Returns:
+            None.  Populates ``self.TF`` with one AnnData per dataset, where
+            ``.X`` is a cells × TFs float array of normalized TF activity scores.
+        """
 
         if not isinstance(self.RNA, list):
             raise ValueError("self.RNA should be a list of AnnData objects.")
@@ -394,15 +483,45 @@ class Eykthyr(modified_VelocytoLoom):
         num_hops: int = 2,
         cluster_only: bool = False,
         cluster_id: str = None,
-        verbose: bool = False, 
-        num_within: int = 50,  
+        verbose: bool = False,
+        num_within: int = 50,
         num_total: int = 100,
         *,
-        target_type: str = "metagene",       
-        genes: Optional[List[str]] = None,   
+        target_type: str = "metagene",
+        genes: Optional[List[str]] = None,
     ):
-        """
-        Computes TF edge weights.
+        """Infer TF → metagene (or TF → gene) regulatory edge weights.
+
+        For each target (metagene index or gene name), a spatial sliding-window
+        ridge regression is run: for every cell, a neighborhood of spatially
+        proximal cells is assembled and a ridge regression of TF activity against
+        target expression is fitted.  The resulting regression coefficients become
+        that cell's TF edge weights for the target.  Results are stored in
+        ``self.edge_weights`` as an AnnData with layers ``M_0`` … ``M_{K-1}``.
+
+        Parameters:
+            num_hops (int): Spatial graph radius (in hops) used to build each
+                cell's regression neighborhood. Default ``2``.
+            cluster_only (bool): If ``True`` and ``cluster_id`` is set, restrict
+                neighbors to cells in the same cluster as the focal cell. Default
+                ``False``.
+            cluster_id (str | None): ``obs`` key that stores cluster labels.
+                Required when ``cluster_only=True`` or ``target_type='gene'``.
+            verbose (bool): If ``True``, print regression diagnostics for the
+                first metagene / gene. Default ``False``.
+            num_within (int): Target number of same-cluster neighbors to include
+                in each regression window (used when ``cluster_only=False`` to
+                balance cluster composition). Default ``50``.
+            num_total (int): Total neighborhood size for each regression window.
+                Default ``100``.
+            target_type (str): ``'metagene'`` (default) to regress TF activity
+                against metagene embeddings, or ``'gene'`` to regress against raw
+                gene expression (cluster-level).
+            genes (list[str] | None): Explicit list of gene targets when
+                ``target_type='gene'``.  If ``None``, all genes in RNA are used.
+
+        Returns:
+            None.  Populates ``self.edge_weights``.
         """
         if not self.popari or not self.TF:
             print("Popari/TF activity not computed.")
@@ -736,9 +855,25 @@ class Eykthyr(modified_VelocytoLoom):
         agg: str = "mean",
         normalize: Optional[str] = None,
     ) -> Dict[str, pd.DataFrame]:
-        """
-        Compute TF→gene influences for every unique region in `region_key`.
-        Returns a dict mapping region_value -> DataFrame (TF×gene).
+        """Compute TF → gene influence matrices for every region in a dataset.
+
+        Iterates over all unique values of ``region_key`` and calls
+        :meth:`compute_TF_gene_influence_for_region` for each one.
+
+        Parameters:
+            dataset_idx (int): Index into ``self.popari.datasets`` /
+                ``self.edge_weights`` to use.
+            region_key (str): ``obs`` column used to define regions (e.g.
+                ``'leiden'``). Default ``'leiden'``.
+            agg (str): Aggregation method across cells in each region — either
+                ``'mean'`` or ``'median'``. Default ``'mean'``.
+            normalize (str | None): Optional per-TF row normalization applied to
+                the final TF × gene matrix.  ``None`` (no normalization),
+                ``'rowsum'`` (divide by row sum), or ``'rows_z'`` (z-score rows).
+
+        Returns:
+            dict[str, pd.DataFrame]: Mapping of ``region_value`` → DataFrame of
+            shape ``(n_TFs, n_genes)`` with TF → gene influence scores.
         """
         dset = self.popari.datasets[dataset_idx]
         values = dset.obs[region_key].astype(str).unique().tolist()
@@ -857,7 +992,23 @@ class Eykthyr(modified_VelocytoLoom):
 
 
 def load_anndata(dirpath: str) -> Eykthyr:
-    """Loads Eykthyr datasets from the specified directory."""
+    """Load a previously saved Eykthyr session from disk.
+
+    Reads all ``RNA_*.h5ad``, ``TF_*.h5ad``, ``edge_weights_*.h5ad``, and
+    ``perturbed_X*.h5ad`` files from the directory derived from *dirpath*, and
+    reloads the Popari model from ``popari.h5ad`` if present.  Dataset-level
+    metadata (names, preprocessing flag, cluster annotations, ``K``) is restored
+    from the ``uns`` of the first RNA object.
+
+    Parameters:
+        dirpath (str): Path used when calling :meth:`Eykthyr.save_anndata`
+            (e.g. ``'results.h5ad'``).  The function strips the extension and
+            treats the resulting name as a directory.
+
+    Returns:
+        Eykthyr: Fully restored Eykthyr instance ready for visualization or
+        continued analysis.
+    """
 
     dirpath = Path(dirpath)
     path_without_extension = dirpath.parent / dirpath.stem
