@@ -9,23 +9,22 @@ EYKTHYR is the first method developed to infer region-specific TF influences on 
 
 EYKTHYR requires spatial transcriptomics and spatial chromatin accessibility data to be provided as AnnData objects, structured as follows:
 
-Spatial coordinates:
-The spatial coordinates of each cell should be included in the .obsm attribute of the AnnData object.
-The coordinates must be stored under .obsm['spatial'] and formatted as an array with dimensions [number of cells, 2] (representing x and y coordinates for each cell)
+**Spatial coordinates:**
+The spatial coordinates of each cell should be included in the `.obsm` attribute of the AnnData object. The coordinates must be stored under `.obsm['spatial']` and formatted as an array with dimensions `[number of cells, 2]` (representing x and y coordinates for each cell).
 
-Gene expression data:
-Gene expression data should be stored in .X as a sparse matrix (recommended for large datasets) or a dense matrix, with dimensions [number of cells, number of genes]
+**Gene expression data:**
+Gene expression data should be stored in `.X` as a sparse matrix (recommended for large datasets) or a dense matrix, with dimensions `[number of cells, number of genes]`.
 
-While not required, any additional metadata (e.g., cell types, batch labels) can be stored in .obs
+While not required, any additional metadata (e.g., cell types, batch labels) can be stored in `.obs`.
 
-Chromatin accessibility data:
-Chromatin accessibility data can be in the form of a fragments file, where each fragment corresponds to a cell, using the same cell ids as in the gene expression data.
+**Chromatin accessibility data:**
+Chromatin accessibility data can be in the form of a fragments file, where each fragment corresponds to a cell, using the same cell IDs as in the gene expression data.
 
-## System requirements
+## System Requirements
 
-The package was tested on Linux operating systems. Theoretically any OS that can run Python 3.10 should be compatible, however extensive testing has not yet occurred.
+The package was tested on Linux operating systems. Theoretically any OS that can run Python 3.10+ should be compatible, however extensive testing has not yet occurred.
 
-A GPU is essentially required for running Popari, which is required for running Eykthyr.
+A GPU is essentially required for running Popari, which is required for running EYKTHYR.
 
 Expected installation time is around 10 minutes.
 
@@ -35,38 +34,96 @@ Expected runtime varies by dataset, but should take less than an hour including 
 
 ### Step 1: Create a Conda Environment
 
-Before installing any Python packages, we strongly recommend using Anaconda (please refer to the Anaconda webpage for conda installation instructions) to create a python 3.10 environment using the following command:
+Before installing any Python packages, we strongly recommend using Anaconda (please refer to the Anaconda webpage for conda installation instructions) to create a Python 3.12 environment using the following command:
 
-`conda create --name eykthyr python=3.12`
+```
+conda create --name eykthyr python=3.12
+conda activate eykthyr
+```
 
-After creating the environment, activate it using:
+### Step 2: Install PyTorch
 
-`conda activate eykthyr`
+If you have an NVIDIA GPU and want to use CUDA for acceleration, install PyTorch with your desired CUDA version. You can use `light-the-torch` for an easier install:
 
-### Step 2: Install Dependencies
+```
+pip install light-the-torch
+ltt install --pytorch-computation-backend=cu121 torch torchvision torchaudio
+```
 
-Install PyTorch with CUDA (optional)
+For a CPU-only installation:
 
-If you have an NVIDIA GPU and want to use CUDA for acceleration, install PyTorch with the desired CUDA version. For example, to install PyTorch 2.1.0 with CUDA 11.8, run:
-
-`conda install pytorch==2.1.0 cudatoolkit=11.8 -c pytorch`
-
-Note: For a CPU-only installation, you can omit the cudatoolkit argument.
-
-You can also use light-the-torch for an easier install of pytorch:
-
-`pip install light-the-torch`
-`ltt install --pytorch-computation-backend=cu121 torch torchvision torchaudio`
+```
+conda install pytorch -c pytorch
+```
 
 ### Step 3: Install EYKTHYR
 
-EYKTHYR is available as a pypi package, and can be installed using:
+EYKTHYR is available as a PyPI package:
 
-`pip install eykthyr[with-velocyto,simulation]`
+```
+pip install eykthyr[with-velocyto,simulation]
+```
 
-## Running Code
+## Running the Pipeline
 
-To run our method, you need to run the pipeline in two parts: first process the spatial ATAC-seq data into a peak matrix, and create a file that annotates peaks with TF motifs present in the peak region. The second part of the pipeline preprocesses the spatial transcriptomic data and then combines this with the TF activity for inference.
+The EYKTHYR pipeline has three phases that must be run in order:
 
-We provide tutorial notebooks for each of these processes.
+1. **ATAC preprocessing** — process spatial ATAC-seq fragments into a peak matrix and annotate peaks with TF motifs
+2. **RNA preprocessing** — normalize and embed the spatial transcriptomic data
+3. **Training and analysis** — combine TF activity with gene expression for inference and perturbation simulation
 
+We provide tutorial notebooks for each of these steps (see `docs/source/tutorial_gallery/`), as well as a full walkthrough demo in `eykthyr_walkthrough_demo.ipynb`.
+
+## Quick-Start Example
+
+```python
+from eykthyr.eykthyr import Eykthyr, load_anndata
+import eykthyr.plotting as pl
+import scanpy as sc
+
+# 1. Load and preprocess RNA
+e = Eykthyr()
+adrna = sc.read("data/mouse_embryo2_rna.h5ad")
+e.set_RNA([adrna])
+e.preprocess_rna(make_plots=True)
+
+# 2. Learn spatial metagenes
+e.compute_metagenes(K=16, spatial_iterations=200)
+e.analyze_metagenes()
+
+# 3. Compute TF activity from ArchR outputs
+e.compute_TF_activity(
+    peak_tsvs=["data/spatialATACRNAmouseembryo2_peaks.tsv"],
+    archr_dataset_names=["spatialATACRNAmouseembryo2"],
+    motif_tsvs=["data/spatialATACRNAmouseembryo2_motifs.tsv"],
+)
+
+# 4. Infer TF → metagene regulatory weights
+e.compute_TF_metagene_weights(num_hops=2)
+
+# 5. Simulate TF perturbations
+e.run_all_perturbations()
+
+# 6. Save session
+e.save_anndata("results.h5ad")
+
+# Reload later
+e = load_anndata("results.h5ad")
+
+# 7. Visualize
+pl.prep_paga(e, "original_leiden")
+pl.paga_spatial_simulation(e, ["Msx1"], "original_leiden")
+```
+
+# Reproducing Paper Figures
+
+The following notebooks reproduce the figures in the EYKTHYR manuscript:
+
+| Notebook | Contents |
+|---|---|
+| `Eykthyr_fig2.ipynb` | Figure 2 panels (spatial simulation, supplementary panels) |
+| `Eykthyr_fig3.ipynb` | Figure 3 panels (pseudotime, TF perturbation simulation, TF ranking, GSEA) |
+| `Eykthyr_fig4.ipynb` | Figure 4 panels |
+| `Eykthyr_fig5.ipynb` | Figure 5 panels |
+| `Ablation_plots.ipynb` | Ablation study results (Figure 2C) |
+| `Nrg1_isoform_spatial.ipynb` | Nrg1 isoform spatial analysis (Figure 2H) |
