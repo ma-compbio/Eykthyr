@@ -117,6 +117,7 @@ pl.paga_spatial_simulation(e, ["Msx1"], "original_leiden")
 
 # Reproducing Paper Figures
 
+The source data to recreate the papers is available through Zenodo at https://doi.org/10.5281/zenodo.20529989.
 The following notebooks reproduce the figures in the EYKTHYR manuscript:
 
 | Notebook | Contents |
