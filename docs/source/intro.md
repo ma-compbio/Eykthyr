@@ -1,55 +1,76 @@
 # Overview
 
-EYKTHYR is the first method developed to infer region-specific TF influences on spatial gene programs (or metagenes) using spatial multiome data. EYKTHYR addresses high technical dropout by introducing a novel combination of linear embeddings for gene expression and chromatin accessibility, denoising the data while maintaining interpretability, as shifts in metagene embeddings map directly back to input gene expression. Using information from spatially proximal neighbors, EYKTHYR learns a linear relationship between TF activity and metagene expression in each cell, where these two layers of linear mappings—from TF activity to metagenes, and from metagenes to gene expression—enable reasoning about how TF activity changes affect gene expression.
+## What is Eykthyr?
 
-# Running EYKTHYR
+**Eykthyr** is a computational method for inferring region-specific transcription factor (TF) influences on spatial gene programs using spatial multiome data (paired single-cell RNA-seq and ATAC-seq captured at the same spatial locations).
 
-## Input Data Format
+### Key capabilities
 
-EYKTHYR requires spatial transcriptomics and spatial chromatin accessibility data to be provided as AnnData objects, structured as follows:
+- **Spatial metagene learning** — Decomposes gene expression into *K* interpretable metagenes via [Popari](https://github.com/raphael-group/popari), a spatially-regularized non-negative matrix factorization model that denoises data while preserving spatial structure.
+- **TF activity estimation** — Combines chromatin accessibility (peak × cell matrix) with TF motif annotations to compute per-cell TF activity scores.
+- **Regulatory edge inference** — Uses spatial sliding-window ridge regression to estimate how TF activity predicts metagene expression in each cell's local neighborhood, yielding cell-level TF → metagene edge weights.
+- **Perturbation simulation** — Simulates TF knockout effects by propagating the inferred edge weights through the metagene-to-gene decoder, predicting how gene expression changes across the tissue.
+- **Developmental scoring** — Quantifies each TF's pro- or anti-differentiation influence by aligning simulated expression shifts with a pseudotime gradient (perturbation strength score).
 
-Spatial coordinates:
-The spatial coordinates of each cell should be included in the .obsm attribute of the AnnData object.
-The coordinates must be stored under .obsm\['spatial'\] and formatted as an array with dimensions \[number of cells, 2\] (representing x and y coordinates for each cell)
+## How it works
 
-Gene expression data:
-Gene expression data should be stored in .X as a sparse matrix (recommended for large datasets) or a dense matrix, with dimensions \[number of cells, number of genes\]
+Eykthyr addresses high technical dropout in spatial multiome data by introducing two layers of linear embeddings:
 
-While not required, any additional metadata (e.g., cell types, batch labels) can be stored in .obs
+1. **Metagene embedding** (gene → metagene): `Σ_x` maps high-dimensional gene expression to *K* metagenes using Popari's spatially-aware NMF. The metagene representation denoises the data while remaining fully interpretable — shifts in metagene space map linearly back to changes in individual gene expression.
 
-Chromatin accessibility data:
-Chromatin accessibility data can be in the form of a fragments file, where each fragment corresponds to a cell, using the same cell ids as in the gene expression data.
+2. **Regulatory layer** (TF activity → metagene): For each cell, a local spatial neighborhood is assembled and a ridge regression of TF activity against metagene expression is fitted. This yields cell-level TF → metagene weights that reflect local regulatory context.
 
-## Installation
+Chaining these two layers — TF activity → metagenes → gene expression — enables principled reasoning about how changes in TF activity propagate to observable gene expression programs across spatial regions.
 
-### Step 1: Create a Conda Environment
+## Pipeline overview
 
-Before installing any Python packages, we strongly recommend using Anaconda (please refer to the Anaconda webpage for conda installation instructions) to create a python 3.10 environment using the following command:
+```
+┌─────────────────────────────────────────────────────────────────┐
+│  Input data                                                     │
+│  ├── Spatial RNA-seq AnnData  (cells × genes, .obsm['spatial']) │
+│  └── Spatial ATAC-seq (fragments file → ArchR preprocessing)   │
+└───────────────────────┬─────────────────────────────────────────┘
+                        │
+              preprocess_rna()          Filter, normalize, log1p
+                        │
+              compute_metagenes()       Popari spatially-regularized NMF
+                        │
+              analyze_metagenes()       Leiden clustering + UMAP of metagenes
+                        │
+              compute_TF_activity()     peaks × motifs → cell TF activity
+                        │
+         compute_TF_metagene_weights()  Spatial window ridge regression
+                        │
+          run_all_perturbations()       TF KO simulation
+                        │
+         pl.paga_spatial_simulation()  Visualize flow fields
+                        │
+          pl.development_simulation()  Pseudotime perturbation strength
+```
 
-conda install --name eykthyr python=3.10
+## Input data format
 
-After creating the environment, activate it using:
+Eykthyr requires data in [AnnData](https://anndata.readthedocs.io) format.
 
-conda activate eykthyr
+### Spatial RNA-seq
 
-### Step 2: Install Dependencies
+| Slot | Content |
+|------|---------|
+| `.X` | Raw count matrix (cells × genes), sparse or dense |
+| `.obsm['spatial']` | Array of shape `(n_cells, 2)` with x/y tissue coordinates |
+| `.obs` | Optional metadata (cell type labels, batch, etc.) |
 
-Install PyTorch with CUDA (optional)
+### Spatial ATAC-seq
 
-If you have an NVIDIA GPU and want to use CUDA for acceleration, install PyTorch with the desired CUDA version. For example, to install PyTorch 2.1.0 with CUDA 11.8, run:
+Chromatin accessibility data should first be processed using **ArchR** (see the [ATAC preprocessing tutorial](usage.md)). The required outputs are:
 
-conda install pytorch==2.1.0 cudatoolkit=11.8 -c pytorch
+- **Peak matrix TSV** — a space-delimited file with peaks as rows and barcoded cells as columns.
+- **Motif TSV** — a space-delimited binary matrix of peaks × TF motifs, generated by ArchR's `addMotifAnnotations` + `getMatches`.
 
-Note: For a CPU-only installation, you can omit the cudatoolkit argument.
+Cell barcodes in both TSV files must be matchable to `RNA.obs_names` (possibly after stripping the ArchR project name prefix and any suffix).
 
-### Step 3: Install EYKTHYR
+## Citation
 
-EYKTHYR is available as a pypi package, and can be installed using:
+If you use Eykthyr in your research, please cite:
 
-pip install eykthyr
-
-## Running Code
-
-To run our method, you need to run the pipeline in two parts: first process the spatial ATAC-seq data into a peak matrix, and create a file that annotates peaks with TF motifs present in the peak region. The second part of the pipeline preprocesses the spatial transcriptomic data and then combines this with the TF activity for inference.
-
-We provide tutorial notebooks for each of these processes.
+> Spencer Krieger et al., *"Eykthyr: Revealing transcriptional regulators of spatial gene programs"*, 2024.
