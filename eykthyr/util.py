@@ -209,12 +209,7 @@ def get_edges_window(ad_ex, ad_motif, target_gene, grn, ad_pop, num_hops=1):
 
 def get_neighbors(ad_pop, i, nn_indices, cell_type, cluster_id, num_within, num_total):
     cell_indices = nn_indices[i]
-    within_cluster_indices = [
-        ind
-        for ind, cell in enumerate(ad_pop.obs_names)
-        if ad_pop.obs[cluster_id][cell] == cell_type
-    ]
-    cell_type_list = [t for t in ad_pop.obs[cluster_id].values()]
+    cell_type_list = ad_pop.obs[cluster_id].values
 
     num_total += 1  # This is done so you always return yourself plus the number of required neighbors
     neighbors = []
