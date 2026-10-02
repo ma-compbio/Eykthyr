@@ -126,6 +126,7 @@ The following notebooks reproduce the figures in the EYKTHYR manuscript:
 | `Eykthyr_fig3.ipynb` | Figure 3 panels (pseudotime, TF perturbation simulation, TF ranking, GSEA) |
 | `Eykthyr_fig4.ipynb` | Figure 4 panels |
 | `Eykthyr_fig5.ipynb` | Figure 5 panels |
+| `Ablation_plots.ipynb` | Ablation study results (Figure 2C) |
 | `Nrg1_isoform_spatial.ipynb` | Nrg1 isoform spatial analysis (Figure 2H) |
 
 The notebooks need a few packages beyond the core install. From a clone of this repository:
