@@ -45,6 +45,8 @@ class Eykthyr(modified_VelocytoLoom):
 
         self.cluster_annotation = cluster_annotation
         self.num_metagenes = num_metagenes
+        if self.num_metagenes <= 0:
+            self.num_metagenes = _infer_num_metagenes(self)
         self.embeddings = embeddings
 
     def preprocess_rna(
@@ -258,6 +260,8 @@ class Eykthyr(modified_VelocytoLoom):
 
         """
         self.popari = popari
+        if self.num_metagenes <= 0:
+            self.num_metagenes = _infer_num_metagenes(self)
 
     def set_TF(
         self,
@@ -534,5 +538,23 @@ def load_anndata(dirpath: str) -> Eykthyr:
         eykthyr.rna_preprocessed = RNA_list[0].uns.get("rna_preprocessed", False)
         eykthyr.cluster_annotation = RNA_list[0].uns.get("cluster_annotation", [])
         eykthyr.num_metagenes = RNA_list[0].uns.get("num_metagenes", -1)
+    # Sessions saved before K was known (e.g. Popari attached via set_popari)
+    # store num_metagenes = -1, which makes every range(num_metagenes) loop
+    # silently empty.
+    if eykthyr.num_metagenes <= 0:
+        eykthyr.num_metagenes = _infer_num_metagenes(eykthyr)
 
     return eykthyr
+
+
+def _infer_num_metagenes(eykthyr: Eykthyr) -> int:
+    """Number of metagenes K, read from the width of the metagene embedding
+    ``obsm['X']`` of the Popari datasets (or of ``perturbed_X`` if Popari is
+    not loaded). Returns -1 if neither is available."""
+    candidates = list(eykthyr.perturbed_X)
+    if eykthyr.popari is not None:
+        candidates = list(eykthyr.popari.datasets) + candidates
+    for dataset in candidates:
+        if "X" in dataset.obsm:
+            return dataset.obsm["X"].shape[1]
+    return -1
