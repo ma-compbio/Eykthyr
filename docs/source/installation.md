@@ -75,7 +75,7 @@ Core dependencies installed automatically by `pip`:
 | anndata | ≥ 0.9.1 |
 | torch | ≥ 1.13.0 |
 | scanpy | ≥ 1.9.2 |
-| popari | ≥ 0.0.72 |
+| popari | ≥ 0.0.72, < 0.1 |
 | squidpy | ≥ 1.2.3 |
 | umap-learn | ≥ 0.5.1 |
 | tqdm | ≥ 4.60.0 |
