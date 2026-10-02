@@ -217,7 +217,7 @@ class Eykthyr(modified_VelocytoLoom):
                 del RNA.obs["adjacency_list"]
             RNA.write(f"{path_without_extension}/RNA_{i}.h5ad")
 
-        if self.popari and not os.path.isfile(f"{path_without_extension}/popari.h5ad"):
+        if self.popari:
             self.popari.save_results(f"{path_without_extension}/popari.h5ad")
 
         for i, TF in enumerate(self.TF):
