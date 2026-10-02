@@ -797,7 +797,14 @@ def _get_coef_matrix(ensemble_model, feature_names):
         for i in range(n_estimater)
     ]
 
-    coef_df = pd.concat(coef_list, axis=1, sort=False).transpose()
+    # A feature an estimator did not sample had no influence in that estimator,
+    # so count it as 0 rather than dropping it from the mean.
+    coef_df = (
+        pd.concat(coef_list, axis=1, sort=False)
+        .transpose()
+        .reindex(columns=feature_names, fill_value=0.0)
+        .fillna(0.0)
+    )
 
     return coef_df
 
