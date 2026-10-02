@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import scanpy as sc
+from scipy import sparse
 from tqdm import tqdm
 
 CONFIG = {
@@ -340,11 +341,18 @@ def get_metagene_edges_smoothed(ad_ex, ad_motif, metagene_num, ad_pop, num_hops=
 
 
 def get_nhop_neighbors(ad, cellidx, num_hops=1):
-    neighbors = ad.obsp["adjacency_matrix"][cellidx, :]
-    for i in range(num_hops - 1):
-        neighbors = neighbors.multiply(ad.obsp["adjacency_matrix"][cellidx, :])
-        neighbors[neighbors > 1] = 1
-    return np.asarray(neighbors.todense().astype(bool)).flatten()
+    """Boolean mask of cells within ``num_hops`` steps of ``cellidx`` on the
+    spatial adjacency graph, including ``cellidx`` itself."""
+    adj = ad.obsp["adjacency_matrix"]
+    current_shell = sparse.csr_matrix(
+        ([1], ([0], [cellidx])),
+        shape=(1, adj.shape[0]),
+    )
+    visited = current_shell.copy()
+    for _ in range(num_hops):
+        current_shell = current_shell @ adj
+        visited = visited + current_shell
+    return np.asarray(visited.todense()).flatten() > 0
 
 
 from multiprocessing import Pool
