@@ -2,3 +2,4 @@
 tests/
 eykthyr/.ipynb_checkpoints/
 eykthyr/__pycache__/
+*.svg

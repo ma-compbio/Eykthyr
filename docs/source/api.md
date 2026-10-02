@@ -6,7 +6,7 @@
 
 ```
 
-# API
+# API Reference
 
 ```{eval-rst}
 .. module:: eykthyr
@@ -15,55 +15,25 @@
    :noindex:
 ```
 
-## IO: `io`
+## Main class
 
-Tools for loading and saving Eykthyr data and parameters
+The `Eykthyr` class is the primary entry point for the full analysis pipeline.
 
 ```{eval-rst}
-.. module:: eykthyr.model
+.. module:: eykthyr.eykthyr
 .. currentmodule:: eykthyr
 
 .. autosummary::
     :toctree: api/
-    :recursive:
 
-    model.save_anndata
-    model.load_anndata
+    eykthyr.Eykthyr
+    eykthyr.load_anndata
 ```
 
-## Model
+## Visualization: `pl`
 
-Entry points for implementations of the Eykthyr algorithm.
-
-```{eval-rst}
-.. module:: eykthyr.model
-.. currentmodule:: eykthyr
-
-.. autosummary::
-    :toctree: api/
-    :recursive:
-
-    model.Eykthyr
-```
-
-## Preprocessing
-
-Objects that are helpful for working with Eykthyr.
-
-```{eval-rst}
-.. module:: eykthyr.embedding
-.. currentmodule:: eykthyr
-
-.. autosummary::
-    :toctree: api/
-    :recursive:
-
-    embedding.Embedding
-```
-
-## Analysis: `pl`
-
-Functions for visualizing and evaluating Eykthyr results.
+Functions for visualizing perturbation simulations and developmental scores.
+Access these via `import eykthyr; eykthyr.pl.<function>`.
 
 ```{eval-rst}
 .. module:: eykthyr.plotting
@@ -71,8 +41,22 @@ Functions for visualizing and evaluating Eykthyr results.
 
 .. autosummary::
     :toctree: api/
-    :recursive:
 
-    plotting.paga_spatial_simulation
     plotting.prep_paga
+    plotting.paga_spatial_simulation
+    plotting.umap_spatial_simulations
+    plotting.umap_spatial_simulation
+    plotting.development_simulation
+```
+
+## Embedding container
+
+```{eval-rst}
+.. module:: eykthyr.embedding
+.. currentmodule:: eykthyr
+
+.. autosummary::
+    :toctree: api/
+
+    embedding.Embedding
 ```
