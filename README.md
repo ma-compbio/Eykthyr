@@ -53,7 +53,7 @@ ltt install --pytorch-computation-backend=cu121 torch torchvision torchaudio
 For a CPU-only installation:
 
 ```
-conda install pytorch -c pytorch
+pip install torch --index-url https://download.pytorch.org/whl/cpu
 ```
 
 ### Step 3: Install EYKTHYR
@@ -61,7 +61,7 @@ conda install pytorch -c pytorch
 EYKTHYR is available as a PyPI package:
 
 ```
-pip install eykthyr[with-velocyto,simulation]
+pip install "eykthyr[with-velocyto,simulation]"
 ```
 
 ## Running the Pipeline
@@ -126,5 +126,12 @@ The following notebooks reproduce the figures in the EYKTHYR manuscript:
 | `Eykthyr_fig3.ipynb` | Figure 3 panels (pseudotime, TF perturbation simulation, TF ranking, GSEA) |
 | `Eykthyr_fig4.ipynb` | Figure 4 panels |
 | `Eykthyr_fig5.ipynb` | Figure 5 panels |
-| `Ablation_plots.ipynb` | Ablation study results (Figure 2C) |
 | `Nrg1_isoform_spatial.ipynb` | Nrg1 isoform spatial analysis (Figure 2H) |
+
+The notebooks need a few packages beyond the core install. From a clone of this repository:
+
+```
+pip install -e ".[figures]"
+```
+
+They were run with Python 3.12 and numpy 2.3.5, pandas 2.3.3, scipy 1.16.3, scikit-learn 1.8.0, anndata 0.12.7, scanpy 1.11.5, squidpy 1.7.0, matplotlib 3.10.8, umap-learn 0.5.9.post2, torch 2.5.1 and popari 0.0.72. Newer versions may change figure details.

@@ -23,17 +23,17 @@ conda activate eykthyr
 
 ### Step 2 — Install PyTorch (optional GPU acceleration)
 
-If you have an NVIDIA GPU, install PyTorch with the matching CUDA version **before** installing `eykthyr`.  Replace `11.8` with your installed CUDA version.
+If you have an NVIDIA GPU, install PyTorch with the matching CUDA version **before** installing `eykthyr`.  Replace `cu121` with your installed CUDA version.
 
 ```bash
-# GPU (CUDA 11.8)
-conda install pytorch==2.1.0 torchvision torchaudio cudatoolkit=11.8 -c pytorch
+# GPU (CUDA 12.1)
+pip install torch --index-url https://download.pytorch.org/whl/cu121
 
 # CPU only
-conda install pytorch==2.1.0 torchvision torchaudio cpuonly -c pytorch
+pip install torch --index-url https://download.pytorch.org/whl/cpu
 ```
 
-> **Note:** If you skip this step, `pip` will install a CPU-only PyTorch build automatically.
+We recommend installing PyTorch from the official pip wheels above.
 
 ### Step 3 — Install Eykthyr
 
@@ -75,7 +75,7 @@ Core dependencies installed automatically by `pip`:
 | anndata | ≥ 0.9.1 |
 | torch | ≥ 1.13.0 |
 | scanpy | ≥ 1.9.2 |
-| popari | ≥ 0.0.72 |
+| popari | ≥ 0.0.72, < 0.1 |
 | squidpy | ≥ 1.2.3 |
 | umap-learn | ≥ 0.5.1 |
 | tqdm | ≥ 4.60.0 |
@@ -83,6 +83,11 @@ Core dependencies installed automatically by `pip`:
 | seaborn | ≥ 0.11.1 |
 | louvain | ≥ 0.8.0 |
 | cython | ≥ 3.0.11 |
+| leidenalg | ≥ 0.9.0, < 0.11 |
+| awkward | ≥ 2.0 |
+| setuptools | < 81 |
+
+The figure notebooks need a few more packages (`gseapy`, `pysam`, `fa2_modified`, `jupyterlab`), installed with `pip install -e ".[figures]"` from a clone of the repository.
 
 ## Verifying the installation
 

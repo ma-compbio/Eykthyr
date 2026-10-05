@@ -23,13 +23,19 @@ dependencies = [
     "matplotlib>=3.7.0",
     "squidpy>=1.2.3",
     "louvain>=0.8.0",
-    "popari>=0.0.72",
+    "popari>=0.0.72,<0.1",
     "cython>=3.0.11",
+    # sc.tl.leiden / popari's tl.leiden; <0.11 because louvain needs igraph<0.12
+    "leidenalg>=0.9.0,<0.11",
+    # anndata>=0.13 needs it to read popari.h5ad
+    "awkward>=2.0",
+    # louvain imports pkg_resources, removed in setuptools 81
+    "setuptools<81",
 ]
 description = "Eykthyr: Revealing transcriptional regulators of spatial gene programs"
 readme = "README.md"
 license = { file="LICENSE" }
-requires-python = ">=3.8"
+requires-python = ">=3.10"
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
@@ -53,6 +59,13 @@ simulation = [
 ]
 with_velocyto = [
   "velocyto>=0.17.17"
+]
+# Extra packages used by the figure notebooks
+figures = [
+  "jupyterlab",
+  "gseapy",
+  "pysam",
+  "fa2_modified",
 ]
 [tool]
 

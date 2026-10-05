@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import scanpy as sc
-from tqdm.notebook import tqdm
+from tqdm import tqdm
 import torch
 from popari import pl, tl
 from popari.components import PopariDataset
@@ -17,7 +17,7 @@ from scipy.sparse import spmatrix
 
 from .embedding import Embedding
 from .modified_VelocytoLoom_class import modified_VelocytoLoom
-from .util import get_metagene_edges_window, run_all_perturbations, get_gene_edges_by_cluster_only
+from .util import get_metagene_edges_window, run_all_perturbations
 
 
 class Eykthyr(modified_VelocytoLoom):
@@ -111,6 +111,8 @@ class Eykthyr(modified_VelocytoLoom):
 
         self.cluster_annotation = cluster_annotation
         self.num_metagenes = num_metagenes
+        if self.num_metagenes <= 0:
+            self.num_metagenes = _infer_num_metagenes(self)
         self.embeddings = embeddings
 
     def preprocess_rna(
@@ -281,7 +283,7 @@ class Eykthyr(modified_VelocytoLoom):
                 del RNA.obs["adjacency_list"]
             RNA.write(f"{path_without_extension}/RNA_{i}.h5ad")
 
-        if self.popari:# and not os.path.isfile(f"{path_without_extension}/popari.h5ad"):
+        if self.popari:
             self.popari.save_results(f"{path_without_extension}/popari.h5ad")
 
         for i, TF in enumerate(self.TF):
@@ -324,6 +326,8 @@ class Eykthyr(modified_VelocytoLoom):
 
         """
         self.popari = popari
+        if self.num_metagenes <= 0:
+            self.num_metagenes = _infer_num_metagenes(self)
 
     def set_TF(
         self,
@@ -481,240 +485,76 @@ class Eykthyr(modified_VelocytoLoom):
     def compute_TF_metagene_weights(
         self,
         num_hops: int = 2,
-        cluster_only: bool = False,
-        cluster_id: str = None,
-        verbose: bool = False,
+        cluster_id: Optional[str] = None,
         num_within: int = 50,
         num_total: int = 100,
-        *,
-        target_type: str = "metagene",
-        genes: Optional[List[str]] = None,
     ):
-        """Infer TF → metagene (or TF → gene) regulatory edge weights.
+        """Infer TF → metagene regulatory edge weights.
 
-        For each target (metagene index or gene name), a spatial sliding-window
-        ridge regression is run: for every cell, a neighborhood of spatially
-        proximal cells is assembled and a ridge regression of TF activity against
-        target expression is fitted.  The resulting regression coefficients become
-        that cell's TF edge weights for the target.  Results are stored in
+        For each metagene, a spatial sliding-window ridge regression is run:
+        for every cell, a neighborhood of spatially proximal cells is assembled
+        and a bagged ridge regression of TF activity against metagene expression
+        is fitted.  The resulting regression coefficients become that cell's TF
+        edge weights for the metagene.  Results are stored in
         ``self.edge_weights`` as an AnnData with layers ``M_0`` … ``M_{K-1}``.
 
         Parameters:
             num_hops (int): Spatial graph radius (in hops) used to build each
-                cell's regression neighborhood. Default ``2``.
-            cluster_only (bool): If ``True`` and ``cluster_id`` is set, restrict
-                neighbors to cells in the same cluster as the focal cell. Default
-                ``False``.
-            cluster_id (str | None): ``obs`` key that stores cluster labels.
-                Required when ``cluster_only=True`` or ``target_type='gene'``.
-            verbose (bool): If ``True``, print regression diagnostics for the
-                first metagene / gene. Default ``False``.
-            num_within (int): Target number of same-cluster neighbors to include
-                in each regression window (used when ``cluster_only=False`` to
-                balance cluster composition). Default ``50``.
-            num_total (int): Total neighborhood size for each regression window.
+                cell's regression neighborhood when ``cluster_id`` is ``None``.
+                Default ``2``.
+            cluster_id (str | None): ``obs`` key that stores cluster labels.  If
+                set, each neighborhood is instead the ``num_total`` nearest
+                cells in space, of which at least ``num_within`` share the focal
+                cell's cluster.  Default ``None``.
+            num_within (int): Minimum number of same-cluster neighbors when
+                ``cluster_id`` is set. Default ``50``.
+            num_total (int): Neighborhood size when ``cluster_id`` is set.
                 Default ``100``.
-            target_type (str): ``'metagene'`` (default) to regress TF activity
-                against metagene embeddings, or ``'gene'`` to regress against raw
-                gene expression (cluster-level).
-            genes (list[str] | None): Explicit list of gene targets when
-                ``target_type='gene'``.  If ``None``, all genes in RNA are used.
 
         Returns:
             None.  Populates ``self.edge_weights``.
         """
         if not self.popari or not self.TF:
-            print("Popari/TF activity not computed.")
+            print(
+                "Popari needs to be run first, please run compute_metagenes().\n"
+                "TF activity also needs to be computed by ArchR. Please follow the jupyter notebook for\n"
+                "preprocessing ATAC-seq data and then run compute_TF_activity().",
+            )
             return
 
         if len(self.TF) != len(self.popari.datasets):
-            print("Number of TF datasets must match.")
+            print(
+                "Number of TF datasets must match the number of datasets in Popari.",
+            )
             return
 
-        if target_type not in {"metagene", "gene"}:
-            raise ValueError("target_type must be 'metagene' or 'gene'")
-
         self.edge_weights = []
-        self._gene_targets = [] if target_type == "gene" else None
-
         for i, TF, popdata, RNA in zip(
             range(len(self.TF)),
             self.TF,
             self.popari.datasets,
             self.RNA,
         ):
-            # Targets
-            if target_type == "metagene":
-                target_ids = list(range(self.num_metagenes))
-                num_targets = self.num_metagenes
-            else:
-                if genes is None:
-                    gene_list = list(RNA.var_names)
-                else:
-                    missing = [g for g in genes if g not in RNA.var_names]
-                    if missing:
-                        raise ValueError(f"genes not found: {missing}")
-                    gene_list = list(genes)
-                target_ids = gene_list
-                num_targets = len(gene_list)
-                self._gene_targets.append(gene_list)
-                if cluster_id is None:
-                    raise ValueError("cluster_id required for gene target.")
-
             M_edges = []
-            for k, target in tqdm(enumerate(target_ids), total=num_targets, position=0):
-                if target_type == "metagene":
-                    
-                    # Only show plots for the first metagene to avoid spamming 
-                    # (Or pass verbose=verbose to see samples for all MGs)
-                    current_verbose = verbose and (k == 0) 
-                    
-                    # cell-level (as before)
-                    edges = get_metagene_edges_window(
-                        RNA, TF, target, popdata,
-                        num_hops=num_hops,
-                        cluster_only=cluster_only,
-                        cluster_id=cluster_id,
-                        num_within=num_within,
-                        num_total=num_total,
-                        verbose=current_verbose # <--- PASS FLAG
-                    )
-                    if current_verbose:
-                        print(edges)
-                    Madata = sc.AnnData(edges)
-                    Madata = Madata[popdata.obs_names, :]
-                else:
-                    # cluster-level 
-                    edges = get_gene_edges_by_cluster_only(
-                        RNA, TF, target, cluster_id=cluster_id
-                    )
-                    Madata = sc.AnnData(
-                        X=edges.values,
-                        obs=pd.DataFrame(index=edges.index),     
-                        var=pd.DataFrame(index=edges.columns),   
-                    )
-
+            for j in tqdm(range(self.num_metagenes)):
+                edges = get_metagene_edges_window(
+                    RNA,
+                    TF,
+                    j,
+                    popdata,
+                    num_hops=num_hops,
+                    cluster_id=cluster_id,
+                    num_within=num_within,
+                    num_total=num_total,
+                )
+                Madata = sc.AnnData(edges)
+                Madata = Madata[popdata.obs_names, :]
+                Madata.obsm["spatial"] = popdata.obsm["spatial"]
                 M_edges.append(Madata)
-
-            # Assemble (unchanged)
             self.edge_weights.append(M_edges[0])
-            
-            if target_type == "gene":
-                self.num_metagenes = num_targets 
-
-            for k in range(num_targets):
+            for k in range(self.num_metagenes):
                 self.edge_weights[i].layers[f"M_{k}"] = M_edges[k].X
 
-            self.edge_weights[i].uns["edge_target_type"] = target_type
-            if target_type == "gene":
-                self.edge_weights[i].uns["edges_axis"] = "clusters" 
-                self.edge_weights[i].uns["M_index_to_gene"] = list(map(str, target_ids)) 
-                self.edge_weights[i].uns["cluster_id"] = cluster_id
-    # def compute_TF_metagene_weights(
-    #     self,
-    #     num_hops: int = 2,
-    #     cluster_only: bool = False,
-    #     cluster_id: str = None,
-    #     *,
-    #     target_type: str = "metagene",       # "metagene" (default) or "gene"
-    #     genes: Optional[List[str]] = None,   # Only used when target_type="gene"
-    # ):
-    #     """
-    #     Computes TF edge weights.
-    
-    #     - 'metagene': original behavior (cell-level; aligned to popdata.obs_names).
-    #     - 'gene': cluster-level outputs (rows=clusters, cols=TFs), packed into an AnnData
-    #       with layers M_k; no spatial stored, no reindexing to cells.
-    #     """
-    #     if not self.popari or not self.TF:
-    #         print(
-    #             "Popari needs to be run first, please run compute_metagenes().\n"
-    #             "TF activity also needs to be computed by ArchR. Please follow the jupyter notebook for\n"
-    #             "preprocessing ATAC-seq data and then run compute_TF_activity().",
-    #         )
-    #         return
-    
-    #     if len(self.TF) != len(self.popari.datasets):
-    #         print("Number of TF datasets must match the number of datasets in Popari.")
-    #         return
-    
-    #     if target_type not in {"metagene", "gene"}:
-    #         raise ValueError("target_type must be 'metagene' or 'gene'")
-    
-    #     self.edge_weights = []
-    #     self._gene_targets = [] if target_type == "gene" else None
-    
-    #     for i, TF, popdata, RNA in zip(
-    #         range(len(self.TF)),
-    #         self.TF,
-    #         self.popari.datasets,
-    #         self.RNA,
-    #     ):
-    #         # Targets
-    #         if target_type == "metagene":
-    #             target_ids = list(range(self.num_metagenes))
-    #             num_targets = self.num_metagenes
-    #         else:
-    #             if genes is None:
-    #                 gene_list = list(RNA.var_names)
-    #             else:
-    #                 missing = [g for g in genes if g not in RNA.var_names]
-    #                 if missing:
-    #                     raise ValueError(f"genes not found in RNA.var_names: {missing}")
-    #                 gene_list = list(genes)
-    #             target_ids = gene_list
-    #             num_targets = len(gene_list)
-    #             self._gene_targets.append(gene_list)
-    #             if cluster_id is None:
-    #                 raise ValueError("cluster_id is required for target_type='gene' (cluster-level edges).")
-    
-    #         M_edges = []
-    #         for k, target in tqdm(enumerate(target_ids), total=num_targets, position=0):
-    #             if target_type == "metagene":
-    #                 # cell-level (as before)
-    #                 edges = get_metagene_edges_window(
-    #                     RNA, TF, target, popdata,
-    #                     num_hops=num_hops,
-    #                     cluster_only=cluster_only,
-    #                     cluster_id=cluster_id,
-    #                 )
-    #                 Madata = sc.AnnData(edges)
-    #                 # Keep original behavior: align obs to popdata (cells)
-    #                 Madata = Madata[popdata.obs_names, :]
-    #                 # NOTE: no spatial requirement change here; if you were
-    #                 # previously setting Madata.obsm['spatial'], you can keep it
-    #                 # or omit—it won’t be used downstream per your note.
-    #             else:
-    #                 # cluster-level (rows=clusters, cols=TFs); NO spatial, NO reindex to cells
-    #                 edges = get_gene_edges_by_cluster_only(
-    #                     RNA, TF, target, cluster_id=cluster_id
-    #                 )
-    #                 Madata = sc.AnnData(
-    #                     X=edges.values,
-    #                     obs=pd.DataFrame(index=edges.index),     # clusters
-    #                     var=pd.DataFrame(index=edges.columns),   # TFs
-    #                 )
-    
-    #             M_edges.append(Madata)
-    
-    #         # Assemble: first target as base, others in layers M_k
-    #         self.edge_weights.append(M_edges[0])
-    
-    #         # Preserve downstream loops that expect num_metagenes and layers "M_k"
-    #         if target_type == "gene":
-    #             self.num_metagenes = num_targets  # alias: number of genes modeled
-    
-    #         for k in range(num_targets):
-    #             self.edge_weights[i].layers[f"M_{k}"] = M_edges[k].X
-    
-    #         # Minimal provenance
-    #         self.edge_weights[i].uns["edge_target_type"] = target_type
-    #         if target_type == "gene":
-    #             self.edge_weights[i].uns["edges_axis"] = "clusters"  # rows are clusters
-    #             # self.edge_weights[i].uns["M_index_to_gene"] = dict(enumerate(target_ids))
-    #             self.edge_weights[i].uns["M_index_to_gene"] = list(map(str, target_ids)) 
-    #             self.edge_weights[i].uns["cluster_id"] = cluster_id
-    
     def compute_TF_gene_influence_for_region(
         self,
         dataset_idx: int,
@@ -794,7 +634,6 @@ class Eykthyr(modified_VelocytoLoom):
             K = dset.uns["M"][dname].shape[1]
     
         tf_names = ew.var_names.to_numpy()
-        print(tf_names)
         agg_vecs = []
         for k in range(K):
             layer_key = f"M_{k}"
@@ -802,12 +641,11 @@ class Eykthyr(modified_VelocytoLoom):
                 raise RuntimeError(f"Missing layer '{layer_key}' in edge_weights for dataset {dataset_idx}.")
             mat_ck = ew.layers[layer_key]  # (cells × TF)
             # subset to region cells
-            sub = mat_ck[mask, :]
-            print(sub)
+            sub = np.asarray(mat_ck[mask, :])
             if agg == "mean":
-                v = np.asarray(sub).mean(axis=0)
+                v = sub.mean(axis=0)
             elif agg == "median":
-                v = np.asarray(sub).median(axis=0)
+                v = np.median(sub, axis=0)
             else:
                 raise ValueError("agg must be 'mean' or 'median'")
             agg_vecs.append(v)
@@ -889,65 +727,6 @@ class Eykthyr(modified_VelocytoLoom):
             )
         return out
 
-    # def compute_TF_metagene_weights(
-    #     self,
-    #     num_hops: int = 2,
-    #     cluster_only: bool = False,
-    #     cluster_id: str = None,
-    # ):
-    #     """Computes the edge weights between transcription factors and metagenes
-    #     over spatial neighborhoods.
-
-    #     Parameters:
-    #         num_hops (int): Number of spatial hops for computing metagene edges in the regulatory network.
-
-    #     Returns:
-    #         None
-
-    #     """
-
-    #     if not self.popari or not self.TF:
-    #         print(
-    #             "Popari needs to be run first, please run compute_metagenes().\n"
-    #             "TF activity also needs to be computed by ArchR. Please follow the jupyter notebook for\n"
-    #             "preprocessing ATAC-seq data and then run compute_TF_activity().",
-    #         )
-    #         return
-
-    #     if len(self.TF) != len(self.popari.datasets):
-    #         print(
-    #             "Number of TF datasets must match the number of datasets in Popari.",
-    #         )
-    #         return
-
-    #     self.edge_weights = []
-    #     for i, TF, popdata, RNA in zip(
-    #         range(len(self.TF)),
-    #         self.TF,
-    #         self.popari.datasets,
-    #         self.RNA,
-    #     ):
-    #         M_edges = []
-    #         for j in range(self.num_metagenes):
-    #             temp = []
-    #             edges = get_metagene_edges_window(
-    #                 RNA,
-    #                 TF,
-    #                 j,
-    #                 popdata,
-    #                 num_hops=num_hops,
-    #                 cluster_only=cluster_only,
-    #                 cluster_id=cluster_id,
-    #             )
-    #             Madata = sc.AnnData(edges)
-    #             Madata = Madata[popdata.obs_names, :]
-    #             Madata.obsm["spatial"] = popdata.obsm["spatial"]
-    #             temp.append(Madata)
-    #             M_edges.append(temp)
-    #         self.edge_weights.append(M_edges[0][0])
-    #         for k in range(self.num_metagenes):
-    #             self.edge_weights[i].layers[f"M_{k}"] = M_edges[k][0].X
-
     def run_all_perturbations(
         self,
     ):
@@ -985,7 +764,6 @@ class Eykthyr(modified_VelocytoLoom):
             self.popari,
             self.TF,
             self.edge_weights,
-            self.RNA,
             K=self.num_metagenes,
             useX=True,
         )
@@ -1056,5 +834,23 @@ def load_anndata(dirpath: str) -> Eykthyr:
         eykthyr.rna_preprocessed = RNA_list[0].uns.get("rna_preprocessed", False)
         eykthyr.cluster_annotation = RNA_list[0].uns.get("cluster_annotation", [])
         eykthyr.num_metagenes = RNA_list[0].uns.get("num_metagenes", -1)
+    # Sessions saved before K was known (e.g. Popari attached via set_popari)
+    # store num_metagenes = -1, which makes every range(num_metagenes) loop
+    # silently empty.
+    if eykthyr.num_metagenes <= 0:
+        eykthyr.num_metagenes = _infer_num_metagenes(eykthyr)
 
     return eykthyr
+
+
+def _infer_num_metagenes(eykthyr: Eykthyr) -> int:
+    """Number of metagenes K, read from the width of the metagene embedding
+    ``obsm['X']`` of the Popari datasets (or of ``perturbed_X`` if Popari is
+    not loaded). Returns -1 if neither is available."""
+    candidates = list(eykthyr.perturbed_X)
+    if eykthyr.popari is not None:
+        candidates = list(eykthyr.popari.datasets) + candidates
+    for dataset in candidates:
+        if "X" in dataset.obsm:
+            return dataset.obsm["X"].shape[1]
+    return -1
