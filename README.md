@@ -32,36 +32,51 @@ Expected runtime varies by dataset, but should take less than an hour including 
 
 ## Installation
 
-### Step 1: Create a Conda Environment
+The steps below were tested on Linux with Python 3.12 and NumPy 2.
 
-Before installing any Python packages, we strongly recommend using Anaconda (please refer to the Anaconda webpage for conda installation instructions) to create a Python 3.12 environment using the following command:
+### Step 1: Create a conda environment
 
 ```
-conda create --name eykthyr python=3.12
+conda create -n eykthyr -c conda-forge python=3.12
 conda activate eykthyr
 ```
 
 ### Step 2: Install PyTorch
 
-If you have an NVIDIA GPU and want to use CUDA for acceleration, install PyTorch with your desired CUDA version. You can use `light-the-torch` for an easier install:
+Install PyTorch with pip **before** installing EYKTHYR. Choose the wheel that matches your hardware (see https://pytorch.org/get-started/locally/ for other CUDA versions):
 
 ```
-pip install light-the-torch
-ltt install --pytorch-computation-backend=cu121 torch torchvision torchaudio
-```
+# NVIDIA GPU (CUDA 12.1)
+pip install torch --index-url https://download.pytorch.org/whl/cu121
 
-For a CPU-only installation:
-
-```
+# CPU only
 pip install torch --index-url https://download.pytorch.org/whl/cpu
 ```
 
+Do not use `conda install pytorch -c pytorch`. That channel is no longer updated, and the build it installs can fail to import (`libmkl_intel_lp64.so.2` missing).
+
 ### Step 3: Install EYKTHYR
 
-EYKTHYR is available as a PyPI package:
+Install from the GitHub repository:
 
 ```
-pip install "eykthyr[with-velocyto,simulation]"
+git clone https://github.com/ma-compbio/Eykthyr.git
+cd Eykthyr
+pip install -e ".[simulation,figures]"
+```
+
+`simulation` adds JupyterLab and ipycanvas for the interactive notebooks. `figures` adds the extra packages used by the figure notebooks (gseapy, pysam, fa2_modified). Both are optional; `pip install -e .` installs just the package.
+
+The PyPI release (`pip install eykthyr`, version 0.0.4) is older than the repository and still depends on velocyto, so install from GitHub for now.
+
+### Step 4: Check the installation
+
+```
+python -c "import eykthyr.eykthyr, eykthyr.plotting; print('ok')"
+
+# optional: run the unit tests
+pip install pytest
+python -m pytest tests/test_correlation.py
 ```
 
 ## Running the Pipeline

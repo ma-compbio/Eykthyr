@@ -1,5 +1,6 @@
 *.pyc
-tests/
+tests/*
+!tests/test_correlation.py
 eykthyr/.ipynb_checkpoints/
 __pycache__/
 *.svg
