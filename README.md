@@ -57,7 +57,15 @@ Do not use `conda install pytorch -c pytorch`. That channel is no longer updated
 
 ### Step 3: Install EYKTHYR
 
-Install from the GitHub repository:
+EYKTHYR is available as a PyPI package:
+
+```
+pip install "eykthyr[simulation]"
+```
+
+`simulation` adds JupyterLab and ipycanvas for the interactive notebooks. It is optional; `pip install eykthyr` installs just the package.
+
+To run the tutorial and figure notebooks, or the tests, install from the GitHub repository instead:
 
 ```
 git clone https://github.com/ma-compbio/Eykthyr.git
@@ -65,16 +73,14 @@ cd Eykthyr
 pip install -e ".[simulation,figures]"
 ```
 
-`simulation` adds JupyterLab and ipycanvas for the interactive notebooks. `figures` adds the extra packages used by the figure notebooks (gseapy, pysam, fa2_modified). Both are optional; `pip install -e .` installs just the package.
-
-The PyPI release (`pip install eykthyr`, version 0.0.4) is older than the repository and still depends on velocyto, so install from GitHub for now.
+`figures` adds the extra packages used by the figure notebooks (gseapy, pysam, fa2_modified).
 
 ### Step 4: Check the installation
 
 ```
 python -c "import eykthyr.eykthyr, eykthyr.plotting; print('ok')"
 
-# optional: run the unit tests
+# optional, from a clone of the repository: run the unit tests
 pip install pytest
 python -m pytest tests/test_correlation.py
 ```
