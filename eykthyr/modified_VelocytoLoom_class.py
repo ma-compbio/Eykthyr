@@ -15,16 +15,8 @@ from scipy.stats import norm as normal
 from sklearn.decomposition import PCA
 from sklearn.manifold import TSNE
 from sklearn.neighbors import NearestNeighbors
-from velocyto.diffusion import Diffusion
-from velocyto.estimation import (
-    colDeltaCor,
-    colDeltaCorLog10,
-    colDeltaCorLog10partial,
-    colDeltaCorpartial,
-    colDeltaCorSqrt,
-    colDeltaCorSqrtpartial,
-)
 
+from .correlation import colDeltaCor, colDeltaCorpartial
 from .util import (
     CONFIG,
     _adata_to_matrix,

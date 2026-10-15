@@ -1,5 +1,5 @@
 [build-system]
-requires = ["hatchling", "numpy>=1.20.1"]
+requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
@@ -10,7 +10,8 @@ authors = [
   { name="Spencer Krieger", email="spencer.krieger@gmail.com" },
 ]
 dependencies = [
-    "numpy>=1.20.1",
+    "numpy>=1.24",
+    "numba>=0.59",
     "scipy>=1.7.1",
     "scikit-learn>=0.24.1",
     "pandas>=1.5.2",
@@ -20,11 +21,11 @@ dependencies = [
     "umap-learn>=0.5.1",
     "scanpy>=1.9.2",
     "seaborn>=0.11.1",
-    "matplotlib>=3.7.0",
+    # figure notebooks use boxplot(labels=), removed in matplotlib 3.11
+    "matplotlib>=3.7.0,<3.11",
     "squidpy>=1.2.3",
     "louvain>=0.8.0",
     "popari>=0.0.72,<0.1",
-    "cython>=3.0.11",
     # sc.tl.leiden / popari's tl.leiden; <0.11 because louvain needs igraph<0.12
     "leidenalg>=0.9.0,<0.11",
     # anndata>=0.13 needs it to read popari.h5ad
@@ -56,9 +57,6 @@ eykthyr = "eykthyr:main"
 simulation = [
   "jupyterlab",
   "ipycanvas",
-]
-with_velocyto = [
-  "velocyto>=0.17.17"
 ]
 # Extra packages used by the figure notebooks
 figures = [

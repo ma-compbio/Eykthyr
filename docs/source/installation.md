@@ -2,28 +2,18 @@
 
 # Installation
 
-`eykthyr` requires Python **≥ 3.10**.
+`eykthyr` requires Python **≥ 3.10**. The steps below were tested on Linux with Python 3.12 and NumPy 2.
 
-## Quick install
-
-```bash
-pip install eykthyr
-```
-
-## Recommended: conda environment
-
-We strongly recommend creating a dedicated conda environment to avoid dependency conflicts.
-
-### Step 1 — Create and activate the environment
+## Step 1 — Create and activate a conda environment
 
 ```bash
-conda create -n eykthyr python=3.10
+conda create -n eykthyr -c conda-forge python=3.12
 conda activate eykthyr
 ```
 
-### Step 2 — Install PyTorch (optional GPU acceleration)
+## Step 2 — Install PyTorch
 
-If you have an NVIDIA GPU, install PyTorch with the matching CUDA version **before** installing `eykthyr`.  Replace `cu121` with your installed CUDA version.
+Install PyTorch with pip **before** installing `eykthyr`. Choose the wheel that matches your hardware (see the [PyTorch install selector](https://pytorch.org/get-started/locally/) for other CUDA versions):
 
 ```bash
 # GPU (CUDA 12.1)
@@ -33,15 +23,24 @@ pip install torch --index-url https://download.pytorch.org/whl/cu121
 pip install torch --index-url https://download.pytorch.org/whl/cpu
 ```
 
-We recommend installing PyTorch from the official pip wheels above.
+> **Note:** Do not use `conda install pytorch -c pytorch`. That channel is no longer updated, and the build it installs can fail to import (`libmkl_intel_lp64.so.2` missing).
 
-### Step 3 — Install Eykthyr
+## Step 3 — Install Eykthyr
 
 ```bash
-pip install eykthyr
+git clone https://github.com/ma-compbio/Eykthyr.git
+cd Eykthyr
+pip install -e ".[simulation,figures]"
 ```
 
-### Step 4 — (Optional) Install ATAC preprocessing dependencies
+The extras are optional:
+
+* `simulation` — JupyterLab and ipycanvas, for the interactive notebooks.
+* `figures` — JupyterLab, gseapy, pysam and fa2_modified, used by the figure notebooks.
+
+> **Note:** The PyPI release (`pip install eykthyr`, version 0.0.4) is older than the repository and still depends on velocyto. Install from GitHub until a new release is published.
+
+## Step 4 — (Optional) Install ATAC preprocessing dependencies
 
 The ArchR-based ATAC preprocessing notebook requires **R** and the following R packages:
 
@@ -52,23 +51,14 @@ BiocManager::install(c("ArchR", "Seurat", "Signac", "BSgenome.Mmusculus.UCSC.mm1
 
 Refer to the [ArchR documentation](https://www.archrproject.com/) for full installation instructions.
 
-## Development install
-
-To install the latest development version directly from the repository:
-
-```bash
-git clone https://github.com/gkrieg/eykthyr.git
-cd eykthyr
-pip install -e .
-```
-
 ## Dependencies
 
-Core dependencies installed automatically by `pip`:
+Core dependencies installed automatically by `pip` (see `pyproject.toml`):
 
 | Package | Minimum version |
 |---------|----------------|
-| numpy | ≥ 1.20.1 |
+| numpy | ≥ 1.24 (NumPy 2 supported) |
+| numba | ≥ 0.59 |
 | scipy | ≥ 1.7.1 |
 | scikit-learn | ≥ 0.24.1 |
 | pandas | ≥ 1.5.2 |
@@ -79,19 +69,21 @@ Core dependencies installed automatically by `pip`:
 | squidpy | ≥ 1.2.3 |
 | umap-learn | ≥ 0.5.1 |
 | tqdm | ≥ 4.60.0 |
-| matplotlib | ≥ 3.7.0 |
+| matplotlib | ≥ 3.7.0, < 3.11 |
 | seaborn | ≥ 0.11.1 |
 | louvain | ≥ 0.8.0 |
-| cython | ≥ 3.0.11 |
 | leidenalg | ≥ 0.9.0, < 0.11 |
 | awkward | ≥ 2.0 |
 | setuptools | < 81 |
 
-The figure notebooks need a few more packages (`gseapy`, `pysam`, `fa2_modified`, `jupyterlab`), installed with `pip install -e ".[figures]"` from a clone of the repository.
+The figure notebooks need a few more packages (`gseapy`, `pysam`, `fa2_modified`, `jupyterlab`), installed with the `figures` extra (Step 3).
+
+Eykthyr no longer depends on velocyto. The two transition-probability kernels it used (`colDeltaCor`, `colDeltaCorpartial`) are reimplemented in `eykthyr/correlation.py`.
 
 ## Verifying the installation
 
 ```python
 import eykthyr
+import eykthyr.eykthyr
 print(eykthyr.__version__)
 ```
