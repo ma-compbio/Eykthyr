@@ -13,7 +13,11 @@ sys.path.insert(0, os.path.abspath("../.."))
 project = "Eykthyr"
 copyright = "2024, Spencer Krieger"
 author = "Spencer Krieger"
-release = "0.0.4"
+# Read the version without importing eykthyr (which needs torch etc. at build time)
+_about = {}
+with open(os.path.join(os.path.dirname(__file__), "../../eykthyr/__about__.py")) as f:
+    exec(f.read(), _about)
+release = _about["__version__"]
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration

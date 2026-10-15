@@ -28,6 +28,12 @@ pip install torch --index-url https://download.pytorch.org/whl/cpu
 ## Step 3 — Install Eykthyr
 
 ```bash
+pip install "eykthyr[simulation]"
+```
+
+To run the tutorial and figure notebooks, install from the GitHub repository instead:
+
+```bash
 git clone https://github.com/ma-compbio/Eykthyr.git
 cd Eykthyr
 pip install -e ".[simulation,figures]"
@@ -36,9 +42,7 @@ pip install -e ".[simulation,figures]"
 The extras are optional:
 
 * `simulation` — JupyterLab and ipycanvas, for the interactive notebooks.
-* `figures` — JupyterLab, gseapy, pysam and fa2_modified, used by the figure notebooks.
-
-> **Note:** The PyPI release (`pip install eykthyr`, version 0.0.4) is older than the repository and still depends on velocyto. Install from GitHub until a new release is published.
+* `figures` — JupyterLab, gseapy, pysam and fa2_modified, used by the figure notebooks (the notebooks themselves are only in the repository).
 
 ## Step 4 — (Optional) Install ATAC preprocessing dependencies
 

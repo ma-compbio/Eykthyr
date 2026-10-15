@@ -47,11 +47,9 @@ classifiers = [
 path = "eykthyr/__about__.py"
 
 [project.urls]
-"Homepage" = "https://github.com/gkrieg/eykthyr"
-"Bug Tracker" = "https://github.com/gkrieg/eykthyr/issues"
-
-[project.scripts]
-eykthyr = "eykthyr:main"
+"Homepage" = "https://github.com/ma-compbio/Eykthyr"
+"Documentation" = "https://eykthyr.readthedocs.io"
+"Bug Tracker" = "https://github.com/ma-compbio/Eykthyr/issues"
 
 [project.optional-dependencies]
 simulation = [
