@@ -4,3 +4,4 @@ tests/*
 eykthyr/.ipynb_checkpoints/
 __pycache__/
 *.svg
+docs/_build/
