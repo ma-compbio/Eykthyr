@@ -7,11 +7,11 @@ build:
   os: ubuntu-22.04
   tools:
     python: "3.10"
+  jobs:
+    # Install only the docs dependency group from pyproject.toml, not the package
+    post_install:
+      - python -m pip install --upgrade "pip>=25.1"
+      - python -m pip install --group docs
 
 sphinx:
   configuration: docs/source/conf.py
-
-# Only the docs toolchain is installed; eykthyr's runtime deps are mocked in conf.py
-python:
-  install:
-    - requirements: requirements.txt
