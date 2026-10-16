@@ -64,6 +64,20 @@ autosummary_generate = True
 # nbsphinx_allow_directives = True
 nb_execution_mode = "off"
 autodoc_typehints = "description"
+# The RTD build only installs the docs requirements, so stub out eykthyr's heavy runtime deps
+autodoc_mock_imports = [
+    "h5py",
+    "matplotlib",
+    "numba",
+    "pandas",
+    "popari",
+    "scanpy",
+    "scipy",
+    "seaborn",
+    "sklearn",
+    "torch",
+    "tqdm",
+]
 remove_from_toctrees = ["api/*"]
 
 # -- Executable Book Theme options
