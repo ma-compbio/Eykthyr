@@ -63,6 +63,19 @@ figures = [
   "pysam",
   "fa2_modified",
 ]
+# Docs toolchain only; eykthyr's runtime deps are mocked in docs/source/conf.py.
+# Install with `pip install --group docs` (pip >= 25.1)
+[dependency-groups]
+docs = [
+  "sphinx",
+  "myst-nb",
+  "sphinx_copybutton",
+  "sphinx_remove_toctrees",
+  "sphinx_book_theme",
+  # imported at module level by eykthyr, so autodoc needs the real thing
+  "numpy>=1.20.1",
+]
+
 [tool]
 
 [tool.hatch.build.targets.sdist]

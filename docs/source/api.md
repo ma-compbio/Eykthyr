@@ -21,13 +21,13 @@ The `Eykthyr` class is the primary entry point for the full analysis pipeline.
 
 ```{eval-rst}
 .. module:: eykthyr.eykthyr
-.. currentmodule:: eykthyr
+.. currentmodule:: eykthyr.eykthyr
 
 .. autosummary::
     :toctree: api/
 
-    eykthyr.Eykthyr
-    eykthyr.load_anndata
+    Eykthyr
+    load_anndata
 ```
 
 ## Visualization: `pl`
